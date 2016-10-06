@@ -1,0 +1,137 @@
+<%= form_for(delivery_truck) do |f| %>
+  <% if delivery_truck.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(delivery_truck.errors.count, "error") %> prohibited this delivery_truck from being saved:</h2>
+
+      <ul>
+      <% delivery_truck.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :minimumPossibleWeight %>
+    <%= f.text_field :minimumPossibleWeight %>
+  </div>
+
+  <div class="field">
+    <%= f.label :maximumPossibleWeight %>
+    <%= f.text_field :maximumPossibleWeight %>
+  </div>
+
+  <div class="field">
+    <%= f.label :vinNumber %>
+    <%= f.text_field :vinNumber %>
+  </div>
+
+  <div class="field">
+    <%= f.label :origin %>
+    <%= f.text_field :origin %>
+  </div>
+
+  <div class="field">
+    <%= f.label :destination %>
+    <%= f.text_field :destination %>
+  </div>
+
+  <div class="field">
+    <%= f.label :yearManufactured %>
+    <%= f.number_field :yearManufactured %>
+  </div>
+
+  <div class="field">
+    <%= f.label :make %>
+    <%= f.text_field :make %>
+  </div>
+
+  <div class="field">
+    <%= f.label :model %>
+    <%= f.text_field :model %>
+  </div>
+
+  <div class="field">
+    <%= f.label :payloadEmptyWeight %>
+    <%= f.text_field :payloadEmptyWeight %>
+  </div>
+
+  <div class="field">
+    <%= f.label :originLocation %>
+    <%= f.text_field :originLocation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :currentLocation %>
+    <%= f.text_field :currentLocation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :destinationLocation %>
+    <%= f.text_field :destinationLocation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :weightCapacity %>
+    <%= f.text_field :weightCapacity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :yearAquired %>
+    <%= f.number_field :yearAquired %>
+  </div>
+
+  <div class="field">
+    <%= f.label :carFax %>
+    <%= f.text_area :carFax %>
+  </div>
+
+  <div class="field">
+    <%= f.label :maintenanceHistory %>
+    <%= f.text_area :maintenanceHistory %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nextMaintenance %>
+    <%= f.text_area :nextMaintenance %>
+  </div>
+
+  <div class="field">
+    <%= f.label :highwayMPG %>
+    <%= f.text_field :highwayMPG %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cityMPG %>
+    <%= f.text_field :cityMPG %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avgMPG %>
+    <%= f.text_field :avgMPG %>
+  </div>
+
+  <div class="field">
+    <%= f.label :scheduledDepartureTime %>
+    <%= f.text_field :scheduledDepartureTime %>
+  </div>
+
+  <div class="field">
+    <%= f.label :estimatedArrivalTime %>
+    <%= f.text_field :estimatedArrivalTime %>
+  </div>
+
+  <div class="field">
+    <%= f.label :requestedArrivalTime %>
+    <%= f.text_field :requestedArrivalTime %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

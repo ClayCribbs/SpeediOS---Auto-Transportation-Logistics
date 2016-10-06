@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="row">    
+    <% @vehicles.each do |vehicle| %>
+      <div class="well">
+      <table>
+        <tr>
+          <td><h3><%= vehicle.name %></h3></td>
+        </tr>
+        <tr>
+          <td><h4><%= vehicle.yearManufactured %> <%= vehicle.make %> <%= vehicle.model %></h4></td>
+          </tr>
+        <tr>
+        <td>Pick-Up Location:</td>
+          <td><%= vehicle.origin %></td>
+        </tr>
+        <tr>
+          <td>Destination:</td>
+          <td><%= vehicle.destination %></td>
+          </tr>
+        <tr>
+          <td>VIN:</td>
+          <td><%= vehicle.vinNumber %></td>
+          </tr>
+        <tr>
+          <td>Weight Range:</td>
+          <td> <%= vehicle.minimumPossibleWeight %> - <%= vehicle.maximumPossibleWeight %> Lbs</td>
+          </tr>
+        <tr>
+        <td>Actual Weight:</td>
+          <td><%= vehicle.actualWeight %></td>
+        </tr>
+      </table>
+        <td><%= link_to 'Show', vehicle %></td>
+        <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
+        <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </div>
+  <% end %>
+<br>
+<div class="well">
+<%= link_to 'New Vehicle', new_vehicle_path %>
+</div>

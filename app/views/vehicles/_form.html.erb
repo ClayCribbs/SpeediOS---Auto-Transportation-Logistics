@@ -1,0 +1,67 @@
+<%= form_for(vehicle) do |f| %>
+  <% if vehicle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
+
+      <ul>
+      <% vehicle.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :make %>
+    <%= f.text_field :make %>
+  </div>
+
+  <div class="field">
+    <%= f.label :model %>
+    <%= f.text_field :model %>
+  </div>
+
+  <div class="field">
+    <%= f.label :yearManufactured %>
+    <%= f.number_field :yearManufactured %>
+  </div>
+
+  <div class="field">
+    <%= f.label :origin %>
+    <%= f.text_field :origin %>
+  </div>
+
+  <div class="field">
+    <%= f.label :destination %>
+    <%= f.text_field :destination %>
+  </div>
+
+  <div class="field">
+    <%= f.label :vinNumber %>
+    <%= f.text_field :vinNumber %>
+  </div>
+
+  <div class="field">
+    <%= f.label :minimumPossibleWeight %>
+    <%= f.text_field :minimumPossibleWeight %>
+  </div>
+
+  <div class="field">
+    <%= f.label :maximumPossibleWeight %>
+    <%= f.text_field :maximumPossibleWeight %>
+  </div>
+
+  <div class="field">
+    <%= f.label :actualWeight %>
+    <%= f.text_field :actualWeight %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

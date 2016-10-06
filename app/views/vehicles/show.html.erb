@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @vehicle.name %>
+</p>
+
+<p>
+  <strong>Make:</strong>
+  <%= @vehicle.make %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @vehicle.model %>
+</p>
+
+<p>
+  <strong>Yearmanufactured:</strong>
+  <%= @vehicle.yearManufactured %>
+</p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @vehicle.origin %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @vehicle.destination %>
+</p>
+
+<p>
+  <strong>Vinnumber:</strong>
+  <%= @vehicle.vinNumber %>
+</p>
+
+<p>
+  <strong>Minimumpossibleweight:</strong>
+  <%= @vehicle.minimumPossibleWeight %>
+</p>
+
+<p>
+  <strong>Maximumpossibleweight:</strong>
+  <%= @vehicle.maximumPossibleWeight %>
+</p>
+
+<p>
+  <strong>Actualweight:</strong>
+  <%= @vehicle.actualWeight %>
+</p>
+
+<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
+<%= link_to 'Back', vehicles_path %>
