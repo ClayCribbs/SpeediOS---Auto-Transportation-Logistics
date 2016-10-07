@@ -1,54 +1,45 @@
 <p id="notice"><%= notice %></p>
+<div class="well">
+    <div id="map-canvas"></div>
+      <table float="left">
+        <tr>
+          <td><h3><%= @vehicle.name %></h3></td>
+        </tr>
+        <tr>
+          <td><h4><%= @vehicle.yearManufactured %> <%= @vehicle.make %> <%= @vehicle.model %></h4></td>
+          </tr>
+        <tr>
+        <td>Pick-Up Location:</td>
+          <td><%= @vehicle.origin %></td>
+        </tr>
+        <tr>
+          <td>Destination:</td>
+          <td><%= @vehicle.destination %></td>
+          </tr>
+        <tr>
+          <td>VIN:</td>
+          <td><%= @vehicle.vinNumber %></td>
+          </tr>
+        <tr>
+          <td>Weight Range:</td>
+          <td> <%= @vehicle.minimumPossibleWeight %> - <%= @vehicle.maximumPossibleWeight %> Lbs</td>
+          </tr>
+        <tr>
+        <td>Actual Weight:</td>
+          <td><%= @vehicle.actualWeight %></td>
+        </tr>
 
-<p>
-  <strong>Name:</strong>
-  <%= @vehicle.name %>
-</p>
+      </table>
 
-<p>
-  <strong>Make:</strong>
-  <%= @vehicle.make %>
-</p>
-
-<p>
-  <strong>Model:</strong>
-  <%= @vehicle.model %>
-</p>
-
-<p>
-  <strong>Yearmanufactured:</strong>
-  <%= @vehicle.yearManufactured %>
-</p>
-
-<p>
-  <strong>Origin:</strong>
-  <%= @vehicle.origin %>
-</p>
-
-<p>
-  <strong>Destination:</strong>
-  <%= @vehicle.destination %>
-</p>
-
-<p>
-  <strong>Vinnumber:</strong>
-  <%= @vehicle.vinNumber %>
-</p>
-
-<p>
-  <strong>Minimumpossibleweight:</strong>
-  <%= @vehicle.minimumPossibleWeight %>
-</p>
-
-<p>
-  <strong>Maximumpossibleweight:</strong>
-  <%= @vehicle.maximumPossibleWeight %>
-</p>
-
-<p>
-  <strong>Actualweight:</strong>
-  <%= @vehicle.actualWeight %>
-</p>
-
-<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
+        <td><%= link_to 'Edit', edit_vehicle_path(@vehicle) %></td>
+        <td><%= link_to 'Destroy', @vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </div>
 <%= link_to 'Back', vehicles_path %>
+
+
+
+<%= javascript_tag do %>
+   var latitude = '<%= j @vehicle.origin_latitude.to_s %>';
+   var longitude = '<%= j @vehicle.origin_longitude.to_s %>';
+   var origin = '<%= j @vehicle.origin %>';
+<% end %>

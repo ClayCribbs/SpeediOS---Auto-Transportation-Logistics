@@ -4,7 +4,7 @@
 <div class="row">    
     <% @vehicles.each do |vehicle| %>
       <div class="well">
-      <table>
+      <table float="left">
         <tr>
           <td><h3><%= vehicle.name %></h3></td>
         </tr>
@@ -31,7 +31,9 @@
         <td>Actual Weight:</td>
           <td><%= vehicle.actualWeight %></td>
         </tr>
+
       </table>
+
         <td><%= link_to 'Show', vehicle %></td>
         <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
         <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -41,3 +43,4 @@
 <div class="well">
 <%= link_to 'New Vehicle', new_vehicle_path %>
 </div>
+
