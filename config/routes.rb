@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :vehicles
   resources :delivery_trucks
+  get 'main' => 'welcome#about'
 
-  root 'delivery_trucks#index'
+  get 'delivery_trucks_index' => 'delivery_trucks#index'
+
+
+  root 'welcome#index'
 
   get 'trucks' => 'delivery_trucks#index'
   get 'vehicles' => 'vehicles#index'

@@ -31,6 +31,12 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'geocoder'
 gem 'figaro'
+gem 'devise'
+
+group :development do
+  gem "better_errors"
+end
+gem "binding_of_caller"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
