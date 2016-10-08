@@ -2,36 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* make sidebar nav vertical */ 
-@media (min-width: 768px) {
 
-	.sidebar-nav {
 
-	position:fixed;
-	height: inherit;
-	width:inherit;
-
+th {
+  border-bottom: solid 1px;
 }
 
-  .sidebar-nav .navbar .navbar-collapse {
-    padding: 0;
-    max-height: none;
-
-  }
-  .sidebar-nav .navbar ul {
-    float: none;
-
-  }
-  .sidebar-nav .navbar ul:not {
-    display: block;
-  }
-  .sidebar-nav .navbar li {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li a {
-    padding-top: 12px;
-    padding-bottom: 12px;
-
-  }
-}
