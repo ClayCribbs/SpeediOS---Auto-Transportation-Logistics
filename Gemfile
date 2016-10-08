@@ -32,6 +32,7 @@ gem 'geocoder'
 gem 'figaro'
 gem 'devise'
 gem 'rubocop', require: false
+gem 'edmunds_ruby'
 
 group :development do
   gem 'better_errors'
