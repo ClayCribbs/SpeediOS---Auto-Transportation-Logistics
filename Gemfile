@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
@@ -32,13 +31,12 @@ gem 'mini_magick'
 gem 'geocoder'
 gem 'figaro'
 gem 'devise'
-
 gem 'rubocop', require: false
 
 group :development do
-  gem "better_errors"
+  gem 'better_errors'
 end
-gem "binding_of_caller"
+gem 'binding_of_caller'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

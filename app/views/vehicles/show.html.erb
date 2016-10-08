@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="well">
-    <div id="map-canvas"></div>
+    <div id="map"></div>
       <table float="left">
         <tr>
           <td><h3><%= @vehicle.name %></h3></td>
@@ -28,7 +28,7 @@
         <td>Actual Weight:</td>
           <td><%= @vehicle.actualWeight %></td>
         </tr>
-
+        <tr>
       </table>
 
         <td><%= link_to 'Edit', edit_vehicle_path(@vehicle) %></td>
@@ -39,7 +39,6 @@
 
 
 <%= javascript_tag do %>
-   var latitude = '<%= j @vehicle.origin_latitude.to_s %>';
-   var longitude = '<%= j @vehicle.origin_longitude.to_s %>';
-   var origin = '<%= j @vehicle.origin %>';
+   var origin = '<%= j @vehicle.origin.to_s %>';
+   var destination = '<%= j @vehicle.destination.to_s %>';
 <% end %>

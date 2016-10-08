@@ -28,8 +28,8 @@ class DeliveryTrucksController < ApplicationController
 
     respond_to do |format|
       if @delivery_truck.save
-        format.html {redirect_to @delivery_truck, notice: 'Delivery truck was successfully created.'}
-        format.json {render :show, status: :created, location: @delivery_truck}
+        format.html { redirect_to @delivery_truck, notice: 'Delivery truck was successfully created.' }
+        format.json { render :show, status: :created, location: @delivery_truck }
       else
         format.html { render :new }
         format.json { render json: @delivery_truck.errors, status: :unprocessable_entity }
@@ -64,12 +64,12 @@ class DeliveryTrucksController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-    def set_delivery_truck
-      @delivery_truck = DeliveryTruck.find(params[:id])
-    end
+  def set_delivery_truck
+    @delivery_truck = DeliveryTruck.find(params[:id])
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-    def delivery_truck_params
-      params.require(:delivery_truck).permit(:name, :minimumPossibleWeight, :maximumPossibleWeight, :vinNumber, :origin, :destination, :yearManufactured, :make, :model, :payloadEmptyWeight, :originLocation, :currentLocation, :destinationLocation, :weightCapacity, :yearAquired, :carFax, :maintenanceHistory, :nextMaintenance, :highwayMPG, :cityMPG, :avgMPG, :scheduledDepartureTime, :estimatedArrivalTime, :requestedArrivalTime)
-    end
+  def delivery_truck_params
+    params.require(:delivery_truck).permit(:name, :minimumPossibleWeight, :maximumPossibleWeight, :vinNumber, :origin, :destination, :yearManufactured, :make, :model, :payloadEmptyWeight, :originLocation, :currentLocation, :destinationLocation, :weightCapacity, :yearAquired, :carFax, :maintenanceHistory, :nextMaintenance, :highwayMPG, :cityMPG, :avgMPG, :scheduledDepartureTime, :estimatedArrivalTime, :requestedArrivalTime)
+  end
 end
