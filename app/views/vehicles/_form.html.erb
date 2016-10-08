@@ -70,6 +70,10 @@
   </div>
 
   <div class="field form-group">
+    <%= f.hidden_field :distance, class: "form-control",value: "#{@vehicle.distance}" %>
+  </div>
+
+  <div class="field form-group">
     <%= f.hidden_field :destination_latitude, class: "form-control" %>
   </div>
 

@@ -1,12 +1,17 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
-
+attr_accessor :distance
   # GET /vehicles
   # GET /vehicles.json
   def index
     @vehicles = Vehicle.all
+    @vehicles.each do |vehicle|
+    directions = GoogleDirections.new(vehicle.origin, vehicle.destination)
+    distance_in_miles = directions.distance_in_miles 
+    vehicle.distance = distance_in_miles 
+    vehicle.update(distance: distance_in_miles)
   end
-
+end
   # GET /vehicles/1
   # GET /vehicles/1.json
   def show
@@ -25,7 +30,6 @@ class VehiclesController < ApplicationController
   # POST /vehicles.json
   def create
     @vehicle = Vehicle.new(vehicle_params)
-
     respond_to do |format|
       if @vehicle.save
         format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
@@ -70,6 +74,6 @@ class VehiclesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def vehicle_params
-    params.require(:vehicle).permit(:name, :make, :model, :yearManufactured, :origin, :origin_latitude, :origin_longitude, :destination, :destination_latitude, :destination_longitude, :vinNumber, :minimumPossibleWeight, :maximumPossibleWeight, :actualWeight)
+    params.require(:vehicle).permit(:name, :make, :model, :yearManufactured,:distance, :origin, :origin_latitude, :origin_longitude, :destination, :destination_latitude, :destination_longitude, :vinNumber, :minimumPossibleWeight, :maximumPossibleWeight, :actualWeight)
   end
 end

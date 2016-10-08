@@ -29,8 +29,11 @@
           <td><%= @vehicle.actualWeight %></td>
         </tr>
         <tr>
+         <td>Distance</td>
+          <td><%= @vehicle.distance %></td>
+        </tr>
       </table>
-
+  <h4 class="pull-right">Total Distance: <i><strong><%= @vehicle.distance %></strong> miles</i></h4>
         <td><%= link_to 'Edit', edit_vehicle_path(@vehicle) %></td>
         <td><%= link_to 'Destroy', @vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </div>
