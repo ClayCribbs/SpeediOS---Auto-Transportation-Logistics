@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
-
+<div class="col-sm-10 col-sm-offset-1">
 <h1>Delivery Trucks</h1>
-
+</div>
 <div class="row">    
 
     <% @delivery_trucks.each do |delivery_truck| %>
+      <div class="col-sm-4 col-sm-offset-1">
         <div class="well">
             <table>
                 <tr>
-                    <td width="60%"><h3><%= link_to delivery_truck.name, delivery_truck %><h3></td>
+                    <td width="60%"><h3><%= link_to delivery_truck.name, delivery_truck %></h3></td>
                 </tr><tr>
                     <td>Minimum Possible Weight  : </td>
                     <td><%= delivery_truck.minimumPossibleWeight %></td>
@@ -90,11 +91,15 @@
                 </tr>
             </table>
         </div>
+        </div>
     <% end %>
 </div>
 
 
 
 <br>
-
+<div class="col-sm-10 col-sm-offset-1">
+<div class="well">
 <%= link_to 'New Delivery Truck', new_delivery_truck_path %>
+</div>
+</div>

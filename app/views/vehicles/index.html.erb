@@ -3,13 +3,14 @@
 
 <div class="row">    
     <% @vehicles.each do |vehicle| %>
+    <div class="col-sm-4 col-sm-offset-1">
       <div class="well">
       <table float="left">
         <tr>
-          <td><h3><%= vehicle.name %></h3></td>
+          <td><h4><%= vehicle.name %></h4></td>
         </tr>
         <tr>
-          <td><h4><%= vehicle.yearManufactured %> <%= vehicle.make %> <%= vehicle.model %></h4></td>
+          <td><h5><%= vehicle.yearManufactured %> <%= vehicle.make %> <%= vehicle.model %></h5></td>
           </tr>
         <tr>
         <td>Pick-Up Location:</td>
@@ -35,15 +36,21 @@
 
         </tr>
       </table>
-       <h4 class="pull-right">Total Distance: <i><strong><%= vehicle.distance %></strong> miles</i></h4>
+     <div class"pad-right-some">
+       <h5 class="pull-right">Total Distance: <i><strong><%= vehicle.distance %></strong> miles</i></h5>
+       </div></td>
+       <div class="wellnavtextpad">
         <td><%= link_to 'Show', vehicle %></td>
         <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
         <td><%= link_to 'Destroy', vehicle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
+        </div>
+    </div>
     </div>
   <% end %>
 <br>
+<div class="col-sm-10 col-sm-offset-1">
 <div class="well">
 <%= link_to 'New Vehicle', new_vehicle_path %>
+</div>
 </div>
 

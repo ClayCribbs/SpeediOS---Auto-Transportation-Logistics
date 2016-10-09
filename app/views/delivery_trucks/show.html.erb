@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+  <div class="col-sm-4 col-sm-offset-1">
+  <div class="well">
 <p>
   <strong>Name:</strong>
   <%= @delivery_truck.name %>
@@ -119,6 +120,7 @@
   <strong>Requestedarrivaltime:</strong>
   <%= @delivery_truck.requestedArrivalTime %>
 </p>
-
+</div>
+</div>
 <%= link_to 'Edit', edit_delivery_truck_path(@delivery_truck) %> |
 <%= link_to 'Back', delivery_trucks_path %>
