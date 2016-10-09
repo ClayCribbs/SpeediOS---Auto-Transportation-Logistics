@@ -1,3 +1,5 @@
 class Vehicle < ApplicationRecord
 
+
+
 end
