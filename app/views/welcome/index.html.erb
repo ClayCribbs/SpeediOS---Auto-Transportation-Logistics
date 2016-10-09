@@ -1,66 +1,61 @@
 
 <div class="row dash-big-container">
   <div class="col-sm-10 col-sm-offset-1">
-  <h2>Delivery Vehicles</h2>
-  <div class="well">
-    <table width="100%">
-      <thead>
-        <th width="70%"><h4>Delivery Trucks</h4></th>
-        <th><h4>Remaining Capacity</h4></th>
-      </thead>
-      <tbody>
-        <% @delivery_trucks.each do |truck|%>
-          <tr>
-            <td><h5><%= link_to truck.name, truck %></h5></td>
-            <td><h5><%= truck.weightCapacity %></h5></td>
-          </tr>
-        <%end%>
-      </tbody>
-    </table>
+    <h2>Delivery Vehicles</h2>
+    <div class="well">
+      <table width="100%">
+        <thead>
+          <th width="70%"><h4>Delivery Trucks</h4></th>
+          <th><h4>Remaining Capacity</h4></th>
+        </thead>
+        <tbody>
+          <% @delivery_trucks.each do |truck|%>
+            <tr>
+              <td><h5><%= link_to truck.name, truck %></h5></td>
+              <td><h5><%= truck.weightCapacity %></h5></td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
-<div class="row"><div class="col-sm-10 col-sm-offset-1">
-<h2>Vehicles Ready For Dispatch</h2></div>
-  <div class="col-sm-5 col-sm-offset-1">
-    <div class="well">
-    <table width="100%">
-      <thead>
-        <th width="40%"><h4>Available Vehicles</h4></th>
-        <th width="30%"><h4>Trip Distance</h4></th>
-        <th width="30%"><h4>Destination City</h4></th>
-      </thead>
-      <tbody>
-        <% @vehicles.each do |vehicle|%>
-          <tr>
-            <td><h5><%= link_to vehicle.name, vehicle %></h5></td>
-            <td><h5><%= vehicle.distance %></h5></td>
-            <td><h5><%= vehicle.destination %></h5></td>
-          </tr>
-        <%end%>
-      </tbody>
-    </table>
-    </div>
-  </div>
-  <div class="col-sm-5">
-    <div class="well">
-    <table width="100%">
-      <thead>
-        <th width="40%"><h4>Available Vehicles</h4></th>
-        <th width="30%"><h4>Trip Distance</h4></th>
-        <th width="30%"><h4>Destination City</h4></th>
-      </thead>
-      <tbody>
-        <% @vehicles.each do |vehicle|%>
-          <tr>
-            <td><h5><%= link_to vehicle.name, vehicle %></h5></td>
-            <td><h5><%= vehicle.distance %></h5></td>
-            <td><h5><%= vehicle.destination %></h5></td>
-          </tr>
-        <%end%>
-      </tbody>
-    </table>
-    </div>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <h2>Vehicles Ready For Dispatch</h2></div>
   </div>
 </div>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <div class="well">
+
+      <select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+          <option selected disabled>Filter By Destination</option>
+          <option value="/">All Destinations</option>
+        <% @vehicles.each do |vehicle| %>
+          <option value=<%= "/?destination=#{URI.escape(vehicle.destination)}"%>><%= vehicle.destination %></option>
+          <%end%>
+      </select>
+
+        <table width="100%">
+          <thead>
+            <th width="30%"><h4>Available Vehicles</h4></th>
+            <th width="25%"><h4>Origin City</h4></th>
+            <th width="25%"><h4>Destination City</h4></th>
+            <th width="20%"><h4>Trip Distance</h4></th>
+          </thead>
+          <tbody>
+            <%@tableVehicles.each do |vehicle|%>
+              <tr>
+                <td><h5><%= link_to vehicle.name, vehicle %></h5></td>
+                <td><h5><%= vehicle.origin %></h5></td>
+                <td><h5><%= vehicle.destination %></h5></td>
+                <td><h5><%= vehicle.distance %></h5></td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
