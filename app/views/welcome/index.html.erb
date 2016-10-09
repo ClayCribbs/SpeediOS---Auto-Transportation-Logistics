@@ -43,6 +43,7 @@
             <th width="25%"><h4>Origin City</h4></th>
             <th width="25%"><h4>Destination City</h4></th>
             <th width="20%"><h4>Trip Distance</h4></th>
+            <th width="20%"><h4>Pick Up With</h4></th>
           </thead>
           <tbody>
             <%@tableVehicles.each do |vehicle|%>
@@ -51,6 +52,14 @@
                 <td><h5><%= vehicle.origin %></h5></td>
                 <td><h5><%= vehicle.destination %></h5></td>
                 <td><h5><%= vehicle.distance %></h5></td>
+                <td> 
+                  <select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+                    <option selected disabled>Available Trucks</option>
+                  <% @delivery_trucks.each do |truck| %>
+                    <option value=<%= "/?truckId=#{URI.escape(truck.vinNumber)}"%>><%= truck.name %></option>
+                  <%end%>
+                  </select>
+                </td>
               </tr>
             <%end%>
           </tbody>

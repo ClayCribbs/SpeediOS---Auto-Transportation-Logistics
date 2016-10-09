@@ -72,6 +72,6 @@ attr_accessor :distance
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def vehicle_params
-    params.require(:vehicle).permit(:name, :make, :model, :yearManufactured,:distance, :origin, :origin_latitude, :origin_longitude, :destination, :destination_latitude, :destination_longitude, :vinNumber, :minimumPossibleWeight, :maximumPossibleWeight, :actualWeight)
+    params.require(:vehicle).permit(:name, :make, :model, :yearManufactured,:distance, :origin, :origin_latitude, :origin_longitude, :destination, :destination_latitude, :destination_longitude, :vinNumber, :minimumPossibleWeight, :maximumPossibleWeight, :actualWeight, :truckId)
   end
 end
