@@ -3,103 +3,69 @@
 <h1>Delivery Trucks</h1>
 </div>
 <div class="row">    
-
     <% @delivery_trucks.each do |delivery_truck| %>
-      <div class="col-sm-4 col-sm-offset-1">
-        <div class="well">
+        <div class="col-sm-5 col-sm-offset-1">
+            <div class="well">
             <table>
                 <tr>
-                    <td width="60%"><h3><%= link_to delivery_truck.name, delivery_truck %></h3></td>
-                </tr><tr>
-                    <td>Minimum Possible Weight  : </td>
-                    <td><%= delivery_truck.minimumPossibleWeight %></td>
-                </tr><tr>
-                    <td>Maximum Possible Weight  : </td>
-                    <td><%= delivery_truck.maximumPossibleWeight %></td>
-                </tr><tr>
-                    <td>VIN                      : </td>
-                    <td><%= delivery_truck.vinNumber %></td>
-                </tr><tr>
-                    <td>Origin                   : </td>
-                    <td><%= delivery_truck.origin %></td>
-                </tr><tr>
-                    <td>Destination              : </td>
-                    <td><%= delivery_truck.destination %></td>
-                </tr><tr>
-                    <td>Year Manufactured        : </td>
-                    <td><%= delivery_truck.yearManufactured %></td>
-                </tr><tr>
-                    <td>Make                     : </td>
-                    <td><%= delivery_truck.make %></td>
-                </tr><tr>
-                    <td>Model                    : </td>
-                    <td><%= delivery_truck.model %></td>
-                </tr><tr>
-                    <td>Payload Empty Weight     : </td>
-                    <td><%= delivery_truck.payloadEmptyWeight %></td>
-                </tr><tr>
-                    <td>Origin Location          : </td>
-                    <td><%= delivery_truck.originLocation %></td>
-                </tr><tr>
-                    <td>Current Location         : </td>
-                    <td><%= delivery_truck.currentLocation %></td>
-                </tr><tr>
-                    <td>Destination Location     : </td>
-                    <td><%= delivery_truck.destinationLocation %></td>
-                </tr><tr>
-                    <td>Weight Capacity          : </td>
-                    <td><%= delivery_truck.weightCapacity %></td>
-                </tr><tr>
-                    <td>Destination Location     : </td>
-                    <td><%= delivery_truck.yearAquired %></td>
-                </tr><tr>
-                    <td>Carfax                   : </td>
-                    <td><%= delivery_truck.carFax %></td>
-                </tr><tr>
-                    <td>Maintenance History      : </td>
-                    <td><%= delivery_truck.maintenanceHistory %></td>
-                </tr><tr>
-                    <td>Next Maintenance                  : </td>
-                    <td><%= delivery_truck.nextMaintenance %></td>
-                </tr><tr>
-                    <td>Highway MPG              : </td>
-                    <td><%= delivery_truck.highwayMPG %></td>
-                </tr><tr>
-                    <td>City MPG                 : </td>
-                    <td><%= delivery_truck.cityMPG %></td>
-                </tr><tr>
-                    <td>Avg MPG                  : </td>
-                    <td><%= delivery_truck.avgMPG %></td>
-                </tr><tr>
-                    <td>Scheduled Departure Time : </td>
-                    <td><%= delivery_truck.scheduledDepartureTime %></td>
-                </tr><tr>
-                    <td>Estimated Arrival Time   : </td>
-                    <td><%= delivery_truck.estimatedArrivalTime %></td>
-                </tr><tr>
-                    <td>Requested Arrival Time   : </td>
-                    <td><%= delivery_truck.requestedArrivalTime %></td>
+                <td width="77%"><h3><%= delivery_truck.name %></h3></td>
                 </tr>
+
                 <tr>
-                    <td><%= link_to 'Show', delivery_truck %></td>
+                <td>Vin Number:</td>
+                <td><%= delivery_truck.vinNumber %></td>
                 </tr>
+
                 <tr>
-                    <td><%= link_to 'Edit', edit_delivery_truck_path(delivery_truck) %></td>
+                <td>Year Manufactured:</td>
+                <td><%= delivery_truck.yearManufactured %></td>
                 </tr>
+
                 <tr>
-                    <td><%= link_to 'Destroy', delivery_truck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td>Make:</td>
+                <td><%= delivery_truck.make %></td>
                 </tr>
-            </table>
-        </div>
+
+                <tr>
+                <td>Model:</td>
+                <td><%= delivery_truck.model %></td>
+                </tr>
+
+                <tr>
+                <td>Current Location:</td>
+                <td><%= delivery_truck.currentLocation %></td>
+                </tr>
+
+                <tr>
+                <td>Weight Capacity:</td>
+                <td><%= delivery_truck.weightCapacity %></td>
+                </tr>
+
+                <tr>
+                <td>Average MPG:</td>
+                <td><%= delivery_truck.avgMPG %></td>
+                </tr>
+
+                <tr>
+                <td>Scheduled Departure Date:</td>
+                <td><%= delivery_truck.scheduledDepartureTime %></td>
+                </tr>
+                </table>
+
+                <p>
+                <%= link_to 'Show', delivery_truck %>
+                <%= link_to 'Edit', edit_delivery_truck_path(delivery_truck) %>
+                <%= link_to 'Destroy', delivery_truck, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+            </div>
         </div>
     <% end %>
 </div>
 
-
-
-<br>
-<div class="col-sm-10 col-sm-offset-1">
-<div class="well">
-<%= link_to 'New Delivery Truck', new_delivery_truck_path %>
-</div>
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+        <div class="well">
+            <%= link_to 'New Delivery Truck', new_delivery_truck_path %>
+        </div>
+    </div>
 </div>

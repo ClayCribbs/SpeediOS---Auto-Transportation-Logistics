@@ -1,3 +1,4 @@
+
 <%= form_for(delivery_truck) do |f| %>
   <% if delivery_truck.errors.any? %>
     <div id="error_explanation">
@@ -10,20 +11,20 @@
       </ul>
     </div>
   <% end %>
-
+<div class="row">
+<div class="col-sm-10 col-sm-offset-1">
+<div class="well">
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= f.label :minimumPossibleWeight %>
-    <%= f.text_field :minimumPossibleWeight %>
+    <%= f.hidden_field :minimumPossibleWeight, class: "form-control"  %>
   </div>
 
   <div class="field">
-    <%= f.label :maximumPossibleWeight %>
-    <%= f.text_field :maximumPossibleWeight %>
+    <%= f.hidden_field :maximumPossibleWeight, class: "form-control"  %>
   </div>
 
   <div class="field">
@@ -32,13 +33,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :origin %>
-    <%= f.text_field :origin %>
+    <%= f.hidden_field :origin, class: "form-control"  %>
   </div>
 
   <div class="field">
-    <%= f.label :destination %>
-    <%= f.text_field :destination %>
+    <%= f.hidden_field :destination, class: "form-control"  %>
   </div>
 
   <div class="field">
@@ -57,13 +56,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :payloadEmptyWeight %>
-    <%= f.text_field :payloadEmptyWeight %>
+    <%= f.hidden_field :payloadEmptyWeight, class: "form-control"  %>
   </div>
 
   <div class="field">
-    <%= f.label :originLocation %>
-    <%= f.text_field :originLocation %>
+    <%= f.hidden_field :originLocation, class: "form-control"  %>
   </div>
 
   <div class="field">
@@ -72,8 +69,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :destinationLocation %>
-    <%= f.text_field :destinationLocation %>
+    <%= f.hidden_field :destinationLocation, class: "form-control"  %>
   </div>
 
   <div class="field">
@@ -82,33 +78,27 @@
   </div>
 
   <div class="field">
-    <%= f.label :yearAquired %>
-    <%= f.number_field :yearAquired %>
+    <%= f.hidden_field :yearAquired, class: "form-control"  %>
   </div>
 
   <div class="field">
-    <%= f.label :carFax %>
-    <%= f.text_area :carFax %>
+    <%= f.hidden_field :carFax, class: "form-control"  %>
   </div>
 
   <div class="field">
-    <%= f.label :maintenanceHistory %>
-    <%= f.text_area :maintenanceHistory %>
+    <%= f.hidden_field :maintenanceHistory, class: "form-control"  %>
   </div>
 
   <div class="field">
-    <%= f.label :nextMaintenance %>
-    <%= f.text_area :nextMaintenance %>
+    <%= f.hidden_field :nextMaintenance, class: "form-control"  %>
   </div>
 
   <div class="field">
-    <%= f.label :highwayMPG %>
-    <%= f.text_field :highwayMPG %>
+    <%= f.hidden_field :highwayMPG, class: "form-control"  %>
   </div>
 
   <div class="field">
-    <%= f.label :cityMPG %>
-    <%= f.text_field :cityMPG %>
+    <%= f.hidden_field :cityMPG, class: "form-control"  %>
   </div>
 
   <div class="field">
@@ -122,16 +112,17 @@
   </div>
 
   <div class="field">
-    <%= f.label :estimatedArrivalTime %>
-    <%= f.text_field :estimatedArrivalTime %>
+    <%= f.hidden_field :estimatedArrivalTime, class: "form-control"  %>
   </div>
 
   <div class="field">
-    <%= f.label :requestedArrivalTime %>
-    <%= f.text_field :requestedArrivalTime %>
+    <%= f.hidden_field :requestedArrivalTime, class: "form-control" %>
   </div>
 
   <div class="actions">
     <%= f.submit %>
+    </div>
+  </div>
+  </div>
   </div>
 <% end %>
