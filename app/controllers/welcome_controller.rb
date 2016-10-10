@@ -3,10 +3,22 @@ class WelcomeController < ApplicationController
 
   	@delivery_trucks = DeliveryTruck.all
   	@vehicles = Vehicle.all
-
-
     @destinations = Vehicle.select(:destination).order(:destination).distinct
-    
+    newWeight = 0
+
+    @delivery_trucks.each do |truck|
+      @vehicles.each do |vehicle|
+        if vehicle.truckId == truck.id
+          newWeight = truck.weightCapacity.to_i
+          newWeight -= vehicle.actualWeight.to_i
+          truck.update(weightCapacity: newWeight.to_i)
+        end
+      end
+    end
+
+
+
+
   	@vehicles.each do |vehicle|
       if vehicle.distance == nil
     	   directions = GoogleDirections.new(vehicle.origin, vehicle.destination) 
