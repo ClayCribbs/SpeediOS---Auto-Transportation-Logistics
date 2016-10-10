@@ -6,19 +6,7 @@ class WelcomeController < ApplicationController
     @destinations = Vehicle.select(:destination).order(:destination).distinct
     newWeight = 0
 
-    @delivery_trucks.each do |truck|
-      @vehicles.each do |vehicle|
-        if vehicle.truckId == truck.id
-          newWeight = truck.weightCapacity.to_i
-          newWeight -= vehicle.actualWeight.to_i
-          truck.update(weightCapacity: newWeight.to_i)
-        end
-      end
-    end
-
-
-
-
+    #Get distance if missing
   	@vehicles.each do |vehicle|
       if vehicle.distance == nil
     	   directions = GoogleDirections.new(vehicle.origin, vehicle.destination) 
@@ -26,12 +14,14 @@ class WelcomeController < ApplicationController
       end
   	end
 
+    #Check for destination filter
     if params[:destination]== nil
       @tableVehicles = Vehicle.all
     else
       @tableVehicles = Vehicle.where("destination LIKE ?", params[:destination])
     end
 
+    #Check for carload truck / change truck
     if params[:truckId]== nil || params[:carId]== nil
     else
       @vehicles.each do |vehicle|
@@ -46,8 +36,8 @@ class WelcomeController < ApplicationController
       @results = GoogleCustomSearchApi.search(params[:q], page: page)
     end
 
+
+
+
   end
-
-
-  
 end
