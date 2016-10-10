@@ -45,6 +45,11 @@
         <strong>Scheduleddeparturetime:</strong>
         <%= @delivery_truck.scheduledDepartureTime %>
       </p>
+
+      <% @myVehicles.each do |vehicle| %>
+        <p><%= vehicle.name %></p>
+      <% end %>
+      
     </div>
   </div>
 </div>
