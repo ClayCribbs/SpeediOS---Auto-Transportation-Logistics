@@ -25,8 +25,7 @@ $(document).ready(function (){
 	function initialize() {
 	  directionsDisplay = new google.maps.DirectionsRenderer();
 	  var mapOptions = {
-	    zoom:7,
-	    center: origin
+	    zoom:10,
 	  }
 	  map = new google.maps.Map(document.getElementById('map'), mapOptions);
 	  directionsDisplay.setMap(map);
@@ -35,6 +34,7 @@ $(document).ready(function (){
 	    origin: origin,
 	    destination: destination,
 	    travelMode: 'DRIVING'
+	    
 
 	  };
 	  directionsService.route(request, function(result, status) {

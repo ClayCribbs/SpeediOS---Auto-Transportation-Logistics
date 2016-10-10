@@ -33,7 +33,7 @@ gem 'figaro'
 gem 'devise'
 gem 'rubocop', require: false
 gem 'edmunds_ruby'
-
+gem 'google_custom_search_api'
 group :development do
   gem 'better_errors'
 end

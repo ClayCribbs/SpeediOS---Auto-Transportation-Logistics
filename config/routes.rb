@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
+  get 'search' => 'welcome#about'
+
   get 'dashboard' => 'welcome#index'
 
   get 'main' => 'welcome#about'

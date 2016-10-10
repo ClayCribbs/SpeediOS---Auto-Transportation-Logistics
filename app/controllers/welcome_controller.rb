@@ -3,8 +3,10 @@ class WelcomeController < ApplicationController
 
   	@delivery_trucks = DeliveryTruck.all
   	@vehicles = Vehicle.all
-    @destinations = Vehicle.select(:destination).order(:destination).distinct
 
+
+    @destinations = Vehicle.select(:destination).order(:destination).distinct
+    
   	@vehicles.each do |vehicle|
       if vehicle.distance == nil
     	   directions = GoogleDirections.new(vehicle.origin, vehicle.destination) 
@@ -27,5 +29,13 @@ class WelcomeController < ApplicationController
       end
     end
 
+    if params[:q]
+      page = params[:page] || 1
+      @results = GoogleCustomSearchApi.search(params[:q], page: page)
+    end
+
   end
+
+
+  
 end
