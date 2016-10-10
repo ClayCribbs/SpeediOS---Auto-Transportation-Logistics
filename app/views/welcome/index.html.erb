@@ -5,6 +5,27 @@
   </div>
 
   <% @delivery_trucks.each do |truck|%>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> clay
+    <% @newWeight = truck.weightCapacity.to_i %>
+    <% @vehicles.each do |vehicle| %>
+      <% if vehicle.truckId.to_i == truck.id.to_i %>
+        <% @newWeight -= vehicle.actualWeight.to_i %>
+      <% end %>
+    <% end %>
+    <% truck.update(currentWeight: @newWeight.to_i) %>
+
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> clay
+>>>>>>> 10265d3678c8c6194d4dbedc2199db8383f8b6ad
     <div class="col-sm-10 col-sm-offset-1">
       <div class="well">
         <table width="100%">
@@ -16,7 +37,15 @@
           <tbody>
               <tr>
                 <td><h5><%= link_to truck.name, truck %></h5></td>
+<<<<<<< HEAD
                 <td><h5><%= truck.weightCapacity %></h5></td>
+=======
+<<<<<<< HEAD
+                <td><h5><%= truck.currentWeight %></h5></td>
+=======
+                <td><h5><%= @newWeight %></h5></td>
+>>>>>>> clay
+>>>>>>> 10265d3678c8c6194d4dbedc2199db8383f8b6ad
                 <td><select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
                 <option selected disabled>Load Vehicle</option>
                 <% @vehicles.each do |vehicle| %>
@@ -81,12 +110,41 @@
                 <td><h5><%= vehicle.origin %></h5></td>
                 <td><h5><%= vehicle.destination %></h5></td>
                 <td><h5><%= vehicle.distance %></h5></td>
+<<<<<<< HEAD
                 <td><select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
                   <option selected disabled>Available Trucks</option>
                   <% @delivery_trucks.each do |truck| %>
                     <option value=<%= "/?truckId=#{URI.escape(truck.id.to_s)}&carId=#{URI.escape(vehicle.id.to_s)}"%>><%= truck.name %></option>
                   <%end%>
                 </select></td>
+=======
+<<<<<<< HEAD
+
+                <td>
+                  <select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+=======
+                <td> <select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+>>>>>>> clay
+                    <% @delivery_trucks.each do |truck| %>
+                      <% if vehicle.truckId.to_i == truck.id.to_i %>
+                        <option selected disabled> Currently on <%= truck.name%> </option>
+                        <option value=<%= "/?truckId=#{URI.escape("nil")}&carId=#{URI.escape(vehicle.id.to_s)}"%>>Remove</option>
+                        <% break %>
+                        <% elsif truck == @delivery_trucks.last %>
+                        <option selected disabled>Available</option>
+                      <% end %>
+                    <% end %>
+                    <% @delivery_trucks.each do |truck| %>
+                      <option value=<%= "/?truckId=#{URI.escape(truck.id.to_s)}&carId=#{URI.escape(vehicle.id.to_s)}"%>><%= truck.name %></option>
+                    <%end%>
+<<<<<<< HEAD
+                  </select>
+                </td>
+
+=======
+                  </select></td>
+>>>>>>> clay
+>>>>>>> 10265d3678c8c6194d4dbedc2199db8383f8b6ad
               </tr>
             <%end%>
           </tbody>

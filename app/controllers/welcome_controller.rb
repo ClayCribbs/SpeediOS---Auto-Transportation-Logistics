@@ -1,10 +1,15 @@
 class WelcomeController < ApplicationController
+  
   def index
 
   	@delivery_trucks = DeliveryTruck.all
   	@vehicles = Vehicle.all
     @destinations = Vehicle.select(:destination).order(:destination).distinct
+<<<<<<< HEAD
+    @newWeight = 0
+=======
     newWeight = 0
+>>>>>>> clay
 
     @delivery_trucks.each do |truck|
       @vehicles.each do |vehicle|
@@ -45,9 +50,19 @@ class WelcomeController < ApplicationController
       page = params[:page] || 1
       @results = GoogleCustomSearchApi.search(params[:q], page: page)
     end
+<<<<<<< HEAD
+  end
+
+=======
 
   end
 
 
+<<<<<<< HEAD
   
+=======
+
+  end
+>>>>>>> clay
+>>>>>>> 10265d3678c8c6194d4dbedc2199db8383f8b6ad
 end
