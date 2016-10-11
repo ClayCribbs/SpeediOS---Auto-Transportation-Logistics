@@ -2,9 +2,9 @@ class WelcomeController < ApplicationController
   def index
 
   	@delivery_trucks = DeliveryTruck.all
-
   	@vehicles = Vehicle.all
     @destinations = Vehicle.select(:destination).order(:destination).distinct
+    @deliveryTruckCount = @delivery_trucks.length
     newWeight = 0
 
     #Get distance if missing
@@ -21,7 +21,6 @@ class WelcomeController < ApplicationController
     else
       @tableVehicles = Vehicle.where("destination LIKE ?", params[:destination])
     end
-    @deliveryTruckCount = @delivery_trucks.length
     @tableVehicleCount = @tableVehicles.length
 
     #Check for carload truck / change truck
