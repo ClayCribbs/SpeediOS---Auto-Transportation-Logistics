@@ -6,12 +6,15 @@ class DeliveryTrucksController < ApplicationController
   def index
     @delivery_trucks = DeliveryTruck.all
     @myVehicles = Vehicle.where("truckId LIKE ?", params[:id])
+    
   end 
 
   # GET /delivery_trucks/1
   # GET /delivery_trucks/1.json
   def show
     @myVehicles = Vehicle.where("truckId LIKE ?", params[:id])
+    @originWaypoints = Array.new
+    @destinationWaypoints = Array.new
   end
 
   # GET /delivery_trucks/new
