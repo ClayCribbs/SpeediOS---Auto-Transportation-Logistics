@@ -1,3 +1,4 @@
 class DeliveryTruck < ApplicationRecord
 
+
 end
