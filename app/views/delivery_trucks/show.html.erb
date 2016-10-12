@@ -80,9 +80,7 @@
   <% end %>
 </select>
 <select hidden id="end">
-  <% @waypoints.each do |wp| %>
-    <option hidden selected value= "Seattle, Wa" ></option>
-  <% end %>
+    <option hidden selected value= <%=@destination%> ></option>
 </select>
 
 

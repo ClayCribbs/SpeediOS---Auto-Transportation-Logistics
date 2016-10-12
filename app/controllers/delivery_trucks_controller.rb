@@ -16,6 +16,31 @@ class DeliveryTrucksController < ApplicationController
     @myVehicles = Vehicle.where("truckId LIKE ?", params[:id])
     @waypoints = Array.new
     @origin = @delivery_truck.origin
+    @destination = "tampa,fl"
+    @distances = Array.new
+    @directions = Array.new
+
+    @myVehicles.each do |vehicle|
+      ##Include only one of each destination 
+      if vehicle.origin == @delivery_truck.origin or @waypoints.include? vehicle.origin
+      else
+        @waypoints.push(vehicle.origin)
+      end
+      if vehicle.destination == @delivery_truck.origin or @waypoints.include? vehicle.destination
+      else
+        @waypoints.push(vehicle.destination)
+      end
+    end
+
+      ###Find furthest point for destination
+      @waypoints.each do |wp|
+        @directions.push GoogleDirections.new(@delivery_truck.origin, wp)
+        @distances.push (@directions.last.distance_in_miles)
+      end
+
+      @destination = @waypoints[@distances.index(@distances.max)]
+      @waypoints.delete_at(@distances.index(@distances.max))
+
   end
   # GET /delivery_trucks/new
   def new
