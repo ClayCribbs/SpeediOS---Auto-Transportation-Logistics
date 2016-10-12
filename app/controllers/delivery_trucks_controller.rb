@@ -12,11 +12,11 @@ class DeliveryTrucksController < ApplicationController
   # GET /delivery_trucks/1
   # GET /delivery_trucks/1.json
   def show
+    set_delivery_truck
     @myVehicles = Vehicle.where("truckId LIKE ?", params[:id])
-    @originWaypoints = Array.new
-    @destinationWaypoints = Array.new
+    @waypoints = Array.new
+    @origin = @delivery_truck.origin
   end
-
   # GET /delivery_trucks/new
   def new
     @delivery_truck = DeliveryTruck.new

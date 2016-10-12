@@ -1,3 +1,36 @@
 // Place all the styles related to the Delivery_Trucks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#routemap {
+height: 450px;
+width: 650px;
+float: right;
+margin: 0px;
+}
+
+well {
+	padding: 0px !important;
+}
+
+#displaytable {
+display: table;
+width: 100%;
+}
+
+.tablecell {
+display: table-cell;
+float: none;
+}
+
+.is-table-row {
+display: table;
+
+}
+
+.is-table-row [class*="col-"] {
+float: none;
+display: table-cell;
+vertical-align: top;
+}

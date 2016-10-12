@@ -1,95 +1,101 @@
+   <p id="notice"><%= notice %></p>
 
-    <style>
-      #right-panel {
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
+   <% getWaypoints() %>
 
-      #right-panel select, #right-panel input {
-        font-size: 15px;
-      }
+<div class="container">
+  <div class="well ">
+  <div class="row ">
+    <div class="col-sm-5">
+    <table width="100%">
+      <tr>
+        <td><h3><%= @delivery_truck.name %></h3></td>
+      </tr>
+      <tr>
+        <td><strong>Vinnumber:</strong></td>
+        <td><%= @delivery_truck.vinNumber %></td>
+      </tr>
 
-      #right-panel select {
-        width: 100%;
-      }
+      <tr>
+        <td><strong>Yearmanufactured:</strong></td>
+        <td><%= @delivery_truck.yearManufactured %></td>
+      </tr>
 
-      #right-panel i {
-        font-size: 12px;
-      }
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-        float: left;
-        width: 70%;
-        height: 100%;
-      }
-      #right-panel {
-        margin: 20px;
-        border-width: 2px;
-        width: 20%;
-        height: 400px;
-        float: left;
-        text-align: left;
-        padding-top: 0;
-      }
-      #directions-panel {
-        margin-top: 10px;
-        background-color: #FFEE77;
-        padding: 10px;
-      }
-    </style>
-     <% @myVehicles.each do |vehicle| %>
-        <% @originWaypoints.push vehicle.origin %>
-        <% @destinationWaypoints.push vehicle.destination %>
-      <% end %>
+      <tr>
+        <td><strong>Make:</strong></td>
+        <td><%= @delivery_truck.make %></td>
+      </tr>
 
-    <div id="right-panel">
-    <div>
-    <b>Start:</b>
-    <select id="start">
-      <% @originWaypoints.each do |wp| %>
-        <option value= <%=wp %> ><%=wp%></option>
-      <% end %>
-    </select>
-    <br>
-    <b>Waypoints:</b> <br>
-    <i>(Ctrl+Click or Cmd+Click for multiple selection)</i> <br>
-    <select multiple id="waypoints">
-      <% @originWaypoints.each do |wp| %>
-        <option value= <%=wp %> ><%=wp%></option>
-      <% end %>
-      <% @destinationWaypoints.each do |wp| %>
-        <option value= <%=wp %> ><%=wp%></option>
-      <% end %>
-    </select>
-    <br>
-    <b>End:</b>
-    <select id="end">
-      <% @destinationWaypoints.each do |wp| %>
-        <option value= <%=wp %> ><%=wp%></option>
-      <% end %>
-    </select>
-    <br>
-      <input type="submit" id="submit">
+      <tr>
+        <td><strong>Model:</strong></td>
+        <td><%= @delivery_truck.model %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Currentlocation:</strong></td>
+        <td><%= @delivery_truck.currentLocation %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Weightcapacity:</strong></td>
+        <td><%= @delivery_truck.weightCapacity %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Avgmpg:</strong></td>
+        <td><%= @delivery_truck.avgMPG %></td>
+      </tr>
+
+      <tr>
+        <td><strong>Scheduleddeparturetime:</strong></td>
+        <td><%= @delivery_truck.scheduledDepartureTime %></td>
+      </tr>
+      <tr>
+        <td><%= link_to 'Edit', edit_delivery_truck_path(@delivery_truck) %> </td>
+        </tr>
+        </table>
+      </div>
+
+    <div class="col-sm-5 col-sm-offset-2">
+    <div id="routemap"></div>
     </div>
-    <div id="directions-panel"></div>
-    </div>
-    <script>
+  </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-2 col-sm-offset-10">
+    <h3><%= link_to 'Back', delivery_trucks_path %></h3>
+  </div>
+</div>
+
+
+<select hidden id="start">
+    <option hidden selected value=<%= @origin %>></option>
+</select>
+<select hidden multiple id="waypoints">
+  <% @waypoints.uniq do |wp| %>
+    <% if wp == @origin %>
+    <% else %>
+    <option hidden selected value= <%= wp %> ></option> 
+    <%end%>
+  <% end %>
+</select>
+<select hidden id="end">
+  <% @waypoints.each do |wp| %>
+    <option hidden selected value= "Seattle, Wa" ></option>
+  <% end %>
+</select>
+
+
+ <script>
       function initMap() {
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 6,
-          center: {lat: 41.85, lng: -87.65}
+        var map = new google.maps.Map(document.getElementById('routemap'), {
+          zoom: 6
+
         });
         directionsDisplay.setMap(map);
-
-          document.getElementById('submit').addEventListener('click', function() {
+          google.maps.event.addDomListener(window, 'load', function() {
           calculateAndDisplayRoute(directionsService, directionsDisplay);
         });
       }
@@ -133,68 +139,3 @@
         });
       }
     </script>
-
-<p id="notice"><%= notice %></p>
-<div class="row">
-  <div class="col-sm-4 col-sm-offset-1">
-    <div class="well">
-      <p>
-        <strong>Name:</strong>
-        <%= @delivery_truck.name %>
-      </p>
-      <p>
-        <strong>Vinnumber:</strong>
-        <%= @delivery_truck.vinNumber %>
-      </p>
-
-      <p>
-        <strong>Yearmanufactured:</strong>
-        <%= @delivery_truck.yearManufactured %>
-      </p>
-
-      <p>
-        <strong>Make:</strong>
-        <%= @delivery_truck.make %>
-      </p>
-
-      <p>
-        <strong>Model:</strong>
-        <%= @delivery_truck.model %>
-      </p>
-
-      <p>
-        <strong>Currentlocation:</strong>
-        <%= @delivery_truck.currentLocation %>
-      </p>
-
-      <p>
-        <strong>Weightcapacity:</strong>
-        <%= @delivery_truck.weightCapacity %>
-      </p>
-
-      <p>
-        <strong>Avgmpg:</strong>
-        <%= @delivery_truck.avgMPG %>
-      </p>
-
-      <p>
-        <strong>Scheduleddeparturetime:</strong>
-        <%= @delivery_truck.scheduledDepartureTime %>
-      </p><br />
-      <p>My Vehicles:</p>
-      <% @myVehicles.each do |vehicle| %>
-        <p><strong><%= vehicle.name %>:</strong><p>
-        <p><% @originWaypoints.push vehicle.origin %>
-        <p><%= vehicle.origin %> to <%= vehicle.destination %>
-        <% @destinationWaypoints.push vehicle.destination %>
-      <% end %>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-10 col-sm-offset-1">
-    <%= link_to 'Edit', edit_delivery_truck_path(@delivery_truck) %> |
-    <%= link_to 'Back', delivery_trucks_path %>
-  </div>
-</div>
-<div id="map"></div>
