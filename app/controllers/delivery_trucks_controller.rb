@@ -16,7 +16,7 @@ class DeliveryTrucksController < ApplicationController
     @myVehicles = Vehicle.where("truckId LIKE ?", params[:id])
     @waypoints = Array.new
     @origin = @delivery_truck.origin
-    @destination = "tampa,fl"
+    @destination = Array.new
     @distances = Array.new
     @directions = Array.new
 
@@ -37,9 +37,10 @@ class DeliveryTrucksController < ApplicationController
         @directions.push GoogleDirections.new(@delivery_truck.origin, wp)
         @distances.push (@directions.last.distance_in_miles)
       end
-
+      if @directions.any?
       @destination = @waypoints[@distances.index(@distances.max)]
       @waypoints.delete_at(@distances.index(@distances.max))
+    end
 
   end
   # GET /delivery_trucks/new
