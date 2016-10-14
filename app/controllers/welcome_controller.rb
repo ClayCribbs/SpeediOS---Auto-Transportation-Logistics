@@ -15,15 +15,7 @@ class WelcomeController < ApplicationController
       end
   	end
 
-    #Check for destination filter
-    if params[:destination]== nil
-      @tableVehicles = Vehicle.all
-    else
-      @tableVehicles = Vehicle.where("destination LIKE ?", params[:destination])
-    end
-    @tableVehicleCount = @tableVehicles.length
-
-    #Check for carload truck / change truck
+        #Check for carload truck / change truck
     if params[:truckId]== nil || params[:carId]== nil
     else
       @vehicles.each do |vehicle|
@@ -32,6 +24,16 @@ class WelcomeController < ApplicationController
         end
       end
     end
+
+    #Check for destination filter
+    if params[:destination]== nil
+      @tableVehicles = Vehicle.all
+    else
+      @tableVehicles = Vehicle.where("destination LIKE ?", params[:destination])
+    end
+    @tableVehicleCount = @tableVehicles.length
+
+
 
     if params[:q]
       page = params[:page] || 1

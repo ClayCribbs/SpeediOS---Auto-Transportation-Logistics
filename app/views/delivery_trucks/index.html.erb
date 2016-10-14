@@ -5,10 +5,10 @@
     <div class="row">
     <% @delivery_trucks.each do |delivery_truck| %>
         <div class="col-sm-10 col-sm-offset-1">
-            <div class="well">
+            <div class="box-car">
             <table>
                 <tr>
-                <td width="77%"><h3><%= delivery_truck.name %></h3></td>
+                <td width="77%"><h3><%= link_to delivery_truck.name, delivery_truck %></h3></td>
                 </tr>
 
                 <tr>
@@ -51,12 +51,6 @@
                 <td><%= delivery_truck.scheduledDepartureTime %></td>
                 </tr>
                 </table>
-
-                <p>
-                <%= link_to 'Show', delivery_truck %>
-                <%= link_to 'Edit', edit_delivery_truck_path(delivery_truck) %>
-                <%= link_to 'Destroy', delivery_truck, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-
             </div>
         </div>
     <% end %>
