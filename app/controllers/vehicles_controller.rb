@@ -11,8 +11,8 @@ attr_accessor :distance
   # GET /vehicles/1
   # GET /vehicles/1.json
   def show
-    directions = GoogleDirections.new(@vehicle.origin, @vehicle.destination)
-    @vehicle.update(distance: directions.distance_in_miles )
+    #directions = GoogleDirections.new(@vehicle.origin, @vehicle.destination)
+    #@vehicle.update(distance: directions.distance_in_miles )
   end
 
   # GET /vehicles/new
