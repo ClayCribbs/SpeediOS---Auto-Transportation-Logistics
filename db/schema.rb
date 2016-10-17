@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009223315) do
+ActiveRecord::Schema.define(version: 20161017191502) do
 
   create_table "delivery_trucks", force: :cascade do |t|
     t.string   "name"
@@ -39,6 +39,21 @@ ActiveRecord::Schema.define(version: 20161009223315) do
     t.string   "requestedArrivalTime"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.float    "currentWeight"
+    t.string   "image"
+  end
+
+  create_table "drivers", force: :cascade do |t|
+    t.string   "driver_name"
+    t.string   "driver_id"
+    t.string   "driver_dob"
+    t.text     "driver_address"
+    t.string   "email"
+    t.integer  "phone_number"
+    t.integer  "trailer_capacity"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "image"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,6 +93,7 @@ ActiveRecord::Schema.define(version: 20161009223315) do
     t.float    "destination_longitude"
     t.float    "distance"
     t.string   "truckId"
+    t.string   "image"
   end
 
 end
