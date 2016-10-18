@@ -38,11 +38,10 @@ group :development do
   gem 'better_errors'
 end
 gem 'binding_of_caller'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass'
-
+gem 'seed_dump'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
