@@ -35,23 +35,9 @@
                     <td>Gets <%= @delivery_truck.avgMPG %> MPG</td>
                   </tr>
                 </table>
-                <br>
                 </div>
                 <div class="col-md-6">
-                  <table width="100%">
-                    <tr>
-                      <td class="align-right"><h4>Contracts</h4></td>
-                    </tr>
-
-                    <% @myVehicles.each do |vehicle| %>
-                      <tr>
-                        <td class="align-right"><strong><%= vehicle.name %></strong></td>
-                      </tr>
-                      <tr>
-                        <td class="align-right"><%= "#{vehicle.origin} to #{vehicle.destination}" %></td>
-                      </tr>
-                    <% end %>
-                  </table>
+                  <%= image_tag @delivery_truck.image, class: "tableimage" %>
                   </div>
                 </div>
                 <div id="mapbox"><div id="routemap"></div></div>
