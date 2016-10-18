@@ -11,52 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="field-group">
+    <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :make %>
-    <%= f.text_field :make %>
+  <div class="field-group">
+    <%= f.text_field :make, placeholder: "Make", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :model %>
-    <%= f.text_field :model %>
+  <div class="field-group">
+    <%= f.text_field :model, placeholder: "Model", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :yearManufactured %>
-    <%= f.number_field :yearManufactured %>
+  <div class="field-group">
+    <%= f.text_field :yearManufactured, placeholder: "Year", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :origin %>
-    <%= f.text_field :origin %>
+  <div class="field-group">
+    <%= f.text_field :origin, placeholder: "Origin", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :destination %>
-    <%= f.text_field :destination %>
+  <div class="field-group">
+    <%= f.text_field :destination, placeholder: "Destination", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :vinNumber %>
-    <%= f.text_field :vinNumber %>
+  <div class="field-group">
+    <%= f.text_field :vinNumber, placeholder: "VIN", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field-group">
     <%= f.hidden_field :minimumPossibleWeight %>
   </div>
 
-  <div class="field">
+  <div class="field-group">
     <%= f.hidden_field :maximumPossibleWeight %>
   </div>
 
-  <div class="field">
-    <%= f.label :actualWeight %>
-    <%= f.text_field :actualWeight %>
+  <div class="field-group">
+    <%= f.text_field :actualWeight, placeholder: "Weight", class: "form-control" %>
   </div>
 
   <div class="field form-group">
