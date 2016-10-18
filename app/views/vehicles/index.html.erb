@@ -2,11 +2,7 @@
 <div class="col-sm-8 col-sm-offset-3">
 <h1>Vehicles Ready For Dispatch</h1>
 </div>
-<i> 
-  <%= link_to(image_tag("carHauler-btn.png", class: 'image-responsive'), new_vehicle_path,  :method => :get) %>
-   <br>
-  <%= link_to 'New Vehicles', new_vehicle_path %>
-</i>
+
 <div class="container">
   <div class="row-fluid">
     <div class="well">
@@ -19,12 +15,12 @@
         <div class="tab-pane active padleft" id="home">
           <div class="row">    
             <% @vehicles.each do |vehicle| %>
-              <% if vehicle.truckId == 'nil' %>
+              <% if vehicle.truckId == 'nil' or vehicle.truckId.empty? %>
                 <div class="col-md-6">
                   <div class="box-car">
                     <table width="90%">
                       <tr>
-                        <td><h3><%= vehicle.name %></h3></td>
+                        <td><h3><%= link_to vehicle.name, vehicle %></h3></td>
                       </tr>
                       <tr>
                         <td><h4><%= vehicle.yearManufactured %> <%= vehicle.make %> <%= vehicle.model %></h4></td>
@@ -78,7 +74,7 @@
             <tbody>
               <% @vehicles.each do |vehicle| %>
                 <tr>
-                  <td><%=vehicle.name%></td>
+                  <td><%= link_to vehicle.name, vehicle %></td>
                   <td><%=vehicle.origin%></td>
                   <td><%=vehicle.destination%></td>
                   <td><%=vehicle.distance%></td>
@@ -88,11 +84,19 @@
             </tbody>
           </table>
         </div>
-        </div>
-        <div class="tab-pane" id="cargo">  
-        </div>
-
       </div>
+      <div class="tab-pane" id="cargo">  
+      </div>
+    </div>
+</div>
+<div class="row" margin-top="0px">
+  <div class="col-sm-12">
+    <div class="well">
+      <i> 
+        <%= link_to(image_tag("carHauler-btn.png", class: 'image-responsive'), new_vehicle_path,  :method => :get) %>
+        <br>
+        <%= link_to 'New Vehicles', new_vehicle_path %>
+      </i>
     </div>
   </div>
 </div>

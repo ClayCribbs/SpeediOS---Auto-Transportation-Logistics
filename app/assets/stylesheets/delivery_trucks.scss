@@ -47,12 +47,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 
 .box {
-	height: 225px;
+	height: 260px;
 	width: auto;
 	border: solid 2px;
 	border-radius: 5px;
 	padding: 15px;
 	margin-top: 15px;
+	padding-bottom: 15px;
 	align-content: center;
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f6f6f6+47,ededed+100;White+3D+%231 */
 background: rgb(255,255,255); /* Old browsers */
@@ -62,6 +63,13 @@ background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(246,246,246,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
 
 }
+
+.tableimage {
+	height: 225px;
+	float: right;
+}
+
+
 
 .tab-content > .tab-pane {
     display: block;
