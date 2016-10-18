@@ -51,16 +51,8 @@
             <br />
           </div>
           <div class="col-md-6">
-            <table width="100%">
-              <tr>
-                <td class="align-right"><h4>Currently On Truck</h4></td>
-                <td class="align-right"><h4><%= @vehicle.truckId %></h4></td>
-              </tr>
-              <br />
-            </table>
-
-          </div>
-
+            <%= image_tag @vehicle.image, class: "tableimage" %>
+            </div>
         </div>
         <div id="mapbox"><div id="routemap"></div></div>
         </div>
