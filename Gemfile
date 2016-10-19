@@ -37,6 +37,7 @@ gem 'rubocop', require: false
 gem 'edmunds_ruby'
 gem 'google_custom_search_api'
 gem 'geocomplete_rails'
+gem 'pry-rails'
 group :development do
   gem 'better_errors'
 end
