@@ -75,8 +75,3 @@
 <%= link_to 'Back', vehicles_path %>
 
 
-
-<%= javascript_tag do %>
-   var origin = '<%= j @vehicle.origin.to_s %>';
-   var destination = '<%= j @vehicle.destination.to_s %>';
-<% end %>
