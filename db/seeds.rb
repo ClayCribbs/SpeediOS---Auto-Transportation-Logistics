@@ -1,6 +1,5 @@
-User.create!([
-  {email: "clay@clay.com", encrypted_password: "$2a$11$dYoc0MMz/GjI5QWTAsvYdeBhd6LYcy6ipGsktKnIbcDK4hqT27mDq", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2016-10-18 10:44:31", last_sign_in_at: "2016-10-18 10:44:31", current_sign_in_ip: "::1", last_sign_in_ip: "::1", username: "Clay"}
-])
+
+
 DeliveryTruck.create!([
   {name: "Western Star", minimumPossibleWeight: nil, maximumPossibleWeight: nil, vinNumber: "5E0AZ1448CG343101", origin: "Atlanta, Ga", destination: "", yearManufactured: 2007, make: "Western", model: "Star", payloadEmptyWeight: nil, originLocation: "", currentLocation: "Atlanta, Ga", destinationLocation: "", weightCapacity: "80000", yearAquired: nil, carFax: "", maintenanceHistory: "", nextMaintenance: "", highwayMPG: nil, cityMPG: nil, avgMPG: 3.0, scheduledDepartureTime: "", estimatedArrivalTime: "", requestedArrivalTime: "", currentWeight: 72615.0, image: "img.jpeg"},
   {name: "International 7600", minimumPossibleWeight: nil, maximumPossibleWeight: nil, vinNumber: "1HTWYAHT69J108236", origin: "Seattle, Washington", destination: "", yearManufactured: 2009, make: "International", model: "7600", payloadEmptyWeight: nil, originLocation: "", currentLocation: "Seattle, Washington", destinationLocation: "", weightCapacity: "45000", yearAquired: nil, carFax: "", maintenanceHistory: "", nextMaintenance: "", highwayMPG: nil, cityMPG: nil, avgMPG: 6.0, scheduledDepartureTime: "", estimatedArrivalTime: "", requestedArrivalTime: "", currentWeight: 30327.0, image: "international.jpg"},
