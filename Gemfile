@@ -17,6 +17,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'google_directions'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'gmaps-autocomplete-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -34,9 +36,11 @@ gem 'devise'
 gem 'rubocop', require: false
 gem 'edmunds_ruby'
 gem 'google_custom_search_api'
+gem 'geocomplete_rails'
 group :development do
   gem 'better_errors'
 end
+gem 'rspec'
 gem 'binding_of_caller'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

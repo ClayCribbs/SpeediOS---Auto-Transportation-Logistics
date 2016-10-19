@@ -1,3 +1,4 @@
+
 <%= form_for(vehicle) do |f| %>
   <% if vehicle.errors.any? %>
     <div id="error_explanation">
@@ -28,11 +29,11 @@
   </div>
 
   <div class="field-group">
-    <%= f.text_field :origin, placeholder: "Origin", class: "form-control" %>
+    <%= f.text_field :origin, placeholder: "Origin", id: "searchTextField", class: "form-control" %>
   </div>
-
+  
   <div class="field-group">
-    <%= f.text_field :destination, placeholder: "Destination", class: "form-control" %>
+    <%= f.text_field :destination, placeholder: "Desination", id: "searchTextField2", class: "form-control" %>
   </div>
 
   <div class="field-group">
@@ -79,6 +80,7 @@
     <strong>Upload Vehicle Image: </strong>
     <%= f.file_field :image %>
   </div>
+
 
 
   <div class="actions">

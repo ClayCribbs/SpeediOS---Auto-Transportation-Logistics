@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head class="bioRhyme">
+
+  	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA3b6mM-SD_4WSa8qOhDmmss-bx4722vY&signed_in=true&libraries=places" async defer>
+    </script>
+
     <title>TruckDemo</title>
     <%= csrf_meta_tags %>
 
@@ -11,9 +15,9 @@
 			function readCookie(name){
 			return(document.cookie.match('(^|; )'+name+'=([^;]*)')||0)[2]
 			}
-		</script>
-
-  </head>
+		</script>		
+	
+	</head>
 
   <body onScroll="document.cookie='ypos=' + window.pageYOffset" onLoad="window.scrollTo(0,readCookie('ypos'))" class="bioRhyme">
 			<div class="jumbotron jumbotron-fluid" height:"200"></div>
@@ -86,9 +90,7 @@
 
 
     <%= yield %>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA3b6mM-SD_4WSa8qOhDmmss-bx4722vY&callback=initMap">
-    </script>
+
 
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHqKZ8Sq_J33_r53kdQgOWZCaqO2Jb4v8">
    </script>-->

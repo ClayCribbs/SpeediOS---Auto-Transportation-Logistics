@@ -123,54 +123,5 @@
 
 
 <script>
-  var map; 
-
-    function initMap() {
-      var directionsService = new google.maps.DirectionsService;
-      var directionsDisplay = new google.maps.DirectionsRenderer;
-      map = new google.maps.Map(document.getElementById('mapbox'), {
-        zoom: 6
-      });
-      directionsDisplay.setMap(map);
-      calculateAndDisplayRoute(directionsService, directionsDisplay);
-    }
-
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-      initMap();
-    });
-
-    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-      var waypts = [];
-      var checkboxArray = document.getElementById('waypoints');
-      for (var i = 0; i < checkboxArray.length; i++) {
-        if (checkboxArray.options[i].selected) {
-          waypts.push({
-            location: checkboxArray[i].value,
-            stopover: true
-          });
-        }
-      }
-      directionsService.route({
-        origin: document.getElementById('start').value,
-        destination: document.getElementById('end').value,
-        waypoints: waypts,
-        optimizeWaypoints: true,
-        travelMode: 'DRIVING'
-      }, function(response, status) {
-      if (status === 'OK') {
-        directionsDisplay.setDirections(response);
-        var route = response.routes[0];
-        var summaryPanel = document.getElementById('directions-panel');
-        summaryPanel.innerHTML = '';
-        // For each route, display summary information.
-      for (var i = 0; i < route.legs.length; i++) {
-        var routeSegment = i + 1;
-        summaryPanel.innerHTML += '<div class="autobox"><b>Waypoint ' + routeSegment +
-            '</b><br>' + route.legs[i].start_address + ' to ' + route.legs[i].end_address + '<br>'+ route.legs[i].distance.text + '<br><br></div>';
-        }
-      } else {
-        window.alert('Directions request failed due to ' + status);
-      }
-    });
-  }
+ 
 </script>
