@@ -44,7 +44,7 @@
   </div>
 
   <div class="field-group">
-    <%= f.text_field :actualWeight, placeholder: "Weight", :id => "weight" %>
+    <%= f.hidden_field :actualWeight, placeholder: "Weight", :id => "weight" %>
   </div>
 
   <div class="field form-group">
@@ -67,8 +67,8 @@
     <%= f.hidden_field :truckId, class: "form-control" %>
   </div>
 
-  <div class="field form-group">
-    <%= f.file_field :image %>
+   <div class="field form-group">
+   <%= f.hidden_field :remote_image_url, id: "details" %>
   </div>
 
 

@@ -2,6 +2,7 @@ class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   attr_accessor :distance
   require 'json'
+  require 'open-uri'
  
 
   # GET /vehicles
@@ -77,6 +78,6 @@ class VehiclesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def vehicle_params
-    params.require(:vehicle).permit(:name, :make, :model, :details, :yearManufactured,:distance, :origin, :origin_latitude, :origin_longitude, :destination, :destination_latitude, :destination_longitude, :vinNumber, :minimumPossibleWeight, :maximumPossibleWeight, :actualWeight, :truckId, :image)
+    params.require(:vehicle).permit(:name, :make, :model, :details, :yearManufactured,:distance, :origin, :origin_latitude, :origin_longitude, :destination, :destination_latitude, :destination_longitude, :vinNumber, :minimumPossibleWeight, :maximumPossibleWeight, :actualWeight, :truckId, :image, :remote_image_url)
   end
 end

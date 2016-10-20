@@ -76,17 +76,14 @@
             });
         }
         function get_style_details(style_id) {
-            url1 = 'https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid?styleId=200477465&fmt=json&api_key=rt9n3nwknegxj49ekdkbft48';
-            url2 = 'https://api.edmunds.com/api/vehicle/v2/styles/'+style_id+'/equipment?availability=standard&equipmentType=OTHER&name=SPECIFICATIONS&fmt=json&api_key=rt9n3nwknegxj49ekdkbft48';
+            url = 'https://api.edmunds.com/api/vehicle/v2/styles/'+style_id+'/equipment?availability=standard&equipmentType=OTHER&name=SPECIFICATIONS&fmt=json&api_key=rt9n3nwknegxj49ekdkbft48';
             $.ajax({
                 type: "POST",
-                url: url2,
+                url: url,
                 data: '',
                 dataType: 'jsonp',
                 success: function(data) {
-                    $('#details').html(JSON.stringify(data));
                     console.log(data);
-                    
                     for(var i = 0; i < data['equipment'][0]['attributes'].length; i++)
                         {
                           if(data['equipment'][0]['attributes'][i].name == 'Curb Weight')
@@ -100,7 +97,20 @@
                 }
             });
         }
-
+        function get_image_details(style_id) {
+            url = 'https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid?styleId=' + style_id + '&fmt=json&api_key=rt9n3nwknegxj49ekdkbft48';
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: '',
+                dataType: 'jsonp',
+                success: function(data) {
+                    $('#details').val('https://media.ed.edmunds-media.com' + (data[0]['photoSrcs'][0]));
+                    console.log(data.length);
+                    console.log('Step 8: Collecting Style/trim data');
+                }
+            });
+        }
         
         $(document).ready(function() {   
             $('#years').change(function() {
@@ -120,6 +130,7 @@
             $('#styles').change(function() {
                 console.log('Step 7: Style ' + $("#styles :selected").val() + ' was selected');
                 get_style_details($('#styles :selected').val());
+                get_image_details($('#styles :selected').val());
             });
         });
     </script>
