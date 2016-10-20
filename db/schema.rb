@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017191502) do
+ActiveRecord::Schema.define(version: 20161020164252) do
 
   create_table "delivery_trucks", force: :cascade do |t|
     t.string   "name"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20161017191502) do
     t.float    "distance"
     t.string   "truckId"
     t.string   "image"
+    t.text     "details"
   end
 
 end

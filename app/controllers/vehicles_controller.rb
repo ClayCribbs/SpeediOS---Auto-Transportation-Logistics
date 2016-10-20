@@ -1,7 +1,8 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
-attr_accessor :distance
-
+  attr_accessor :distance
+  require 'json'
+ 
 
   # GET /vehicles
   # GET /vehicles.json
@@ -15,11 +16,13 @@ attr_accessor :distance
       directions = GoogleDirections.new(@vehicle.origin, @vehicle.destination) 
       @vehicle.update(distance: directions.distance_in_miles)
       @waypoints.push @vehicle.destination
+
   end
 
   # GET /vehicles/new
   def new
     @vehicle = Vehicle.new
+   
   end
 
   # GET /vehicles/1/edit
@@ -74,6 +77,6 @@ attr_accessor :distance
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def vehicle_params
-    params.require(:vehicle).permit(:name, :make, :model, :yearManufactured,:distance, :origin, :origin_latitude, :origin_longitude, :destination, :destination_latitude, :destination_longitude, :vinNumber, :minimumPossibleWeight, :maximumPossibleWeight, :actualWeight, :truckId, :image)
+    params.require(:vehicle).permit(:name, :make, :model, :details, :yearManufactured,:distance, :origin, :origin_latitude, :origin_longitude, :destination, :destination_latitude, :destination_longitude, :vinNumber, :minimumPossibleWeight, :maximumPossibleWeight, :actualWeight, :truckId, :image)
   end
 end
