@@ -76,11 +76,10 @@
             });
         }
         function get_style_details(style_id) {
-            url = 'http://api.edmunds.com/v1/api/vehicle/stylerepository/findbyid?id=' + style_id + '&api_key=' + EDMUNDS_API_KEY + '&fmt=json';
-            url2 = 'https://api.edmunds.com/api/vehicle/v2/styles/200477465/equipment?availability=standard&equipmentType=OTHER&name=SPECIFICATIONS&fmt=json&api_key=rt9n3nwknegxj49ekdkbft48';
+            url = 'https://api.edmunds.com/api/vehicle/v2/styles/'+style_id+'/equipment?availability=standard&equipmentType=OTHER&name=SPECIFICATIONS&fmt=json&api_key=rt9n3nwknegxj49ekdkbft48';
             $.ajax({
                 type: "POST",
-                url: url2,
+                url: url,
                 data: '',
                 dataType: 'jsonp',
                 success: function(data) {
@@ -91,8 +90,7 @@
                 }
             });
         }
-
-        
+       
         $(document).ready(function() {   
             $('#years').change(function() {
                 console.log('Step 1: Year ' + $("#years :selected").val() + ' was selected');
