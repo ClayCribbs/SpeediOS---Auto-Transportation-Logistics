@@ -14,7 +14,7 @@
 
   
 
-  <%= f.select :yearManufactured, (1990..Date.today.year).to_a, {}, :id => "years" %>
+  <%= f.select :yearManufactured, (1990..(Date.today.year+1)).to_a, {}, :id => "years" %>
   <%= f.select :make, "makes", {}, :id => "makes"%>
   <%= f.select :model, "Model", {}, :id => "models"%>
   <%= f.select :details, "Style", {}, :id => "styles" %>
@@ -41,7 +41,7 @@
   </div>
 
   <div class="field-group">
-    <%= f.text_field :actualWeight, placeholder: "Weight", class: "form-control" %>
+    <%= f.hidden_field :actualWeight, placeholder: "Weight", :id => "weight" %>
   </div>
 
   <div class="field form-group">
@@ -65,13 +65,11 @@
   </div>
 
   <div class="field form-group">
-    <%= f.hidden_field :destination_longitude, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <strong>Upload Vehicle Image: </strong>
     <%= f.file_field :image %>
   </div>
+
+
+
 
 
   <div class="actions">

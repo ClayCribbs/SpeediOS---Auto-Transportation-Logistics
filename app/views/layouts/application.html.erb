@@ -77,17 +77,21 @@
         }
         function get_style_details(style_id) {
             url = 'http://api.edmunds.com/v1/api/vehicle/stylerepository/findbyid?id=' + style_id + '&api_key=' + EDMUNDS_API_KEY + '&fmt=json';
+            url2 = 'https://api.edmunds.com/api/vehicle/v2/styles/200477465/equipment?availability=standard&equipmentType=OTHER&name=SPECIFICATIONS&fmt=json&api_key=rt9n3nwknegxj49ekdkbft48';
             $.ajax({
                 type: "POST",
-                url: url,
+                url: url2,
                 data: '',
                 dataType: 'jsonp',
                 success: function(data) {
-                    $('#details').html(JSON.stringify(data.styleHolder[0]));
+                    $('#details').html(JSON.stringify(data));
+                    console.log(data);
+                    $('#weight').val(JSON.parse(data['equipment'][0]['attributes'][4].value.replace(/(\{|,)\s*(.+?)\s*:/g, '$1 "$2":')));
                     console.log('Step 8: Collecting Style/trim data');
                 }
             });
         }
+
         
         $(document).ready(function() {   
             $('#years').change(function() {
@@ -105,8 +109,8 @@
                 get_styles($('#makes :selected').val(), $("#models :selected").val(), $('#years :selected').val());
             });
             $('#styles').change(function() {
-                console.log('Step 7: Style ' + $("#models :selected").val() + ' was selected');
-                get_style_details($(this).val());
+                console.log('Step 7: Style ' + $("#styles :selected").val() + ' was selected');
+                get_style_details($('#styles :selected').val());
             });
         });
     </script>
