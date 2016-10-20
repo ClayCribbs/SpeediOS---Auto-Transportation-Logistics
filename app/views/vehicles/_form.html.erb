@@ -19,6 +19,9 @@
   <%= f.select :model, "Model", {}, :id => "models"%>
   <%= f.select :details, "Style", {}, :id => "styles" %>
 
+  <div class="field-group">
+    <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+  </div>
 
   <div class="field-group">
     <%= f.text_field :origin, placeholder: "Origin", id: "searchTextField", class: "form-control" %>
