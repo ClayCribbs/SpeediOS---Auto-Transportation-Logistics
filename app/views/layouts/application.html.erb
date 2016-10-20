@@ -76,21 +76,32 @@
             });
         }
         function get_style_details(style_id) {
-            url = 'https://api.edmunds.com/api/vehicle/v2/styles/'+style_id+'/equipment?availability=standard&equipmentType=OTHER&name=SPECIFICATIONS&fmt=json&api_key=rt9n3nwknegxj49ekdkbft48';
+            url1 = 'https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid?styleId=200477465&fmt=json&api_key=rt9n3nwknegxj49ekdkbft48';
+            url2 = 'https://api.edmunds.com/api/vehicle/v2/styles/'+style_id+'/equipment?availability=standard&equipmentType=OTHER&name=SPECIFICATIONS&fmt=json&api_key=rt9n3nwknegxj49ekdkbft48';
             $.ajax({
                 type: "POST",
-                url: url,
+                url: url2,
                 data: '',
                 dataType: 'jsonp',
                 success: function(data) {
                     $('#details').html(JSON.stringify(data));
                     console.log(data);
-                    $('#weight').val(JSON.parse(data['equipment'][0]['attributes'][4].value.replace(/(\{|,)\s*(.+?)\s*:/g, '$1 "$2":')));
+                    
+                    for(var i = 0; i < data['equipment'][0]['attributes'].length; i++)
+                        {
+                          if(data['equipment'][0]['attributes'][i].name == 'Curb Weight')
+                          {
+                            index = i;
+                          }
+                        }
+
+                    $('#weight').val(JSON.parse(data['equipment'][0]['attributes'][index].value.replace(/(\{|,)\s*(.+?)\s*:/g, '$1 "$2":')));
                     console.log('Step 8: Collecting Style/trim data');
                 }
             });
         }
-       
+
+        
         $(document).ready(function() {   
             $('#years').change(function() {
                 console.log('Step 1: Year ' + $("#years :selected").val() + ' was selected');
