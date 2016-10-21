@@ -19,6 +19,15 @@
 }
 
 
+.row{
+    overflow: hidden; 
+}
+
+[class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
 
 .tab-content > .tab-pane {
     display: block;

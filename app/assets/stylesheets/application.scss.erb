@@ -14,14 +14,10 @@
  *= require jquery-ui
  *= require_self
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
-
-.dash-big-container {
-	height: 250px;
-
-}
 
 .table-striped>tbody>tr:nth-child(odd)>td, 
 .table-striped>tbody>tr:nth-child(odd)>th {
@@ -75,36 +71,6 @@ a {
 	padding-top: 5px;
 }
 
-.row.is-flex {
-    display: flex;
-    flex-wrap: wrap;
-}
-.row.is-flex > [class*='col-'] {
-    display: flex;
-    flex-direction: column;
-}
-
-.row.is-flex {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-}
-
-.row.is-flex > [class*='col-'] {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-}
 
 .navbar {
 	margin-top: 0px;
@@ -137,13 +103,8 @@ a {
   color: #333333 !important;
 }
 
-.row{
-    overflow: hidden; 
-}
-
-[class*="col-"]{
-    margin-bottom: -99999px;
-    padding-bottom: 99999px;
+#footer .content p {
+    margin-bottom: 0
 }
 
 
