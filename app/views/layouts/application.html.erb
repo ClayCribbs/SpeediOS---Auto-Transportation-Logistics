@@ -98,7 +98,7 @@
             });
         }
         function get_image_details(style_id) {
-            url = 'https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid?styleId=' + style_id + '&fmt=json&api_key=rt9n3nwknegxj49ekdkbft48';
+            url = 'https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid?styleId=' + style_id + '&shottype=PROFILE&fmt=json&api_key=rt9n3nwknegxj49ekdkbft48';
             $.ajax({
                 type: "POST",
                 url: url,

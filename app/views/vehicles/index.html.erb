@@ -12,58 +12,36 @@
         <li><a href="#cargo" data-target="#cargo" data-toggle="tab">Contracts By Location</a></li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane active padleft" id="home">
-          <div class="row">    
-            <% @vehicles.each do |vehicle| %>
+        <div class="tab-pane active" id="home">
+          <div class="autobox">  
+          <table class="table-striped" width="100%">
+            <thead>
+              <th>Car Name</th>
+              <th>Origin</th>
+              <th>Destination</th>
+              <th>Miles</th>
+              <th>Bid</th>
+            </thead>
+            <tbody>
+              <% @vehicles.each do |vehicle| %>
               <% if vehicle.truckId == 'nil' or vehicle.truckId.empty? %>
-                <div class="col-md-6">
-                  <div class="box-car">
-                    <table width="90%">
-                      <tr>
-                        <td><h3><%= link_to vehicle.name, vehicle %></h3></td>
-                      </tr>
-                      <tr>
-                        <td><h4><%= vehicle.yearManufactured %> <%= vehicle.make %> <%= vehicle.model %></h4></td>
-                        </tr>
-                      <tr>
-                      <td>Pick-Up Location:</td>
-                        <td><%= vehicle.origin %></td>
-                      </tr>
-                      <tr>
-                        <td>Destination:</td>
-                        <td><%= vehicle.destination %></td>
-                        </tr>
-                      <tr>
-                        <td>VIN:</td>
-                        <td><%= vehicle.vinNumber %></td>
-                        </tr>
-                      <tr>
-                        <td>Weight Range:</td>
-                        <td> <%= vehicle.minimumPossibleWeight %> - <%= vehicle.maximumPossibleWeight %> Lbs</td>
-                        </tr>
-                      <tr>
-                      <td>Actual Weight:</td>
-                        <td><%= vehicle.actualWeight %></td>
-                      </tr>
-                      <tr>
-                       <td>Distance</td>
-                        <td><%= vehicle.distance %></td>
-                      </tr>
-                      <tr>
-                        <td><br /></td>
-                      </tr>
-                    </table>
-                    <br />
-                  </div>
-              </div>
-            <% end %>
-          <% end %>             
-          </div>
+                <tr>
+                  <td><%= link_to "#{vehicle.yearManufactured} #{vehicle.make} #{vehicle.model}".split.map(&:capitalize).join(' '), vehicle %></td>
+                  <td><%=vehicle.origin%></td>
+                  <td><%=vehicle.destination%></td>
+                  <td><%=vehicle.distance%></td>
+                  <td>$<%=vehicle.distance%></td>
+                </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
         </div>
 
         <div class="tab-pane" id="routetab"> 
         <div class="autobox">  
-          <table width="90%">
+          <table class="table-striped" width="100%">
             <thead>
               <th>Car Name</th>
               <th>Origin</th>
@@ -74,7 +52,7 @@
             <tbody>
               <% @vehicles.each do |vehicle| %>
                 <tr>
-                  <td><%= link_to vehicle.name, vehicle %></td>
+                  <td><%= link_to "#{vehicle.yearManufactured} #{vehicle.make} #{vehicle.model}".split.map(&:capitalize).join(' '), vehicle %></td>
                   <td><%=vehicle.origin%></td>
                   <td><%=vehicle.destination%></td>
                   <td><%=vehicle.distance%></td>
