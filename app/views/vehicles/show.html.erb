@@ -69,7 +69,7 @@
   <%= link_to 'Edit', edit_vehicle_path(@vehicle), class: "" %>
   <%= link_to 'Destroy', @vehicle, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
-<%= link_to 'Back', vehicles_path %>
+<%= link_to 'Back', vehicles_path, class: "btn btn-default" %>
 
 <select hidden id="start">
     <option hidden selected value=<%= @vehicle.origin %>></option>
