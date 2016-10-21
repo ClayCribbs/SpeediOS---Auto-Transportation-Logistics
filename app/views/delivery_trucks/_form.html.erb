@@ -14,9 +14,8 @@
 <div class="row">
 <div class="col-sm-10 col-sm-offset-1">
 <div class="well">
-  <div class="field">
-    <%= f.label  :name %>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.text_field :name, placeholder: "Name" %>
   </div>
 
   <div class="field">
@@ -27,33 +26,28 @@
     <%= f.hidden_field :maximumPossibleWeight, class: "form-control"  %>
   </div>
 
-  <div class="field">
-    <%= f.label :vinNumber %>
-    <%= f.text_field :vinNumber %>
+  <div class="form-group">
+    <%= f.text_field :vinNumber, placeholder: "Vin Number" %>
   </div>
 
-  <div class="field">
-   <%= f.label :origin %>
-    <%= f.text_field :origin, class: "form-control"  %>
+  <div class="form-group">
+    <%= f.text_field :origin, placeholder: "Origin Location", class: "form-control"  %>
   </div>
 
   <div class="field">
     <%= f.hidden_field :destination, class: "form-control"  %>
   </div>
 
-  <div class="field">
-    <%= f.label :yearManufactured %>
-    <%= f.number_field :yearManufactured %>
+  <div class="form-group">
+    <%= f.number_field :yearManufactured, placeholder: "Year Manufactured" %>
   </div>
 
-  <div class="field">
-    <%= f.label :make %>
-    <%= f.text_field :make %>
+  <div class="form-group">
+    <%= f.text_field :make, placeholder: "Make" %>
   </div>
 
-  <div class="field">
-    <%= f.label :model %>
-    <%= f.text_field :model %>
+  <div class="form-group">
+    <%= f.text_field :model, placeholder: "Model" %>
   </div>
 
   <div class="field">
@@ -64,18 +58,16 @@
     <%= f.hidden_field :originLocation, class: "form-control"  %>
   </div>
 
-  <div class="field">
-    <%= f.label :currentLocation %>
-    <%= f.text_field :currentLocation %>
+  <div class="form-group">
+    <%= f.text_field :currentLocation, placeholder: "Current Location" %>
   </div>
 
   <div class="field">
     <%= f.hidden_field :destinationLocation, class: "form-control"  %>
   </div>
 
-  <div class="field">
-    <%= f.label :weightCapacity %>
-    <%= f.text_field :weightCapacity %>
+  <div class="form-group">
+    <%= f.text_field :weightCapacity, placeholder: "Weight Capacity" %>
   </div>
 
   <div class="field">
@@ -102,14 +94,12 @@
     <%= f.hidden_field :cityMPG, class: "form-control"  %>
   </div>
 
-  <div class="field">
-    <%= f.label :avgMPG %>
-    <%= f.text_field :avgMPG %>
+  <div class="form-group">
+    <%= f.text_field :avgMPG, placeholder: "Avg MPG" %>
   </div>
 
-  <div class="field">
-    <%= f.label :scheduledDepartureTime %>
-    <%= f.text_field :scheduledDepartureTime %>
+  <div class="form-group">
+    <%= f.text_field :scheduledDepartureTime, placeholder: "Scheduled Departure Time" %>
   </div>
 
   <div class="field">
@@ -126,7 +116,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :Submit, class: "btn btn-success" %>
   </div>
   
   </div>
