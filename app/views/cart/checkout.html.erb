@@ -1,0 +1,12 @@
+<h2>Thanks for shopping with us!</h2>
+<p>Let's review your order:</p>
+
+<% @order.order_items.each do |k,v| %>
+    <ul>
+        <li><%= "#{Vehicle.find(k).make} #{Vehicle.find(k).model}" %> <%= "#{v} Miles from #{Vehicle.find(k).origin} to #{Vehicle.find(k).destination}" %></li>
+    </ul>
+<% end %>
+
+<p>
+    <strong>Order Total:</strong> <%= number_to_currency @order.grand_total %>
+</p>

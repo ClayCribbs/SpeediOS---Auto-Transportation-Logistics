@@ -1253,7 +1253,6 @@ if (typeof jQuery === 'undefined') {
   })
 
 }(jQuery);
-
 /* ========================================================================
  * Bootstrap: tooltip.js v3.3.7
  * http://getbootstrap.com/javascript/#tooltip

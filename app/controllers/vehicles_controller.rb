@@ -17,7 +17,6 @@ class VehiclesController < ApplicationController
       directions = GoogleDirections.new(@vehicle.origin, @vehicle.destination) 
       @vehicle.update(distance: directions.distance_in_miles)
       @waypoints.push @vehicle.destination
-
   end
 
   # GET /vehicles/new

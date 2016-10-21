@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+
   resources :drivers
   devise_for :users
   resources :vehicles
   resources :delivery_trucks
+
+  post 'add_to_cart' => 'cart#add_to_cart'
+
+  get 'view_order' => 'cart#view_order'
+
+  get 'checkout' => 'cart#checkout'
 
   root 'welcome#index'
 

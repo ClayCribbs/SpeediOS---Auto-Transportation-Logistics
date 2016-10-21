@@ -113,6 +113,7 @@
         }
         
         $(document).ready(function() {   
+            
             $('#years').change(function() {
                 console.log('Step 1: Year ' + $("#years :selected").val() + ' was selected');
                 get_makes($("#years :selected").val());
@@ -132,7 +133,9 @@
                 get_style_details($('#styles :selected').val());
                 get_image_details($('#styles :selected').val());
             });
+
         });
+
     </script>
 	</head>
 

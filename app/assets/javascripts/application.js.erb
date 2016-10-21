@@ -13,7 +13,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
 //= require jquery.geocomplete
 // disabled require turbolinks
 //= require_tree .
@@ -33,13 +32,10 @@
     }
 
 
-
- 	
+  
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       initMap();
     });
-
-
 
     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
       var waypts = [];
@@ -75,3 +71,4 @@
       }
     });
   }
+
