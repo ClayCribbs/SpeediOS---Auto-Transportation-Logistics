@@ -6,6 +6,7 @@
   </div>
 
   <% @delivery_trucks.each do |truck|%>
+  
   <!-- Modal -->
 <div class="modal fade" id="myModal<%=truck.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -17,9 +18,10 @@
       <div class="modal-body">
         <table class="table-striped" width="100%">
           <thead>
-              <th><h4>Vehicle</h4></th>
-              <th><h4>Weight</h4></th>
-              <th><h4>Action</h4></th>
+              <th width="30%"><h4>Vehicle</h4></th>
+              <th width="25%"><h4>Weight</h4></th>
+              <th width="30%"><h4>Action</h4></th>
+              <th width="15%"><h4>Confirm Vehicle</h4></th>
           </thead>
           <tbody>  
             </tr>
@@ -28,12 +30,16 @@
                 <tr>
                   <td><h5><%= link_to vehicle.name, vehicle %></h5></td>
                   <td><h5><%= vehicle.actualWeight %></h5></td>
-                  <td><select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
-                    <option selected disabled>Move Vehicle</option>
-                    <option value=<%= "/?truckId=#{URI.escape("nil")}&carId=#{URI.escape(vehicle.id.to_s)}"%>>Remove<% @delivery_trucks.each do |truck| %>
-                      <option value=<%= "/?truckId=#{URI.escape(truck.id.to_s)}&carId=#{URI.escape(vehicle.id.to_s)}"%>>Move to <%= truck.name %></option>
-                    <%end%></option>
-                  </select></td>
+                  <td><%= render 'form', vehicle: vehicle %></td>
+                  <% time = Time.new %>
+                     <%= form_tag add_to_cart_path, :remote => true do %>
+                      <%= hidden_field_tag :vehicle_id, vehicle.id %>
+                      <%= hidden_field_tag :bid_total, vehicle.distance.to_i %>
+                      <%= hidden_field_tag :dispatch_date, (time.month.to_s+"/"+time.day.to_s + "/" +time.year.to_s) %>
+                      <%= hidden_field_tag :order_id, (vehicle.truckId.to_s+(time.year.to_s+time.month.to_s+time.day.to_s)).to_i %>
+                      <%= hidden_field_tag :truckId, vehicle.truckId %>
+                      <td><%= submit_tag "Add to Cart", class: "btn btn-primary" %></td>
+                  <% end %>
                 </tr>
               <% end %>
             <% end %>
@@ -42,19 +48,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <% time = Time.new %>
-          <% @vehicles.each do |vehicle|%>
-            <% if vehicle.truckId.to_s == truck.id.to_s %>
-             <%= form_tag add_to_cart_path do %>
-              <%= hidden_field_tag :vehicle_id, vehicle.id %>
-              <%= hidden_field_tag :bid_total, vehicle.distance.to_i %>
-              <%= hidden_field_tag :dispatch_date, (time.month.to_s+"/"+time.day.to_s + "/" +time.year.to_s) %>
-              <%= hidden_field_tag :order_id, (vehicle.truckId.to_s+(time.year.to_s+time.month.to_s+time.day.to_s)).to_i %>
-              <%= hidden_field_tag :truckId, vehicle.truckId %>
-              <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
-              <% end %>
-            <% end %>
-          <% end %>
          <%= link_to "Finalize Load", view_order_path, class: "btn btn-primary" %>
         </div>
       </div>
@@ -71,7 +64,6 @@
     <% end %>
 
     <% truck.update(currentWeight: @newWeight.to_i) %>
-
     <div class="col-sm-10 col-sm-offset-1">
       <div class="well">
         <table width="100%">
