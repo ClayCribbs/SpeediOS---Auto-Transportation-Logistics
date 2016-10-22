@@ -1,4 +1,4 @@
-<%= form_for(vehicle, remote: true) do |f| %>
+<%= form_for(vehicle, :remote => true,:authenticity_token => true) do |f| %>
   <% if vehicle.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
@@ -10,6 +10,15 @@
       </ul>
     </div>
   <% end %>
-	<%= f.collection_select(:truckId, DeliveryTruck.all, :id, :name, {:include_blank => "Available", :onChange =>  f.submit() }) %>
-	<%= f.submit "Add to Cart", class: "btn btn-primary" %>
+	<%= f.collection_select(:truckId, DeliveryTruck.all, :id, :name, { :include_blank => "Available"},{:onChange => "javascript: this.form.button.click();", :class => "selectTruck"}) %>
+	<%= f.submit "Add to Cart", class: "btn btn-primary", id: "button"%>
 <% end %>
+
+ <script>
+  $(function (){
+     $("form.selectTruck").change(function (){
+        var selectValue = $(this).val();
+        console.log(selectValue);
+     });
+  });
+</script>
