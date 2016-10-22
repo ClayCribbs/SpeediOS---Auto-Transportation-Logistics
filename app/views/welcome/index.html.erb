@@ -130,20 +130,8 @@
               <td><h5><%= vehicle.origin.sub!(", United States", "") %></h5></td>
               <td><h5><%= vehicle.destination.sub!(", United States", "") %></h5></td>
               <td><h5><%= vehicle.distance %></h5></td>
-              <td> <select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
-                <% @delivery_trucks.each do |truck| %>
-                  <% if vehicle.truckId.to_i == truck.id.to_i %>
-                    <option selected disabled> Currently on <%= truck.name%> </option>
-                    <option value=<%= "/?truckId=#{URI.escape("nil")}&carId=#{URI.escape(vehicle.id.to_s)}"%>>Remove</option>
-                    <% break %>
-                  <% elsif truck == @delivery_trucks.last %>
-                    <option selected disabled>Available</option>
-                  <% end %>
-                <% end %>
-                <% @delivery_trucks.each do |truck| %>
-                  <option value=<%= "/?truckId=#{URI.escape(truck.id.to_s)}&carId=#{URI.escape(vehicle.id.to_s)}"%>><%= truck.name %></option>
-                <%end%>
-              </select></td>
+              <% @i = 0 %>
+              <td><%= render 'form', vehicle: vehicle %></td>
             </tr>
           <%end%>
         </tbody>
