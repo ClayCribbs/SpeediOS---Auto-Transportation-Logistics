@@ -1,14 +1,41 @@
 <script src="sorttable.js"></script>
-
 <% if current_user.admin? %>
-  
-
   <p id="notice"><%= notice %></p>
+    
+
+<head>
+<meta charset=utf-8>
+<title>A sortable table with scrollable body</title>
+  <script src="http://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+  <style>
+    /* Appearance */
+    body, table { font-family: sans-serif; }
+    table { border-collapse: collapse; }
+    td, th { padding: 6px; }
+    th { background: #333; color: white; }
+    tbody tr:nth-child(odd) { background: #dfdfdf; }
+    table { border: 1px solid red; }
+    
+    /* Scrollability of table */
+    table { width: 500px; } /* fixed width table */
+    thead tr { display: block; } /* makes it sizeable */
+    tbody { 
+      display: block; /* makes it sizeable */
+      height: 170px; /* height of scrollable area */
+      overflow: auto; /* scroll rather than overflow */
+      width: 100%; /* fill the box */
+    }
+    thead th { width: 250px; } /* fixed width for THs */
+    tbody td { width: 242px; } /* fixed width for TDs */
+    /* the tbody needs to be 16px less than the thead, for the scrollbar */
+    
+  </style>
+</head>
+<body>
 
     <div class="col-sm-8 col-sm-offset-3 padleft">
-
-<h1>Drivers</h1>
-</div>
+  <h1>Drivers</h1>
+  </div>
 
 <div class="container">
   <div class="row-fluid">
@@ -19,53 +46,34 @@
       <i class="fa fa-tasks"></i> Add Driver
     </button>
     <% end %>
-    <div id="driver-form" style="display:none;"></div>
+    <div id="driverform-form" style="display:none;"></div>
     </div>
-
-<div class="tab-content">
-        <div class="tab-pane active" id="home"> 
-          <table class="table-striped", class="sortable" width="100%">
-
-
-    <tr>
-      <th>Driver name</th>
-      <th>Driver</th>
-      <th>Driver dob</th>
-      <th>Driver address</th>
-      <th>Email</th>
-      <th>Phone number</th>
-      <th>Trailer capacity</th>
-      <th colspan="3"></th>
-    </tr>
- 
-
-  <tbody>
-    <% @drivers.each do |driver| %>
-      <tr>
-        <td><%= driver.driver_name %></td>
-        <td><%= driver.driver_id %></td>
-        <td><%= driver.driver_dob %></td>
-        <td><%= driver.driver_address %></td>
-        <td><%= driver.email %></td>
-        <td><%= driver.phone_number %></td>
-        <td><%= driver.trailer_capacity %></td>
-        <td><%= link_to 'Show', driver %></td>
-        <td><%= link_to 'Edit', edit_driver_path(driver) %></td>
-        <td><%= link_to 'Destroy', driver, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-        </div>
-
-<br>
-
-  <% if can? :create, Driver %>
-    <%= link_to 'New Driver', new_driver_path, remote: true %>
-  <% end %>
-
-<% else %>
-  <%# render 'not_allowed' %>
-<% end %>
-
+  </div>
 </div>
+
+
+    <div class="col-sm-10 col-sm-offset-1">
+
+  <h1>A sortable table with scrollable body</h1>
+  <table class="sortable">
+    <thead><tr><th>Company</th><th>Leader</th></thead>
+    <tbody>
+      <tr><td><a href="http://www.kryogenix.org/">Kryogenix Consulting</a></td><td>Stuart Langridge</td></tr>
+      <tr><td>Apple</td><td>Tim Cook</td></tr>
+      <tr><td>Oracle</td><td>Larry Ellison</td></tr>
+      <tr><td>Virgin</td><td>Richard Branson</td></tr>
+      <tr><td>Louis Vuitton</td><td>Louis Vuitton</td></tr>
+      <tr><td>Canonical</td><td>Mark Shuttleworth</td></tr>
+      <tr><td>Google</td><td>Larry Page</td></tr>
+      <tr><td>Armani</td><td>Giorgio Armani</td></tr>
+      <tr><td>Ferrari</td><td>Enzo Ferrari</td></tr>
+      <tr><td>Apple</td><td>Tim Cook</td></tr>
+    </tbody>
+  </table>
+
+  
+  <p>Built with my <a href="http://www.kryogenix.org/code/browser/sorttable/">sorttable</a>, and taking CSS inspiration from <a href="http://www.imaputz.com/cssStuff/bigFourVersion.html">Terence Ordona's "big four version" scrolltable tables</a>.</p>
+  <p> &mdash; <a href="http://www.kryogenix.org/">Stuart Langridge</a>
+    </div>
+</body>
+  <% end %>
