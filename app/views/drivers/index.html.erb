@@ -1,8 +1,32 @@
-<p id="notice"><%= notice %></p>
+<script src="sorttable.js"></script>
+
+<%# if current_user.admin? %>
+  
+
+  <p id="notice"><%= notice %></p>
+
+    <div class="col-sm-8 col-sm-offset-3 padleft">
 
 <h1>Drivers</h1>
+</div>
 
-<table>
+<div class="container">
+  <div class="row-fluid">
+    <div class="well">
+
+    <%= link_to new_driver_path, remote: true do %>
+    <button class="btn-default">
+      <i class="fa fa-tasks"></i> Add Driver
+    </button>
+    <% end %>
+    <div id="driver-form" style="display:none;"></div>
+    </div>
+
+<div class="tab-content">
+        <div class="tab-pane active" id="home"> 
+          <table class="table-striped", class="sortable" width="100%">
+
+
   <thead>
     <tr>
       <th>Driver name</th>
@@ -33,7 +57,16 @@
     <% end %>
   </tbody>
 </table>
+        </div>
 
 <br>
 
-<%= link_to 'New Driver', new_driver_path %>
+  <%# if can? :create, Driver %>
+    <%= link_to 'New Driver', new_driver_path, remote: true %>
+  <%# end %>
+
+<%# else %>
+  <%# render 'not_allowed' %>
+<%# end %>
+
+</div>
