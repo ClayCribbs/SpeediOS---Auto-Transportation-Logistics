@@ -1,7 +1,7 @@
 class DriversController < ApplicationController
   before_action :set_driver, only: [:edit, :update, :destroy]
   before_action :all_drivers, only: [:index, :update, :create, :destroy]
-
+  before_filter :authenticate_user!, except: [:show]
 def ajax
 end
 

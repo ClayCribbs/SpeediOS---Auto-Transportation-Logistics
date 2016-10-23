@@ -1,6 +1,6 @@
 class AdministrationController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:show]
   
   def user_list
   	@employees = User.where(role: "admin")

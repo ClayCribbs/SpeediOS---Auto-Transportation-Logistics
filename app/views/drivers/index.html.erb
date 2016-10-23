@@ -1,6 +1,6 @@
 <script src="sorttable.js"></script>
 
-<%# if current_user.admin? %>
+<% if current_user.admin? %>
   
 
   <p id="notice"><%= notice %></p>
@@ -27,7 +27,6 @@
           <table class="table-striped", class="sortable" width="100%">
 
 
-  <thead>
     <tr>
       <th>Driver name</th>
       <th>Driver</th>
@@ -38,7 +37,7 @@
       <th>Trailer capacity</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+ 
 
   <tbody>
     <% @drivers.each do |driver| %>
@@ -61,12 +60,12 @@
 
 <br>
 
-  <%# if can? :create, Driver %>
+  <% if can? :create, Driver %>
     <%= link_to 'New Driver', new_driver_path, remote: true %>
-  <%# end %>
+  <% end %>
 
-<%# else %>
+<% else %>
   <%# render 'not_allowed' %>
-<%# end %>
+<% end %>
 
 </div>

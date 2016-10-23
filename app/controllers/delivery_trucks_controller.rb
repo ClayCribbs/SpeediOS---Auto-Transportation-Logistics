@@ -1,5 +1,6 @@
 class DeliveryTrucksController < ApplicationController
   before_action :set_delivery_truck, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:show]
 
   # GET /delivery_trucks
   # GET /delivery_trucks.json
