@@ -87,20 +87,20 @@
 </div>
 
 <select hidden id="start">
-    <option hidden selected value=<%= @origin %>></option>
+    <option hidden selected><%= @delivery_truck.origin %></option>
 </select>
 
 <select hidden multiple id="waypoints">
   <% @waypoints.uniq do |wp| %>
-    <% if wp == @origin %>
+    <% if wp == @delivery_truck.origin %>
     <% else %>
-    <option hidden selected value= <%= wp %> ></option> 
+    <option hidden selected><%= wp %> </option> 
     <%end%>
   <% end %>
 </select>
 
 <select hidden id="end">
-  <option hidden selected value= <%=@destination%> ></option>
+  <option hidden selected><%= @destination %> </option>
 </select>
 
 
