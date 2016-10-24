@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :invoices
   resources :drivers
   devise_for :users
   resources :vehicles
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
   get 'view_order' => 'cart#view_order'
 
   get 'checkout' => 'cart#checkout'
+
+  get 'invoices' => 'invoice#index'
 
   root 'welcome#index'
 
