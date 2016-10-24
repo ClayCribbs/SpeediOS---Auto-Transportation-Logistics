@@ -76,7 +76,7 @@
           <tbody>
             <tr>
               <td><h5><%= link_to truck.name, truck %></h5></td>
-              <td><h5><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#"><span class="button"><% if count > 0 %><%= "#{count} Vehicles Pending" %><% else %>Ready<%end%></span></a></h5></td>
+              <td><h5><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#"><span class="button"><% if count > 0 %><%= count %><%= " Vehicles Pending" %><% else %>Ready<%end%></span></a></h5></td>
               <td><h5><%= @newWeight %></h5></td>
               <td><select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
                 <option selected disabled>Load Vehicle</option>

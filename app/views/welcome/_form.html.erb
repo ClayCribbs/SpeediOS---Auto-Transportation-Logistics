@@ -10,15 +10,6 @@
       </ul>
     </div>
   <% end %>
-	<%= f.collection_select(:truckId, DeliveryTruck.all, :id, :name, { :include_blank => "Available"},{:onChange => "javascript: this.form.button.click();", :class => "selectTruck"}) %>
+	<%= f.collection_select(:truckId, DeliveryTruck.all, :id, :name, { :include_blank => "Available"},{:onChange => "javascript: .click();") %>
 	<%= f.submit "Add to Cart", class: "btn btn-primary", id: "button"%>
 <% end %>
-
- <script>
-  $(function (){
-     $("form.selectTruck").change(function (){
-        var selectValue = $(this).val();
-        console.log(selectValue);
-     });
-  });
-</script>
