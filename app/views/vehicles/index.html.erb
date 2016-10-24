@@ -1,8 +1,36 @@
+<style>
+    /* Appearance */
+    body, table { font-family: sans-serif; }
+    table { border-collapse: collapse; }
+    td, th { padding: 6px; }
+    th { background: #333; color: white; }
+    tbody tr:nth-child(odd) { background: #dfdfdf; }
+
+    
+    /* Scrollability of table */
+    table { width: 100%; } /* fixed width table */
+    thead tr { display: block; } /* makes it sizeable */
+    tbody { 
+      display: block; /* makes it sizeable */
+      height: 200px; /* height of scrollable area */
+      overflow: scroll;
+      padding: 1px; /* scroll rather than overflow */
+      width: 100%; /* fill the box */
+    }
+    thead th { width: 250px; } /* fixed width for THs */
+    tbody td { width: 234px; } /* fixed width for TDs */
+    /* the tbody needs to be 16px less than the thead, for the scrollbar */
+
+</style>
+
 <body  class= "bioRhyme">
 <p id="notice"><%= notice %></p>
-<div class="col-sm-8 col-sm-offset-3 padleft">
+<div class="row">
+<div class="col-sm-10 col-sm-offset-1 padleft">
 <h1>Vehicles Ready For Dispatch</h1>
 </div>
+</div>
+
 
 <div class="container">
   <div class="row-fluid">
@@ -14,15 +42,14 @@
         <li><a href="#cargo" data-target="#cargo" data-toggle="tab">Contracts By Location</a></li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane active" id="home">
-          <div class="autobox">  
-          <table class="table-striped" width="100%">
+        <div class="tab-pane active" id="home"> 
+          <table class="sortable">
             <thead>
-              <th>Car Name</th>
+              <tr><th>Car Name</th>
               <th>Origin</th>
               <th>Destination</th>
               <th>Miles</th>
-              <th>Bid</th>
+              <th>Bid</th></tr>
             </thead>
             <tbody>
               <% @vehicles.each do |vehicle| %>
@@ -33,23 +60,22 @@
                   <td><%=vehicle.destination%></td>
                   <td><%=vehicle.distance%></td>
                   <td>$<%=vehicle.distance%></td>
-                </tr>
                 <% end %>
+                </tr>
               <% end %>
             </tbody>
           </table>
         </div>
-        </div>
 
         <div class="tab-pane" id="routetab"> 
-        <div class="autobox">  
-          <table class="table-striped" width="100%">
+ 
+          <table class="sortable">
             <thead>
-              <th>Car Name</th>
+              <tr><th>Car Name</th>
               <th>Origin</th>
               <th>Destination</th>
               <th>Miles</th>
-              <th>Bid</th>
+              <th>Bid</th></tr>
             </thead>
             <tbody>
               <% @vehicles.each do |vehicle| %>
@@ -64,7 +90,7 @@
             </tbody>
           </table>
         </div>
-      </div>
+
       <div class="tab-pane" id="cargo">  
       </div>
     </div>
