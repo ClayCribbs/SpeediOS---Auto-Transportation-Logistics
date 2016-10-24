@@ -6,8 +6,6 @@ class DeliveryTrucksController < ApplicationController
   # GET /delivery_trucks.json
   def index
     @delivery_trucks = DeliveryTruck.all
-    @myVehicles = Vehicle.where("truckId LIKE ?", params[:id])
-    
   end 
 
   # GET /delivery_trucks/1
@@ -27,12 +25,13 @@ class DeliveryTrucksController < ApplicationController
       else
         @waypoints.push(vehicle.origin)
       end
-      if vehicle.destination == @delivery_truck.origin or @waypoints.include? vehicle.destination
+      if @waypoints.include? vehicle.destination
       else
         @waypoints.push(vehicle.destination)
       end
     end
-
+    if @waypoints.empty?
+    else
       ###Find furthest point for destination
       @waypoints.each do |wp|
         @directions.push GoogleDirections.new(@delivery_truck.origin, wp)
@@ -41,6 +40,7 @@ class DeliveryTrucksController < ApplicationController
       if @directions.any?
       @destination = @waypoints[@distances.index(@distances.max)]
       @waypoints.delete_at(@distances.index(@distances.max))
+    end
     end
 
   end
