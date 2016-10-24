@@ -14,10 +14,10 @@
     td, th { padding: 6px; }
     th { background: #333; color: white; }
     tbody tr:nth-child(odd) { background: #dfdfdf; }
-    table { border: 1px solid red; }
+    table { border: 1px; }
     
     /* Scrollability of table */
-    table { width: 500px; } /* fixed width table */
+    table { width: 800px; } /* fixed width table */
     thead tr { display: block; } /* makes it sizeable */
     tbody { 
       display: block; /* makes it sizeable */
@@ -25,28 +25,25 @@
       overflow: auto; /* scroll rather than overflow */
       width: 100%; /* fill the box */
     }
-    thead th { width: 250px; } /* fixed width for THs */
-    tbody td { width: 242px; } /* fixed width for TDs */
+    thead th { width: 245px; } /* fixed width for THs */
+    tbody td { width: 185px; } /* fixed width for TDs */
     /* the tbody needs to be 16px less than the thead, for the scrollbar */
     
   </style>
 </head>
 <body>
 
-    <div class="col-sm-8 col-sm-offset-1">
-  <h1>Drivers</h1>
-  </div>
 
 <div class="container">
   <div class="row-fluid">
     <div class="well">
-
+     <h1 content-align center>Drivers</h1>
     <%= link_to new_driver_path, remote: true do %>
     <button class="btn-default">
       <i class="fa fa-tasks"></i> Add Driver
     </button>
     <% end %>
-    <div id="driverform-form" style="display:none;"></div>
+    <div id="driver-form" style="display:none;"></div>
     </div>
   </div>
 </div>
@@ -56,18 +53,13 @@
 
   <h1>A sortable table with scrollable body</h1>
   <table class="sortable">
-    <thead><tr><th>driver_name </th><th>driver_email</th></thead>
-    <tbody>
-      <tr><td> @driver.name.id </td><td> @driver.email.id </td></tr>
-      <tr><td>Apple</td><td>Tim Cook</td></tr>
-      <tr><td>Oracle</td><td>Larry Ellison</td></tr>
-      <tr><td>Virgin</td><td>Richard Branson</td></tr>
-      <tr><td>Louis Vuitton</td><td>Louis Vuitton</td></tr>
-      <tr><td>Canonical</td><td>Mark Shuttleworth</td></tr>
-      <tr><td>Google</td><td>Larry Page</td></tr>
-      <tr><td>Armani</td><td>Giorgio Armani</td></tr>
-      <tr><td>Ferrari</td><td>Enzo Ferrari</td></tr>
-      <tr><td>Apple</td><td>Tim Cook</td></tr>
+    <thead><tr><th>Driver Name </th><th>Driver Email</th><th colspan="2"></th></tr></thead>
+    <tbody id= "drivers">
+
+      <%= render @drivers %>
+
+
+
     </tbody>
   </table>
 

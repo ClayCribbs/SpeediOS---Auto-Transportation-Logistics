@@ -18,7 +18,6 @@ end
   # POST /drivers
   # POST /drivers.json
   def create
-    @driver = Driver.new(driver_params)
     @driver = Driver.create(driver_params)
   end
 
