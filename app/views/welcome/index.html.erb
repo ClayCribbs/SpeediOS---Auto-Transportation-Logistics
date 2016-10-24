@@ -15,7 +15,7 @@
           <option value=<%= "/?destination=#{URI.escape(vehicle.destination)}"%>><%= vehicle.destination %></option>
         <%end%>
       </select>
-      <table class="table-striped" width="100%">
+      <table class="table-striped sortable" width="100%">
         <thead>
           <th width="20%"><h4>Vehicle</h4></th>
           <th width="30%"><h4>Origin City</h4></th>
@@ -54,7 +54,7 @@
         <h4 class="modal-title" id="myModalLabel">Pending Load Configuration</h4>
       </div>
       <div class="modal-body">
-        <table class="table-striped" width="100%">
+        <table class="table-striped sortable" width="100%">
           <thead>
               <th width="30%"><h4>Vehicle</h4></th>
               <th width="25%"><h4>Weight</h4></th>
