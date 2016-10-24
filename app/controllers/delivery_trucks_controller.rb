@@ -14,21 +14,14 @@ class DeliveryTrucksController < ApplicationController
     set_delivery_truck
     @myVehicles = Vehicle.where("truckId LIKE ?", params[:id])
     @waypoints = Array.new
-    @origin = @delivery_truck.origin
-    @destination = Array.new
     @distances = Array.new
     @directions = Array.new
+    @destination;
 
     @myVehicles.each do |vehicle|
       ##Include only one of each destination 
-      if vehicle.origin == @delivery_truck.origin or @waypoints.include? vehicle.origin
-      else
         @waypoints.push(vehicle.origin)
-      end
-      if @waypoints.include? vehicle.destination
-      else
         @waypoints.push(vehicle.destination)
-      end
     end
     if @waypoints.empty?
     else
@@ -38,9 +31,8 @@ class DeliveryTrucksController < ApplicationController
         @distances.push (@directions.last.distance_in_miles)
       end
       if @directions.any?
-      @destination = @waypoints[@distances.index(@distances.max)]
-      @waypoints.delete_at(@distances.index(@distances.max))
-    end
+        @destination = @waypoints[@distances.index(@distances.max)]
+      end
     end
 
   end

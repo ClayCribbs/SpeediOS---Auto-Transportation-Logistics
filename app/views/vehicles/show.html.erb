@@ -71,15 +71,15 @@
 <%= link_to 'Back', vehicles_path, class: "btn btn-default" %>
 
 <select hidden id="start">
-    <option hidden selected value=<%= @vehicle.origin %>></option>
+    <option hidden selected><%= @vehicle.origin %></option>
 </select>
 
 <select hidden id="waypoints">
-  <option hidden selected value=<%= @vehicle.destination %>></option>
+  <option hidden selected><%= @vehicle.destination %></option>
 </select>
 
 <select hidden id="end">
-  <option hidden selected value=<%= @vehicle.destination %>></option>
+  <option hidden selected><%= @vehicle.destination %></option>
 </select>
 
 </body>
