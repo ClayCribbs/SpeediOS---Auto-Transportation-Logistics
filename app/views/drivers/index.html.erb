@@ -33,7 +33,7 @@
 </head>
 <body>
 
-    <div class="col-sm-8 col-sm-offset-3 padleft">
+    <div class="col-sm-8 col-sm-offset-1">
   <h1>Drivers</h1>
   </div>
 
@@ -56,9 +56,9 @@
 
   <h1>A sortable table with scrollable body</h1>
   <table class="sortable">
-    <thead><tr><th>Company</th><th>Leader</th></thead>
+    <thead><tr><th><%= @driver_name %></th><th><%= driver_email</th></thead>
     <tbody>
-      <tr><td><a href="http://www.kryogenix.org/">Kryogenix Consulting</a></td><td>Stuart Langridge</td></tr>
+      <tr><td><%= @driver.name.id %></td><td><%= @driver.email.id %></td></tr>
       <tr><td>Apple</td><td>Tim Cook</td></tr>
       <tr><td>Oracle</td><td>Larry Ellison</td></tr>
       <tr><td>Virgin</td><td>Richard Branson</td></tr>
@@ -72,8 +72,6 @@
   </table>
 
   
-  <p>Built with my <a href="http://www.kryogenix.org/code/browser/sorttable/">sorttable</a>, and taking CSS inspiration from <a href="http://www.imaputz.com/cssStuff/bigFourVersion.html">Terence Ordona's "big four version" scrolltable tables</a>.</p>
-  <p> &mdash; <a href="http://www.kryogenix.org/">Stuart Langridge</a>
     </div>
 </body>
   <% end %>
