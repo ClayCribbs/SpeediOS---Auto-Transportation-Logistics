@@ -187,8 +187,16 @@
           <%end%>
 	        	<%= link_to "Contacts", contacts_path %>
 	        </li>
-	      </ul>
 
+
+          <% if current_page?(invoices_path)%>
+            <li class="active">
+          <%else%>
+            <li>
+          <%end%>
+          <%= link_to "Invoices", invoices_path, class: "nav navbar navbar-nav"%>
+            </li>
+                      </ul>
 	      <!-- Don't need search bar yet //
 	      <form class="navbar-form navbar-left">
 	        <div class="form-group">

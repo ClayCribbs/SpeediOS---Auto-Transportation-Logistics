@@ -2,6 +2,44 @@
 <div class="row">
 
   <div class="col-sm-4 col-sm-offset-4 padleft">
+      <h2>Vehicle Dispatch <span class="badge"><%= @tableVehicleCount %></span></h2></div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="well">
+      <select id="changer" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+        <option selected disabled>Filter By Destination</option>
+        <option value="/">All Destinations</option>
+        <% @vehicles.each do |vehicle| %>
+          <option value=<%= "/?destination=#{URI.escape(vehicle.destination)}"%>><%= vehicle.destination %></option>
+        <%end%>
+      </select>
+      <table class="table-striped" width="100%">
+        <thead>
+          <th width="20%"><h4>Vehicle</h4></th>
+          <th width="30%"><h4>Origin City</h4></th>
+          <th width="35%"><h4>Destination City</h4></th>
+          <th width="10%"><h4>Trip Distance</h4></th>
+          <th width="25%"><h4>Pick Up With</h4></th>
+        </thead>
+        <tbody>
+          <%@tableVehicles.each do |vehicle|%>
+            <tr>
+              <td><h5><%= link_to vehicle.name, vehicle %></h5></td>
+              <td><h5><%= vehicle.origin.sub!(", United States", "") %></h5></td>
+              <td><h5><%= vehicle.destination.sub!(", United States", "") %></h5></td>
+              <td><h5><%= vehicle.distance %></h5></td>
+              <% @i = 0 %>
+              <td><%= render 'form', vehicle: vehicle %></td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-sm-4 col-sm-offset-4 padleft">
     <h2>Delivery Vehicles <span class="badge"> <%= @deliveryTruckCount %> </span></h2> 
   </div>
 
@@ -92,42 +130,4 @@
 
 
   <% end %>
-
-  <div class="col-sm-4 col-sm-offset-4 padleft">
-      <h2>Vehicle Dispatch <span class="badge"><%= @tableVehicleCount %></span></h2></div>
-  </div>
-  </div>
-  <div class="row">
-  <div class="col-sm-10 col-sm-offset-1">
-    <div class="well">
-      <select id="changer" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
-        <option selected disabled>Filter By Destination</option>
-        <option value="/">All Destinations</option>
-        <% @vehicles.each do |vehicle| %>
-          <option value=<%= "/?destination=#{URI.escape(vehicle.destination)}"%>><%= vehicle.destination %></option>
-        <%end%>
-      </select>
-      <table class="table-striped" width="100%">
-        <thead>
-          <th width="20%"><h4>Vehicle</h4></th>
-          <th width="30%"><h4>Origin City</h4></th>
-          <th width="35%"><h4>Destination City</h4></th>
-          <th width="10%"><h4>Trip Distance</h4></th>
-          <th width="25%"><h4>Pick Up With</h4></th>
-        </thead>
-        <tbody>
-          <%@tableVehicles.each do |vehicle|%>
-            <tr>
-              <td><h5><%= link_to vehicle.name, vehicle %></h5></td>
-              <td><h5><%= vehicle.origin.sub!(", United States", "") %></h5></td>
-              <td><h5><%= vehicle.destination.sub!(", United States", "") %></h5></td>
-              <td><h5><%= vehicle.distance %></h5></td>
-              <% @i = 0 %>
-              <td><%= render 'form', vehicle: vehicle %></td>
-            </tr>
-          <%end%>
-        </tbody>
-      </table>
-    </div>
-  </div>
 </div>
