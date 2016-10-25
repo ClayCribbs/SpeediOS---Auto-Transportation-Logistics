@@ -1,25 +1,4 @@
 <style>
-    /* Appearance */
-    body, table { font-family: sans-serif; }
-    table { border-collapse: collapse; }
-    td, th { padding: 6px; }
-    th { background: #333; color: white; }
-    tbody tr:nth-child(odd) { background: #dfdfdf; }
-
-    
-    /* Scrollability of table */
-    table { width: 100%; } /* fixed width table */
-    thead tr { display: block; } /* makes it sizeable */
-    tbody { 
-      display: block; /* makes it sizeable */
-      height: 200px; /* height of scrollable area */
-      overflow: scroll;
-      padding: 1px; /* scroll rather than overflow */
-      width: 100%; /* fill the box */
-    }
-    thead th { width: 250px; } /* fixed width for THs */
-    tbody td { width: 234px; } /* fixed width for TDs */
-    /* the tbody needs to be 16px less than the thead, for the scrollbar */
 
 </style>
 
@@ -43,7 +22,7 @@
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="home"> 
-          <table class="sortable">
+          <table class="table-striped sortable">
             <thead>
               <tr><th>Car Name</th>
               <th>Origin</th>
@@ -69,7 +48,7 @@
 
         <div class="tab-pane" id="routetab"> 
  
-          <table class="sortable">
+          <table class="table-striped sortable">
             <thead>
               <tr><th>Car Name</th>
               <th>Origin</th>

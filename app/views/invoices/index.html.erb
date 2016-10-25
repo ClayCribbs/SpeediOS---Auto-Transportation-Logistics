@@ -4,33 +4,37 @@
     <h1>Invoices</h1>
   </div>
 </div>
-<div class="col-md-10 col-md-offset-1">
-  <table class="table-striped sortable" width="100%">
-    <thead>
-      <tr>
-        <th width="10%">Invoice ID</th>
-        <th>Created On</th>
-        <th>Dispatch Date</th>
-        <th>Order Total</th>
-        <th>Truck ID</th>
-        <th>Order Items</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @orders.each do |order| %>
-        <tr>
-          <td><%= order.id %></td>
-          <td><%= order.created_at %></td>
-          <td><%= order.dispatch_date %></td>
-          <td><%= number_to_currency order.grand_total%></td>
-          <td><%= order.truck_id %></td>
-          <td><h5><a data-toggle="modal" data-target="#myModal<%=order.id%>" data-controls-modal="#myModal_<%=order.id%>" data-backdrop="static" data-keyboard="false" href="#"><span class="button"><%= "#{order.order_items.length} Vehicles" %></span></a></h5></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
 
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+  <div class="well">
+    <table class="table-striped sortable" width="100%">
+      <thead>
+        <tr>
+          <th width="10%">Invoice ID</th>
+          <th>Created On</th>
+          <th>Dispatch Date</th>
+          <th>Order Total</th>
+          <th>Truck ID</th>
+          <th>Order Items</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= order.created_at %></td>
+            <td><%= order.dispatch_date %></td>
+            <td><%= number_to_currency order.grand_total%></td>
+            <td><%= order.truck_id %></td>
+            <td><h5><a data-toggle="modal" data-target="#myModal<%=order.id%>" data-controls-modal="#myModal_<%=order.id%>" data-backdrop="static" data-keyboard="false" href="#"><span class="button"><%= "#{order.order_items.length} Vehicles" %></span></a></h5></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
 <% @orders.each do |order| %>
   <div class="modal fade" id="myModal<%=order.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
@@ -58,7 +62,7 @@
               <td><%= "#{Vehicle.find(k).destination.gsub(", United States", "")}" %></td>
               <td><%= "#{Vehicle.find(k).distance}" %></td>
               <td><%= "#{Vehicle.find(k).actualWeight}"%></td>
-              <td><%= "#{Vehicle.find(k).distance}" %></td>
+              <td><%= "#{number_to_currency Vehicle.find(k).distance}" %></td>
               </tr>
             <% end %>
             </tbody>
@@ -71,3 +75,4 @@
     </div>
   </div>
 <% end %>
+<br />

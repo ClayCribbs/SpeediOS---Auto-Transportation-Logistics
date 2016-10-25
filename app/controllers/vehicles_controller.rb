@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:show]
-  attr_accessor :distance
+
   require 'json'
   require 'open-uri'
  
@@ -23,7 +23,8 @@ class VehiclesController < ApplicationController
   # GET /vehicles/new
   def new
     @vehicle = Vehicle.new
-   
+    @vehicle.currentState = "Available";
+    @vehicle.save
   end
 
   # GET /vehicles/1/edit

@@ -11,12 +11,15 @@
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag 'application' %>
 
+    
     <script language="JavaScript">
-			function readCookie(name){
-			return(document.cookie.match('(^|; )'+name+'=([^;]*)')||0)[2]
-			}
-		</script>		
-	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+            function readCookie(name){
+            return(document.cookie.match('(^|; )'+name+'=([^;]*)')||0)[2]
+            }
+        </script>   
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    
     <script>
         const EDMUNDS_API_KEY = 'rt9n3nwknegxj49ekdkbft48';
         function get_makes(year) {
@@ -177,14 +180,14 @@
           <%else%>
             <li>
           <%end%>
-	        	<%= link_to "Drivers", drivers_path %>
+	        	<%= link_to "Drivers", drivers_path, class: "nav navbar navbar-nav" %>
 	        </li>
         <% if current_page?(companies_path)%>
             <li class="active">
           <%else%>
             <li>
           <%end%>
-                <%= link_to "Companies", companies_path %>
+                <%= link_to "Companies", companies_path, class: "nav navbar navbar-nav" %>
             </li>
 
           <% if current_page?(invoices_path)%>
@@ -203,12 +206,12 @@
           <%= link_to "Bill of Laiding", bol_path, class: "nav navbar navbar-nav"%>
             </li>
 
-                         <% if current_page?(contacts_path)%>
+            <% if current_page?(contacts_path)%>
             <li class="active">
           <%else%>
             <li>
           <%end%>
-                <%= link_to "Contacts", contacts_path %>
+                <%= link_to "Contacts", contacts_path, class: "nav navbar navbar-nav" %>
             </li>
 
                       </ul>
@@ -236,7 +239,8 @@
 	      <ul class="nav navbar-nav navbar-right">
 	        <% if user_signed_in? %>
 	          <li><div class="navbartextpad">Welcome, <%= current_user.username %>!</div></li> 
-	          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav navbar-nav navbar-right" %></li>
+	          <li><%= link_to "Edit User", edit_user_registration_path, class: "nav navbar-nav navbar-right" %></li>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav navbar-nav navbar-right" %></li>
 	        <% end %>
 	      </ul> 
 
