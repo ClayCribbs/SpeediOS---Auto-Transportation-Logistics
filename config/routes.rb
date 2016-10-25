@@ -30,5 +30,6 @@ Rails.application.routes.draw do
 
   get 'drivers' => 'drivers#index'
   
+  get 'bol' => 'invoices#_bol_form'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
