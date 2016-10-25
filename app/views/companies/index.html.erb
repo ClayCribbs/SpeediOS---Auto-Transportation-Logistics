@@ -1,33 +1,51 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row-fluid">
+    <div class="span8 well">
+      <ul class="nav nav-tabs">
+        <li class="active"> <a href="#home" data-target="#home" data-toggle="tab">Home</a></li>
+        <li><a href="#cargo" data-target="#cargo" data-toggle="tab">Contracts</a></li>
+      </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="home">
+        <div class="col-md-12">
+          <table class="table-striped sortable" width="100%">
+            <thead>
+              <tr>
+                <th>Company Name</th>
+                <th>Address</th>
+                <th>Custom ID</th>
+                <th>Edit/Destory</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @companies.each do |company| %>
+              <tr>
+                <td><%= link_to company.companyName, company%></td>
+                <td><%= company.companyAddress %></td>
+                <td><%= company.companyCustomId %></td>
+                <td><%= link_to 'Edit', edit_company_path(company) %>
+                <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <br />
+        </div>
+    
+        </div>
+        <div class="tab-pane" id="routetab"> 
+          <div class="col-md-6">
+            <div id="directions-panel"></div>
+          </div>
+          <div class="tab-pane" id="cargo">  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h1>Companies</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Companyname</th>
-      <th>Companyaddress</th>
-      <th>Companybillingaddress</th>
-      <th>Companycustomid</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @companies.each do |company| %>
-      <tr>
-        <td><%= company.companyName %></td>
-        <td><%= company.companyAddress %></td>
-        <td><%= company.companyBillingAddress %></td>
-        <td><%= company.companyCustomId %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Company', new_company_path %>
