@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025015338) do
+ActiveRecord::Schema.define(version: 20161025111249) do
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "companyName"
+    t.string   "companyAddress"
+    t.string   "companyBillingAddress"
+    t.string   "companyCustomId"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "delivery_trucks", force: :cascade do |t|
     t.string   "name"
@@ -133,6 +142,7 @@ ActiveRecord::Schema.define(version: 20161025015338) do
     t.string   "remote_image_url"
     t.string   "customername"
     t.string   "currentState"
+    t.string   "billingAddress"
   end
 
 end

@@ -77,7 +77,7 @@
                       <%= hidden_field_tag :bid_total, vehicle.distance.to_i %>
                       <%= hidden_field_tag :dispatch_date, (time.month.to_s+"/"+time.day.to_s + "/" +time.year.to_s) %>
                       <%= hidden_field_tag :order_id, (vehicle.truckId.to_s+(time.year.to_s+time.month.to_s+time.day.to_s)).to_i %>
-                      <%= hidden_field_tag :truckId, vehicle.truckId %>
+                      <%= hidden_field_tag :truckId, vehicle.truckId.to_s %>
                       <td><%= submit_tag "Add to Cart", class: "btn btn-primary" %></td>
                   <% end %>
                 </tr>

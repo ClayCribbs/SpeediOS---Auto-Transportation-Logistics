@@ -179,7 +179,13 @@
           <%end%>
 	        	<%= link_to "Drivers", drivers_path %>
 	        </li>
-
+        <% if current_page?(companies_path)%>
+            <li class="active">
+          <%else%>
+            <li>
+          <%end%>
+                <%= link_to "Companies", companies_path %>
+            </li>
 
           <% if current_page?(invoices_path)%>
             <li class="active">

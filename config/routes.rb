@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :companies
   resources :invoices
   resources :drivers
   devise_for :users
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
 
   get 'invoices' => 'invoice#index'
 
+  get 'companies' => 'company#index'
+  
   root 'welcome#index'
 
   get 'contacts' => 'welcome#about'

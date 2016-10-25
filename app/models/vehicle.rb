@@ -1,5 +1,5 @@
 class Vehicle < ApplicationRecord
-
+  belongs_to :company
 	mount_uploader :image, ImageUploader
   before_save :geocode_endpoints
 

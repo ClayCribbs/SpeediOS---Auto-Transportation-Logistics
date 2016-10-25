@@ -17,14 +17,13 @@ def checkout
   @line_items.each do |line_item|
     @order.order_items[line_item.vehicle_id] = line_item.bid_total
     @order.subtotal += line_item.bid_total
+    @order.truck_id = line_item.truckId.to_i
   end
 
   @order.sales_tax = @order.subtotal * 0.07
   @order.grand_total = @order.subtotal + @order.sales_tax
   @order.save
 
-  @line_items.each do |line_item|
-  end
 
   LineItem.destroy_all
 end
