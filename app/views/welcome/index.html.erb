@@ -12,6 +12,7 @@
         <option selected disabled>Filter By Destination</option>
         <option value="/">All Destinations</option>
         <% @vehicles.each do |vehicle| %>
+          <% next unless vehicle.currentState == "Available" %>
           <option value=<%= "/?destination=#{URI.escape(vehicle.destination)}"%>><%= vehicle.destination %></option>
         <%end%>
       </select>
@@ -26,6 +27,7 @@
         </thead>
         <tbody>
           <%@tableVehicles.each do |vehicle|%>
+          <% next unless vehicle.currentState == "Available" %>
             <tr>
               <td><h5><%= link_to vehicle.name, vehicle %></h5></td>
               <td><h5><%= vehicle.origin.sub!(", United States", "") %></h5></td>

@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
+  after_action :checkState, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:show]
-
   require 'json'
   require 'open-uri'
  
@@ -19,7 +19,14 @@ class VehiclesController < ApplicationController
       @vehicle.update(distance: directions.distance_in_miles)
       @waypoints.push @vehicle.destination
   end
-
+  def checkState
+      if @vehicle.truckId == "" || @vehicle.truckId == nil
+        @vehicle.currentState = "Available"
+      elsif @vehicle.currentState = "Available"
+        @vehicle.currentState = "Queued"
+      end
+      @vehicle.save
+  end
   # GET /vehicles/new
   def new
     @vehicle = Vehicle.new
@@ -34,6 +41,7 @@ class VehiclesController < ApplicationController
   # POST /vehicles
   # POST /vehicles.json
   def create
+
     @vehicle = Vehicle.new(vehicle_params)
     respond_to do |format|
       if @vehicle.save
@@ -49,6 +57,7 @@ class VehiclesController < ApplicationController
   # PATCH/PUT /vehicles/1
   # PATCH/PUT /vehicles/1.json
   def update
+
     respond_to do |format|
       if @vehicle.update(vehicle_params)
         format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }

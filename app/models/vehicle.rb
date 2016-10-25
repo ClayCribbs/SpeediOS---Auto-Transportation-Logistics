@@ -4,6 +4,7 @@ class Vehicle < ApplicationRecord
   before_save :geocode_endpoints
 
   private
+
   #To enable Geocoder to works with multiple locations
   def geocode_endpoints
       geocoded = Geocoder.search(:origin).first
