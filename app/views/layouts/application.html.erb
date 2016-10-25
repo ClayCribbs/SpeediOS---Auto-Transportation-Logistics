@@ -180,14 +180,6 @@
 	        	<%= link_to "Drivers", drivers_path %>
 	        </li>
 
-	         <% if current_page?(contacts_path)%>
-            <li class="active">
-          <%else%>
-            <li>
-          <%end%>
-	        	<%= link_to "Contacts", contacts_path %>
-	        </li>
-
 
           <% if current_page?(invoices_path)%>
             <li class="active">
@@ -204,6 +196,15 @@
           <%end%>
           <%= link_to "Bill of Laiding", bol_path, class: "nav navbar navbar-nav"%>
             </li>
+
+                         <% if current_page?(contacts_path)%>
+            <li class="active">
+          <%else%>
+            <li>
+          <%end%>
+                <%= link_to "Contacts", contacts_path %>
+            </li>
+
                       </ul>
 	      <!-- Don't need search bar yet //
 	      <form class="navbar-form navbar-left">
