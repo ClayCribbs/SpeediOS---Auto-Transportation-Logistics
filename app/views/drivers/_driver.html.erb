@@ -1,4 +1,4 @@
-<tr><td> <%= driver.driver_name %>  </td><td> <%= driver.email %> </td>
+<tr><td> <%= link_to "#{driver.driver_name} #{driver.phone_number}" %>  </td><td> <%= driver.email %> </td>
 
 		<td>
 				<%= link_to edit_driver_path(driver), remote: true do %>
