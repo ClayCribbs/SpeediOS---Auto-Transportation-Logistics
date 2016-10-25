@@ -22,11 +22,13 @@ class WelcomeController < ApplicationController
   	end
 
         #Check for carload truck / change truck
-    if params[:truckId]== nil || params[:carId]== nil
+    if params[:truckId]== nil 
+    elsif params[:carId]== nil
     else
       @vehicles.each do |vehicle|
         if vehicle.id.to_s == params[:carId]
           vehicle.update(truckId: params[:truckId])
+          vehicle.update(currentState: "Queued")
         end
       end
     end
