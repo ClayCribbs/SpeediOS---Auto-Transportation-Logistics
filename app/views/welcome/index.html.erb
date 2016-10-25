@@ -18,9 +18,10 @@
       <table class="table-striped sortable" width="100%">
         <thead>
           <th width="20%"><h4>Vehicle</h4></th>
-          <th width="30%"><h4>Origin City</h4></th>
-          <th width="35%"><h4>Destination City</h4></th>
-          <th width="10%"><h4>Trip Distance</h4></th>
+          <th width="25%"><h4>Origin City</h4></th>
+          <th width="25%"><h4>Destination City</h4></th>
+          <th width="16%"><h4>Trip Distance</h4></th>
+          <th width="15%"><h4>Profit Estimate</h4></th>
           <th width="25%"><h4>Pick Up With</h4></th>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
               <td><h5><%= vehicle.origin.sub!(", United States", "") %></h5></td>
               <td><h5><%= vehicle.destination.sub!(", United States", "") %></h5></td>
               <td><h5><%= vehicle.distance %></h5></td>
+              <td><h5><%= number_to_currency(vehicle.distance-((vehicle.distance / 3 )*2.25))%></h5></td>
               <% @i = 0 %>
               <td><%= render 'form', vehicle: vehicle %></td>
             </tr>

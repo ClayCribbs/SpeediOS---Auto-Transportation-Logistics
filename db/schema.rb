@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024151237) do
+ActiveRecord::Schema.define(version: 20161025015338) do
 
   create_table "delivery_trucks", force: :cascade do |t|
     t.string   "name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20161024151237) do
     t.datetime "updated_at",             null: false
     t.float    "currentWeight"
     t.string   "image"
+    t.string   "currentState"
   end
 
   create_table "drivers", force: :cascade do |t|
@@ -131,6 +132,7 @@ ActiveRecord::Schema.define(version: 20161024151237) do
     t.text     "details"
     t.string   "remote_image_url"
     t.string   "customername"
+    t.string   "currentState"
   end
 
 end

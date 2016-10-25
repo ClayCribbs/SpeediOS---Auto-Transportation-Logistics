@@ -58,6 +58,7 @@
                   <th>Destination</th>
                   <th>Miles</th>
                   <th>Bid</th>
+                  <th>Profit </th>
                 </thead>
                 <tbody>
                   <% @myVehicles.each do |vehicle| %>
@@ -67,6 +68,7 @@
                       <td><%=vehicle.destination%></td>
                       <td><%=vehicle.distance%></td>
                       <td>$<%=vehicle.distance%></td>
+                      <td><%= (vehicle.distance-((vehicle.distance / @delivery_truck.avgMPG)*2.25))%></td>
                     </tr>
                   <% end %>
                 </tbody>
