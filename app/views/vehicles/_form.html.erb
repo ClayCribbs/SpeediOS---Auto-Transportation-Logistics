@@ -20,6 +20,9 @@
   <%= f.select :details, "Style", {}, :id => "styles" %>
 
   <div class="field-group">
+    <%= f.collection_select(:company_id, Company.all, :id, :companyName, { :include_blank => "Company"}) %>
+  </div>
+  <div class="field-group">
     <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
   </div>
 
