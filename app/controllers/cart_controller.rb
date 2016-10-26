@@ -1,4 +1,5 @@
 class CartController < ApplicationController
+  
 	def add_to_cart
 	  line_item = LineItem.create(vehicle_id: params[:vehicle_id],bid_total: params[:bid_total], dispatch_date: params[:dispatch_date], order_id: params[:order_id], truckId: params[:truckId])
 	  line_item.save

@@ -15,8 +15,11 @@ class VehiclesController < ApplicationController
   # GET /vehicles/1.json
   def show
       @waypoints = Array.new
-      directions = GoogleDirections.new(@vehicle.origin, @vehicle.destination) 
+      if @vehicle.origin.nil? || @vehicle.destination.nil?
+      else
+      directions = GoogleDirections.new(@vehicle.origin, @vehicle.destination)
       @vehicle.update(distance: directions.distance_in_miles)
+      end
       @waypoints.push @vehicle.destination
   end
   def checkState

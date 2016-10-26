@@ -40,6 +40,7 @@ gem 'edmunds'
 gem 'google_custom_search_api'
 gem 'geocomplete_rails'
 gem 'pry-rails'
+gem 'local_time'
 group :development do
   gem 'better_errors'
 end

@@ -1,62 +1,44 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
-<div class="col-sm-10 col-sm-offset-1">
-<h1>Delivery Trucks</h1>
-</div>  
-</div>
-<div class="row">
-    <% @delivery_trucks.each do |delivery_truck| %>
-        <div class="col-sm-10 col-sm-offset-1">
-            <div class="box">
-                <table width="100%">
-                    <tr>
-                    <td width="77%"><h3><%= link_to delivery_truck.name, delivery_truck, class: "black" %></h3></td>
-                    </tr>
-
-                    <tr>
-                    <td class="labelcolor">Vin Number:</td>
-                    <td><%= delivery_truck.vinNumber %></td>
-                    </tr>
-
-                    <tr>
-                    <td class="labelcolor">Year Manufactured:</td>
-                    <td><%= delivery_truck.yearManufactured %></td>
-                    </tr>
-
-                    <tr>
-                    <td class="labelcolor">Make:</td>
-                    <td><%= delivery_truck.make %></td>
-                    </tr>
-
-                    <tr>
-                    <td class="labelcolor">Model:</td>
-                    <td><%= delivery_truck.model %></td>
-                    </tr>
-
-                    <tr>
-                    <td class="labelcolor">Current Location:</td>
-                    <td><%= delivery_truck.currentLocation %></td>
-                    </tr>
-
-                    <tr>
-                    <td class="labelcolor">Weight Capacity:</td>
-                    <td><%= delivery_truck.weightCapacity %></td>
-                    </tr>
-
-                    <tr>
-                    <td class="labelcolor">Average MPG:</td>
-                    <td><%= delivery_truck.avgMPG %></td>
-                    </tr>
-
-                    <tr>
-                    <td class="labelcolor">Scheduled Departure Date:</td>
-                    <td><%= delivery_truck.scheduledDepartureTime %></td>
-                    </tr>
-                    </table>
-                </div>
-            </div>
-        <% end %>
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="well">
+      <table class="table-striped sortable" width="100%">
+        <thead>
+          <tr>
+            <th><h4>Delivery Truck</h4></th>
+            <th><h4>Status</h4></th>
+            <th><h4>Remaining Capacity</h4></th>
+            <th><h4>Action</h4></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @delivery_trucks.each do |truck| %>
+            <% @newWeight = truck.weightCapacity.to_i %>
+            <% @count = 0 %>
+            <% @vehicles.each do |vehicle| %>
+              <% if vehicle.truckId.to_i == truck.id.to_i %>
+                <% @count += 1 %>
+                <% @newWeight -= vehicle.actualWeight.to_i %>
+              <% end %>
+              <% truck.update(currentWeight: @newWeight.to_i) %>
+            <% end %>
+            <tr>
+              <td><h5><%= link_to truck.name, truck %></h5></td>
+              <td><h5><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#"><span class="button"><% if @count > 0 %><%= @count %><%= " Vehicles Pending" %><% else %>Ready<%end%></span></a></h5></td>
+              <td><h5><%= @newWeight %></h5></td>
+              <td><select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+                <option selected disabled>Load Vehicle</option>
+                  <% @vehicles.each do |vehicle| %>
+                <option value=<%= "/?truckId=#{URI.escape(truck.id.to_s)}&carId=#{URI.escape(vehicle.id.to_s)}"%>><%= vehicle.name %></option>
+                  <%end%>
+              </select></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>
 <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
         <div class="well">
@@ -65,3 +47,53 @@
         </div>
     </div>
 </div>
+<% @delivery_trucks.each do |truck|%>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal<%=truck.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Pending Load Configuration</h4>
+        </div>
+        <div class="modal-body">
+          <table class="table-striped sortable" width="100%">
+            <thead>
+                <th width="30%"><h4>Vehicle</h4></th>
+                <th width="25%"><h4>Weight</h4></th>
+                <th width="30%"><h4>Action</h4></th>
+                <th width="15%"><h4>Confirm Vehicle</h4></th>
+            </thead>
+            <tbody>  
+              </tr>
+              <% @vehicles.each do |vehicle|%>
+                <% if vehicle.truckId.to_s == truck.id.to_s %>
+                  <tr>
+                    <td><h5><%= link_to vehicle.name, vehicle %></h5></td>
+                    <td><h5><%= vehicle.actualWeight %></h5></td>
+                    <td><%= render 'loadedform', vehicle: vehicle %></td>
+                    <% time = Time.new %>
+                       <%= form_tag add_to_cart_path, :remote => true do %>
+                        <%= hidden_field_tag :vehicle_id, vehicle.id %>
+                        <%= hidden_field_tag :bid_total, vehicle.distance.to_i %>
+                        <%= hidden_field_tag :dispatch_date, (time.month.to_s+"/"+time.day.to_s + "/" +time.year.to_s) %>
+                        <%= hidden_field_tag :order_id, (vehicle.truckId.to_s+(time.year.to_s+time.month.to_s+time.day.to_s)).to_i %>
+                        <%= hidden_field_tag :truckId, vehicle.truckId.to_s %>
+                        <td><%= submit_tag "Add to Cart", class: "btn btn-primary" %></td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel Order</button>
+           <%= link_to "Finalize Load", view_order_path, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>      
+<% end %>

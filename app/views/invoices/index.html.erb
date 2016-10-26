@@ -23,7 +23,7 @@
         <% @orders.each do |order| %>
           <tr>
             <td><%= order.id %></td>
-            <td><%= order.created_at %></td>
+            <td><%= local_time(order.created_at) %></td>
             <td><%= order.dispatch_date %></td>
             <td><%= number_to_currency order.grand_total%></td>
             <td><%= order.truck_id %></td>

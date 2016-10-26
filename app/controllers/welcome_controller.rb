@@ -1,7 +1,6 @@
 class WelcomeController < ApplicationController
   
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
   before_filter :authenticate_user!, except: [:show]
 
 
@@ -15,7 +14,7 @@ class WelcomeController < ApplicationController
 
     #Get distance if missing
   	@vehicles.each do |vehicle|
-      if vehicle.distance == nil
+      if vehicle.distance == nil && vehicle.origin.any? && vehicle.destination.any?
     	   directions = GoogleDirections.new(vehicle.origin, vehicle.destination) 
          vehicle.update(distance: directions.distance_in_miles)
       end
@@ -34,21 +33,17 @@ class WelcomeController < ApplicationController
 
     #Check for destination filter
     if params[:destination]== nil
-      @tableVehicles = Vehicle.all
+      @tableVehicles = Vehicle.where(currentState: "Available")
     else
       @tableVehicles = Vehicle.where("destination LIKE ?", params[:destination])
     end
     @tableVehicleCount = @tableVehicles.length
 
 
-
     if params[:q]
       page = params[:page] || 1
       @results = GoogleCustomSearchApi.search(params[:q], page: page)
     end
-
-
-
 
   end
 end
