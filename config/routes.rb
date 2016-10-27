@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   post 'add_to_cart' => 'cart#add_to_cart'
 
+  get 'consolepage' => 'welcome#consolepage'
+
   get 'view_order' => 'cart#view_order'
 
   get 'checkout' => 'cart#checkout'

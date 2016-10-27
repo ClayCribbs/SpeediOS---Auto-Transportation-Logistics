@@ -46,4 +46,10 @@ class WelcomeController < ApplicationController
     end
 
   end
+
+  def consolepage
+    @delivery_trucks = DeliveryTruck.all
+    @vehicles = Vehicle.all
+  end
+
 end

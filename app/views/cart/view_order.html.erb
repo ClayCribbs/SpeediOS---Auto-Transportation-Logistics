@@ -1,20 +1,20 @@
 <div class="row">
-<div class="col-md-8 col-md-offset-2">
-<h2>My Cart</h2>
+	<div class="col-md-8 col-md-offset-2">
+		<h2>My Cart</h2>
 
-<div>
-	<table width="100%">
-  <% @line_items.each do |line_item| %>
-    <tr><td><%= line_item.order_id %></td></tr>
-    <tr><td><%= number_to_currency line_item.vehicle_id %></td></tr>
-    <tr><td>Dispatch Date: <%= line_item.dispatch_date %></td></tr>
-    <tr><td>Truck ID: <%= line_item.truckId %></td></tr>
-  <% end %>
-  </table>
-</div>
+		<div>
+			<table width="100%">
+		  <% @line_items.each do |line_item| %>
+		    <tr><td><%= line_item.order_id %></td></tr>
+		    <tr><td><%= number_to_currency line_item.vehicle_id %></td></tr>
+		    <tr><td>Dispatch Date: <%= line_item.dispatch_date %></td></tr>
+		    <tr><td>Truck ID: <%= line_item.truckId %></td></tr>
+		  <% end %>
+		  </table>
+		</div>
 
-<div>
-  <%= link_to "Proceed to Checkout?", checkout_path, class: "btn btn-success" %>
-</div>
-</div>
+		<div>
+		  <%= link_to "Proceed to Checkout?", checkout_path, class: "btn btn-success" %>
+		</div>
+	</div>
 </div>

@@ -21,7 +21,9 @@ class CartController < ApplicationController
       @order.subtotal += line_item.bid_total
       @order.truck_id = line_item.truckId.to_i
       vehicle = Vehicle.find(line_item.vehicle_id)
+      truck = DeliveryTruck.find(line_item.truckId)
       vehicle.update(currentState: "Dispatched")
+      truck.update(currentState: "Dispatched")
     end
 
     @order.sales_tax = @order.subtotal * 0.07
