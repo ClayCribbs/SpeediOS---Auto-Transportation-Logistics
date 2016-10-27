@@ -69,6 +69,7 @@
             </thead>
             <tbody>  
               </tr>
+              <% refreshVehicles %>
               <% @vehicles.each do |vehicle|%>
                 <% if vehicle.truckId.to_s == truck.id.to_s %>
                   <tr>
