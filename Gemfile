@@ -57,7 +57,6 @@ group :development do
 gem 'sqlite3' 
 gem 'better_errors'
 end
-gem 'rspec'
 gem 'binding_of_caller'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

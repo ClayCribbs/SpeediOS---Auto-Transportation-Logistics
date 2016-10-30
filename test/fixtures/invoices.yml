@@ -2,7 +2,7 @@
 
 one:
   client: MyString
-  truckId: 1
+  truck_id: 1
   userId: 1
   total: 9.99
   invoice_items: MyText
@@ -10,7 +10,7 @@ one:
 
 two:
   client: MyString
-  truckId: 1
+  truck_id: 1
   userId: 1
   total: 9.99
   invoice_items: MyText
