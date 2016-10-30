@@ -6,7 +6,7 @@
         <option selected disabled>Filter By Destination</option>
         <option value="/">All Destinations</option>
         <% @vehicles.each do |vehicle| %>
-          <option value=<%= "/?destination=#{URI.escape(vehicle.destination)}"%>><%= vehicle.destination %></option>
+          <option value=<%= "/?destination=#{uri.escape(vehicle.destination)}"%>><%= vehicle.destination %></option>
         <%end%>
       </select>
       <table class="table-striped sortable" width="100%">

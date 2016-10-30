@@ -18,7 +18,7 @@
                   <option value="/">All Destinations</option>
                 <% @vehicles.each do |vehicle| %>
                 <% next unless vehicle.currentState == "Available" %>
-                  <option value=<%= "/?destination=#{URI.escape(vehicle.destination)}"%>><%= vehicle.destination %></option>
+                  <option value=<%= "/?destination=#{uri.escape(vehicle.destination)}"%>><%= vehicle.destination %></option>
                 <%end%>
                 </select></nobr>
               </p>
@@ -179,7 +179,7 @@
                             <select onChange='if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value'>
                               <option selected disabled>Load Vehicle</option>
                                 <% @vehicles.each do |vehicle| %>
-                              <option value=<%= "/?truck_id=#{URI.escape(truck.id.to_s)}&carId=#{URI.escape(vehicle.id.to_s)}"%>><%= vehicle.name %></option>
+                              <option value=<%= "/?truck_id=#{uri.escape(truck.id.to_s)}&carId=#{uri.escape(vehicle.id.to_s)}"%>><%= vehicle.name %></option>
                                 <%end%>
                             </select>
                           </td>
