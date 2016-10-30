@@ -47,7 +47,7 @@ gem 'figaro'
 gem 'devise'
 gem 'nokogiri'
 gem 'faker'
-
+gem 'fog'
 gem 'rubocop', require: false
 gem 'edmunds'
 gem 'google_custom_search_api'
@@ -64,12 +64,11 @@ gem 'binding_of_caller'
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass'
 gem 'seed_dump'
-end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
-gem 'fog'
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console'
