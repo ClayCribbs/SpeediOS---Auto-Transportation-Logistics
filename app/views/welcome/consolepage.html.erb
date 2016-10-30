@@ -53,7 +53,7 @@
             <% @newWeight = truck.weightCapacity.to_i %>
             <% @count = 0 %>
             <% @vehicles.each do |vehicle| %>
-              <% if vehicle.truckId.to_i == truck.id.to_i %>
+              <% if vehicle.truck_id.to_i == truck.id.to_i %>
                 <% @count += 1 %>
                 <% @newWeight -= vehicle.actualWeight.to_i %>
               <% end %>

@@ -23,7 +23,7 @@ class VehiclesController < ApplicationController
       @waypoints.push @vehicle.destination
   end
   def checkState
-      if @vehicle.truckId == "" || @vehicle.truckId == nil
+      if @vehicle.truck_id == "" || @vehicle.truck_id == nil
         @vehicle.currentState = "Available"
       elsif @vehicle.currentState = "Available"
         @vehicle.currentState = "Queued"
@@ -91,6 +91,6 @@ class VehiclesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def vehicle_params
-    params.require(:vehicle).permit(:name, :make, :model, :details, :yearManufactured,:distance, :origin, :origin_latitude, :origin_longitude, :destination, :destination_latitude, :destination_longitude, :vinNumber, :minimumPossibleWeight, :maximumPossibleWeight, :actualWeight, :truckId, :image, :remote_image_url, :customername, :currentState, :company_id)
+    params.require(:vehicle).permit(:name, :make, :model, :details, :yearManufactured,:distance, :origin, :origin_latitude, :origin_longitude, :destination, :destination_latitude, :destination_longitude, :vinNumber, :minimumPossibleWeight, :maximumPossibleWeight, :actualWeight, :truck_id, :image, :remote_image_url, :customername, :currentState, :company_id)
   end
 end

@@ -11,10 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161027120730) do
 =======
 ActiveRecord::Schema.define(version: 20161026120709) do
 >>>>>>> 9fb9be90f4f2a2286393a5d9a889e4396df538e6
+=======
+ActiveRecord::Schema.define(version: 20161028212700) do
+>>>>>>> clay
 
   create_table "companies", force: :cascade do |t|
     t.string   "companyName"
@@ -77,7 +81,7 @@ ActiveRecord::Schema.define(version: 20161026120709) do
 
   create_table "invoices", force: :cascade do |t|
     t.string   "client"
-    t.integer  "truckId"
+    t.integer  "truck_id"
     t.integer  "userId"
     t.decimal  "total"
     t.text     "invoice_items"
@@ -86,14 +90,63 @@ ActiveRecord::Schema.define(version: 20161026120709) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "invoicing_ledger_items", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.string   "type"
+    t.datetime "issue_date"
+    t.string   "currency",     limit: 3,                           null: false
+    t.decimal  "total_amount",            precision: 20, scale: 4
+    t.decimal  "tax_amount",              precision: 20, scale: 4
+    t.string   "status",       limit: 20
+    t.string   "identifier",   limit: 50
+    t.string   "description"
+    t.datetime "period_start"
+    t.datetime "period_end"
+    t.string   "uuid",         limit: 40
+    t.datetime "due_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invoicing_line_items", force: :cascade do |t|
+    t.integer  "ledger_item_id"
+    t.string   "type"
+    t.decimal  "net_amount",                precision: 20, scale: 4
+    t.decimal  "tax_amount",                precision: 20, scale: 4
+    t.string   "description"
+    t.string   "uuid",           limit: 40
+    t.datetime "tax_point"
+    t.decimal  "quantity",                  precision: 20, scale: 4
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invoicing_tax_rates", force: :cascade do |t|
+    t.string   "description"
+    t.decimal  "rate",           precision: 20, scale: 4
+    t.datetime "valid_from",                              null: false
+    t.datetime "valid_until"
+    t.integer  "replaced_by_id"
+    t.boolean  "is_default"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.integer  "vehicle_id"
     t.decimal  "bid_total"
     t.integer  "order_id"
     t.string   "dispatch_date"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "truckId"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "truck_id"
+    t.string   "company_name"
+    t.string   "company_billing_address"
+    t.string   "origin"
+    t.string   "destination"
+    t.string   "vin"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -145,7 +198,7 @@ ActiveRecord::Schema.define(version: 20161026120709) do
     t.float    "destination_latitude"
     t.float    "destination_longitude"
     t.float    "distance"
-    t.string   "truckId"
+    t.string   "truck_id"
     t.string   "image"
     t.text     "details"
     t.string   "remote_image_url"

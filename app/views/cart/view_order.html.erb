@@ -1,20 +1,30 @@
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
-		<h2>My Cart</h2>
-
-		<div>
-			<table width="100%">
-		  <% @line_items.each do |line_item| %>
-		    <tr><td><%= line_item.order_id %></td></tr>
-		    <tr><td><%= number_to_currency line_item.vehicle_id %></td></tr>
-		    <tr><td>Dispatch Date: <%= line_item.dispatch_date %></td></tr>
-		    <tr><td>Truck ID: <%= line_item.truckId %></td></tr>
-		  <% end %>
+	<div class="col-md-10 col-md-offset-1">
+		<h2>Dispatch Order</h2>
+		<br/>
+			<table class="table-striped sortable" width="100%">
+				<thead>
+				<tr>
+					<th>Vehicle</th>
+					<th>VIN</th>
+					<th>Customer Name</th>
+					<th>Origin</th>
+					<th>Destination</th>
+					<th>Price</th>
+					</tr>
+				</thead>
+				<tbody>
+				  <% @line_items.each do |line_item| %>
+				  	<% vehicle = Vehicle.find(line_item.vehicle_id) %>
+				    <tr><td><%= "#{vehicle.read_attribute("make")} #{vehicle.read_attribute("model")}" %></td>
+				    <td><%= vehicle.vinNumber %></td>
+				    <td><%= vehicle.customername %></td>
+				    <td><%= vehicle.origin %></td>
+				    <td><%= vehicle.destination %></td>
+				    <td><%= vehicle.distance %></td></tr>
+				  <% end %>
+			  </tbody>
 		  </table>
-		</div>
-
-		<div>
 		  <%= link_to "Proceed to Checkout?", checkout_path, class: "btn btn-success" %>
-		</div>
 	</div>
 </div>

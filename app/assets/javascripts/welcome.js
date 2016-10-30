@@ -2,7 +2,7 @@
 function loadTables() {
 
 	setTimeout(function() {
-		$('#dashtrucks').load("dashboard #dashtrucks")
-		$('#dashcars').load("dashboard #dashcars")
-	}, 700);  
+		$('#contracts').load("dashboard #contracts")
+
+	}, 500);  
 }

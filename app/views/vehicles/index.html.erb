@@ -32,7 +32,7 @@
             </thead>
             <tbody>
               <% @vehicles.each do |vehicle| %>
-              <% if vehicle.truckId == 'nil' or vehicle.truckId.empty? %>
+              <% if vehicle.truck_id == 'nil' or vehicle.truck_id.empty? %>
                 <tr>
                   <td><%= link_to "#{vehicle.yearManufactured} #{vehicle.make} #{vehicle.model}".split.map(&:capitalize).join(' '), vehicle %></td>
                   <td><%=vehicle.origin%></td>

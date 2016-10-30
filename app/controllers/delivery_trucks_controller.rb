@@ -13,7 +13,7 @@ class DeliveryTrucksController < ApplicationController
   # GET /delivery_trucks/1.json
   def show
     set_delivery_truck
-    @myVehicles = Vehicle.where("truckId LIKE ?", params[:id])
+    @myVehicles = Vehicle.where("truck_id LIKE ?", params[:id])
     @waypoints = Array.new
     @distances = Array.new
     @directions = Array.new
