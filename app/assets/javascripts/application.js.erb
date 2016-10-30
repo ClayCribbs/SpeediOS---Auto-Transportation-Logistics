@@ -85,7 +85,7 @@
     const EDMUNDS_API_KEY = "<%= ENV['EDMUNDS_API_KEY'] %>";
 
         function get_makes(year) {
-            url = 'http://api.edmunds.com/v1/api/vehicle/makerepository/findmakesbymodelyear?year=' + year + '&api_key=' + EDMUNDS_API_KEY + '&fmt=json';
+            url = 'https://api.edmunds.com/v1/api/vehicle/makerepository/findmakesbymodelyear?year=' + year + '&api_key=' + EDMUNDS_API_KEY + '&fmt=json';
             $.ajax({
                 type: "POST",
                 url: url,
