@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20161027120730) do
     t.float    "currentWeight"
     t.string   "image"
     t.string   "currentState"
+    t.string   "driverId"
     t.integer  "occupied_slots"
   end
 
