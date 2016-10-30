@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20161027120730) do
-=======
-ActiveRecord::Schema.define(version: 20161026120709) do
->>>>>>> 9fb9be90f4f2a2286393a5d9a889e4396df538e6
-=======
 ActiveRecord::Schema.define(version: 20161028212700) do
->>>>>>> clay
 
   create_table "companies", force: :cascade do |t|
     t.string   "companyName"
@@ -56,14 +48,10 @@ ActiveRecord::Schema.define(version: 20161028212700) do
     t.string   "requestedArrivalTime"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.float    "currentWeight"
     t.string   "image"
     t.string   "currentState"
     t.string   "driverId"
-<<<<<<< HEAD
     t.integer  "occupied_slots"
-=======
->>>>>>> 9fb9be90f4f2a2286393a5d9a889e4396df538e6
   end
 
   create_table "drivers", force: :cascade do |t|
