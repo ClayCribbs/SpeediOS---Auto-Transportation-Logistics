@@ -55,8 +55,8 @@ gem 'geocomplete_rails'
 gem 'pry-rails'
 gem 'local_time'
 group :development do
-   gem 'sqlite3' 
-  gem 'better_errors'
+gem 'sqlite3' 
+gem 'better_errors'
 end
 gem 'rspec'
 gem 'binding_of_caller'
@@ -64,6 +64,7 @@ gem 'binding_of_caller'
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass'
 gem 'seed_dump'
+end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
