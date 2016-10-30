@@ -3,7 +3,7 @@ class VehiclesController < ApplicationController
   after_action :checkState, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:show]
   require 'json'
-  require_relative 'open-uri'
+  require_relative 'uri'
  
 
   # GET /vehicles
