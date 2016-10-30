@@ -16,7 +16,7 @@
             <% @newWeight = truck.weightCapacity.to_i %>
             <% @count = 0 %>
             <% @vehicles.each do |vehicle| %>
-              <% if vehicle.truckId.to_i == truck.id.to_i %>
+              <% if vehicle.truck_id.to_i == truck.id.to_i %>
                 <% @count += 1 %>
                 <% @newWeight -= vehicle.actualWeight.to_i %>
               <% end %>
@@ -29,7 +29,7 @@
               <td><select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
                 <option selected disabled>Load Vehicle</option>
                   <% @vehicles.each do |vehicle| %>
-                <option value=<%= "/?truckId=#{URI.escape(truck.id.to_s)}&carId=#{URI.escape(vehicle.id.to_s)}"%>><%= vehicle.name %></option>
+                <option value=<%= "/?truck_id=#{URI.escape(truck.id.to_s)}&carId=#{URI.escape(vehicle.id.to_s)}"%>><%= vehicle.name %></option>
                   <%end%>
               </select></td>
             </tr>
@@ -68,7 +68,7 @@
             <tbody>  
               </tr>
               <% @vehicles.each do |vehicle|%>
-                <% if vehicle.truckId.to_s == truck.id.to_s %>
+                <% if vehicle.truck_id.to_s == truck.id.to_s %>
                   <tr>
                     <td><h5><%= link_to vehicle.name, vehicle %></h5></td>
                     <td><h5><%= vehicle.actualWeight %></h5></td>
@@ -78,8 +78,8 @@
                         <%= hidden_field_tag :vehicle_id, vehicle.id %>
                         <%= hidden_field_tag :bid_total, vehicle.distance.to_i %>
                         <%= hidden_field_tag :dispatch_date, (time.month.to_s+"/"+time.day.to_s + "/" +time.year.to_s) %>
-                        <%= hidden_field_tag :order_id, (vehicle.truckId.to_s+(time.year.to_s+time.month.to_s+time.day.to_s)).to_i %>
-                        <%= hidden_field_tag :truckId, vehicle.truckId.to_s %>
+                        <%= hidden_field_tag :order_id, (vehicle.truck_id.to_s+(time.year.to_s+time.month.to_s+time.day.to_s)).to_i %>
+                        <%= hidden_field_tag :truck_id, vehicle.truck_id.to_s %>
                         <td><%= submit_tag "Add to Cart", class: "btn btn-primary" %></td>
                     <% end %>
                   </tr>

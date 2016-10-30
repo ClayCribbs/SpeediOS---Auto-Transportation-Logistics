@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'google_directions'
+gem 'invoicing'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -35,12 +36,14 @@ gem 'geocoder'
 gem 'figaro'
 gem 'devise'
 gem 'nokogiri'
+gem 'faker'
 gem 'rubocop', require: false
 gem 'edmunds'
 gem 'google_custom_search_api'
 gem 'geocomplete_rails'
 gem 'pry-rails'
 gem 'local_time'
+gem 'faker-vehicle'
 group :development do
   gem 'better_errors'
 end

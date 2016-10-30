@@ -5,7 +5,8 @@ class WelcomeController < ApplicationController
 
 
   def index
-
+    @invoices = Invoice.all
+    @orders = Order.all
   	@delivery_trucks = DeliveryTruck.all
   	@vehicles = Vehicle.all
     @destinations = Vehicle.select(:destination).order(:destination).distinct
@@ -21,11 +22,11 @@ class WelcomeController < ApplicationController
   	end
 
         #Check for carload truck / change truck
-    if params[:truckId]== nil && params[:carId]== nil
+    if params[:truck_id]== nil && params[:carId]== nil
     else
       @vehicles.each do |vehicle|
         if vehicle.id.to_s == params[:carId]
-          vehicle.update(truckId: params[:truckId])
+          vehicle.update(truck_id: params[:truck_id])
           vehicle.update(currentState: "Queued")
         end
       end

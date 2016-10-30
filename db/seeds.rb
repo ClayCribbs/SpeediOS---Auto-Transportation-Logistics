@@ -14,5 +14,17 @@ Vehicle.create!([
   {name: "Honda Civic", make: "Honda", model: "Civic", yearManufactured: 1996, origin: "San Diego, California, United States", destination: "Las Vegas, Nevada, United States", vinNumber: "DJNEEO333D", minimumPossibleWeight: nil, maximumPossibleWeight: nil, actualWeight: 2370.0, origin_latitude: nil, origin_longitude: nil, destination_latitude: nil, destination_longitude: nil, distance: 328.0, truckId: "nil", image: "Civic.jpg"},
   {name: "Mitsubishi Eclipse", make: "Mitsubishi", model: "Eclipse", yearManufactured: 1998, origin: "Salt Lake City, Utah, United States", destination: "Lakeland, Florida, United States", vinNumber: "JDNL3334MM", minimumPossibleWeight: nil, maximumPossibleWeight: nil, actualWeight: 3005.0, origin_latitude: nil, origin_longitude: nil, destination_latitude: nil, destination_longitude: nil, distance: 2322.0, truckId: "1", image: "eclipse.jpg"},
   {name: "Hyundai Sonata", make: "Hyundai", model: "Sonata", yearManufactured: 2016, origin: "Brunswick, Georgia, United States", destination: "Montgomery, Alabama, United States", vinNumber: "JDDOOO30300", minimumPossibleWeight: nil, maximumPossibleWeight: nil, actualWeight: 3430.0, origin_latitude: nil, origin_longitude: nil, destination_latitude: nil, destination_longitude: nil, distance: 262.0, truckId: "2", image: "sonata.png"},
+    # create 5 Vehicles...
+  50.times do
+    this_make = Faker::Vehicle.make
+    this_model = Faker::Vehicle.model(this_make)
+    this_year = Faker::Vehicle.year
+    this_name = this_make + " " + this_model
+    this_vin = Faker::Vehicle.vin
+    this_origin = Faker::Address.city + Faker::Address.state + ", United States"
+    this_destination = Faker::Address.city + Faker::Address.state + ", United States"
+    {name: this_name, make: this_make, model: this_model, yearManufactured: this_year, origin: this_origin, destination: this_destination, vinNumber: this_vin, minimumPossibleWeight: nil, maximumPossibleWeight: nil, actualWeight: nil, origin_latitude: nil, origin_longitude: nil, destination_latitude: nil, destination_longitude: nil, distance: nil, truckId: nil, image: nil},
+  end
   {name: "Cadillac Escalade", make: "Cadillac", model: "Escalade", yearManufactured: 2016, origin: "Brandon, Florida, United States", destination: "Portland, Oregon, United States", vinNumber: "MDMD0333D", minimumPossibleWeight: nil, maximumPossibleWeight: nil, actualWeight: 5430.0, origin_latitude: nil, origin_longitude: nil, destination_latitude: nil, destination_longitude: nil, distance: 3059.0, truckId: "2", image: "escalade.jpg"}
+
 ])

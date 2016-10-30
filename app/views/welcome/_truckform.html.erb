@@ -10,8 +10,8 @@
       </ul>
     </div>
   <% end %>
-  <%= f.select(:currentState,{},{:include_blank =>"Change Status"},{:onChange => "javascript: this.form.button.click();"}) do %>
-    <% [['Available', 'Available'], ['Queued', 'Queued'], ['Dispatched', 'Dispatched']].each do |c| -%>
+  <%= f.select(:currentState,{},{:include_blank => f.object.currentState},{:onChange => "javascript: this.form.button.click();"}) do %>
+    <% [['Available', 'Available'], ['Queued',"Queued"], ['Dispatched', 'Dispatched']].each do |c| -%>
       <%= content_tag(:option, c.first, value: c.last)  %>
     <% end %>
   <% end %>

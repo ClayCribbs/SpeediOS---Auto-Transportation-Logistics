@@ -4,11 +4,27 @@
 
 
 
-th {
-  border-bottom: solid 1px;
-}
 
 #button {
 display: none;
 }
 
+.col-sm-1{
+	min-height: 100%;
+}
+
+.navbar-side {
+	display: table;
+	display: fixed;
+	height: 100%;
+	width: 120px;
+	padding-top: 50px;
+	font-size: 1.0em;
+}
+
+.col-sm-11{
+	margin-left: 0px;
+}
+
+.col-sm-10{
+}
