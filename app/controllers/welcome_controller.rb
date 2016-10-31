@@ -15,21 +15,25 @@ class WelcomeController < ApplicationController
 
     #Get distance if missing
   	@vehicles.each do |vehicle|
+      if vehicle.origin.any?
       if vehicle.distance == nil && vehicle.origin.any? && vehicle.destination.any?
     	   directions = GoogleDirections.new(vehicle.origin, vehicle.destination) 
          vehicle.update(distance: directions.distance_in_miles)
+      end
       end
   	end
 
         #Check for carload truck / change truck
     if params[:truck_id]== nil && params[:carId]== nil
     else
+      if @vehicles.any?
       @vehicles.each do |vehicle|
         if vehicle.id.to_s == params[:carId]
           vehicle.update(truck_id: params[:truck_id])
           vehicle.update(currentState: "Queued")
         end
       end
+    end
     end
 
     #Check for destination filter
@@ -38,8 +42,9 @@ class WelcomeController < ApplicationController
     else
       @tableVehicles = Vehicle.where("destination LIKE ?", params[:destination])
     end
+    if @tableVehicles.any?
     @tableVehicleCount = @tableVehicles.length
-
+  end
 
     if params[:q]
       page = params[:page] || 1

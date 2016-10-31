@@ -2,7 +2,7 @@ class Vehicle < ApplicationRecord
   belongs_to :company
 	mount_uploader :image, ImageUploader
   before_save :geocode_endpoints
-
+  validates :yearManufactured, :make, :model, :vinNumber, :origin, :destination, presence: true
   private
 
   #To enable Geocoder to works with multiple locations
