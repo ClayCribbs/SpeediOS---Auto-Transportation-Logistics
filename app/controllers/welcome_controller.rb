@@ -14,15 +14,14 @@ class WelcomeController < ApplicationController
     newWeight = 0
 
     #Get distance if missing
+    if @vehicles.any?
   	@vehicles.each do |vehicle|
-      if vehicle.origin.any?
       if vehicle.distance == nil && vehicle.origin.any? && vehicle.destination.any?
     	   directions = GoogleDirections.new(vehicle.origin, vehicle.destination) 
          vehicle.update(distance: directions.distance_in_miles)
       end
-      end
   	end
-
+  end
         #Check for carload truck / change truck
     if params[:truck_id]== nil && params[:carId]== nil
     else
