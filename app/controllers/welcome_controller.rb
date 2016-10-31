@@ -16,7 +16,7 @@ class WelcomeController < ApplicationController
     #Get distance if missing
     if @vehicles.any?
   	@vehicles.each do |vehicle|
-      if vehicle.distance == nil && vehicle.origin.any? && vehicle.destination.any?
+      if vehicle.distance == nil && vehicle.origin && vehicle.destination
     	   directions = GoogleDirections.new(vehicle.origin, vehicle.destination) 
          vehicle.update(distance: directions.distance_in_miles)
       end

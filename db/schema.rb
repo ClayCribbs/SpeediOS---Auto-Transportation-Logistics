@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028212700) do
+ActiveRecord::Schema.define(version: 20161031121231) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "companyName"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20161028212700) do
     t.string   "currentState"
     t.string   "driverId"
     t.integer  "occupied_slots"
+    t.integer  "currentWeight"
   end
 
   create_table "drivers", force: :cascade do |t|

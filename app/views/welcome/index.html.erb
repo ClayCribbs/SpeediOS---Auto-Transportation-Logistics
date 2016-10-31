@@ -18,7 +18,7 @@
                   <option value="/">All Destinations</option>
                 <% @vehicles.each do |vehicle| %>
                 <% next unless vehicle.currentState == "Available" %>
-                  <option value=<%= "/?destination=#{URI.escape(vehicle.destination)}"%>><%= vehicle.destination %></option>
+                  <option value=<%= "/?destination=#{(vehicle.destination).to_s}"%>><%= vehicle.destination %></option>
                 <%end%>
                 </select></nobr>
               </p>
@@ -38,8 +38,8 @@
                   <% next unless vehicle.currentState == "Available" %>
                     <tr>
                       <td class="padleft" width="20%"><%= link_to vehicle.name, vehicle %></h5></td>
-                      <td width="25%"><%= vehicle.origin.sub!(", United States", "") %></h5></td>
-                      <td width="25%"><%= vehicle.destination.sub!(", United States", "") %></h5></td>
+                      <td width="25%"><%= vehicle.origin %></h5></td>
+                      <td width="25%"><%= vehicle.destination  %></h5></td>
                       <td width="10%"><%= vehicle.distance %></h5></td>
                       <% @i = 0 %>
                       <td width="20%"><%= render 'form', vehicle: vehicle %></td>
@@ -66,8 +66,8 @@
                         <% if truck.id.to_s == vehicle.truck_id %>
                           <tr>
                             <td width="25%"><%= link_to vehicle.name, vehicle %></h5></td>
-                            <td width="25%"><%= vehicle.origin.sub(", United States", "") %></h5></td>
-                            <td width="25%"><%= vehicle.destination.sub(", United States", "") %></h5></td>
+                            <td width="25%"><%= vehicle.origin %></h5></td>
+                            <td width="25%"><%= vehicle.destination %></h5></td>
                             <td width="25%"><%= render 'form', vehicle: vehicle %></td>
                             <% @i = 0 %>
                           </tr>
@@ -179,7 +179,7 @@
                             <select onChange='if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value'>
                               <option selected disabled>Load Vehicle</option>
                                 <% @vehicles.each do |vehicle| %>
-                              <option value=<%= "/?truck_id=#{URI.escape(truck.id.to_s)}&carId=#{URI.escape(vehicle.id.to_s)}"%>><%= vehicle.name %></option>
+                              <option value=<%= "/?truck_id=#{(truck.id.to_s)}&carId=#{(vehicle.id.to_s)}"%>><%= vehicle.name %></option>
                                 <%end%>
                             </select>
                           </td>
@@ -247,8 +247,8 @@
                       <%  order.order_items.each do |k,v| %>
                       <tr>
                         <td><%= "#{Vehicle.find(k).make.capitalize} #{Vehicle.find(k).model.capitalize}" %></td>
-                        <td><%= "#{Vehicle.find(k).origin.gsub(", United States", "")}" %></td>
-                        <td><%= "#{Vehicle.find(k).destination.gsub(", United States", "")}" %></td>
+                        <td><%= "#{Vehicle.find(k).origin}" %></td>
+                        <td><%= "#{Vehicle.find(k).destination}" %></td>
                         <td><%= "#{Vehicle.find(k).distance}" %></td>
                         <td><%= "#{Vehicle.find(k).actualWeight}"%></td>
                         <td><%= "#{number_to_currency Vehicle.find(k).distance}" %></td>
