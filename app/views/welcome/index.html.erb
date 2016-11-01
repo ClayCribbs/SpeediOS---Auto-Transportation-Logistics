@@ -4,6 +4,20 @@
       <li class="active"> <a data-target="#contracts" data-toggle="tab">Open Contracts</a></li>
       <li><a data-target="#fleettab" data-toggle="tab">My Fleet</a></li>
       <li><a data-target="#invoicing" data-toggle="tab">Invoicing</a></li>
+      <br />
+      <strong>Pending Dispatches</strong>
+      <div class="autobox" style="margin-top: 0px;">
+      <table class="table-striped sortable">
+        <tbody>
+        <% @delivery_trucks.each do |truck| %>
+          <% if truck.occupied_slots > 0 %>
+            <td><%= truck.name %></td>
+          <% end %>
+        <% end %>
+        </tbody>
+      </table>
+      </div>
+
     </ul>
   </div>
   <div class="col-sm-10 tab-bg" id="vehicleTable">
@@ -106,6 +120,7 @@
                   <% @newWeight -= vehicle.actualWeight.to_i %>
                 <% end %>
                 <% truck.update(currentWeight: @newWeight.to_i) %>
+                <% truck.update(occupied_slots: @count) %>
               <% end %>
             <div class="col-sm-6"> 
                 <h3><%=link_to truck.name, truck %></h3> Remaining Capacity: <%= truck.currentWeight %> Lbs
