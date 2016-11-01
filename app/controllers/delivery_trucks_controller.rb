@@ -14,6 +14,7 @@ class DeliveryTrucksController < ApplicationController
   def show
     set_delivery_truck
     @myVehicles = Vehicle.where("truck_id LIKE ?", params[:id])
+    @delivery_truck.update(occupied_slots: @myVehicles.length)
     @waypoints = Array.new
     @distances = Array.new
     @directions = Array.new
