@@ -12,6 +12,19 @@ class WelcomeController < ApplicationController
     @destinations = Vehicle.select(:destination).order(:destination).distinct
     @deliveryTruckCount = @delivery_trucks.length
     newWeight = 0
+    @count = 0
+
+    @delivery_trucks.each do |truck|
+      @newWeight = truck.weightCapacity.to_i
+      @vehicles.each do |vehicle| 
+        if vehicle.truck_id.to_i == truck.id.to_i 
+          @count += 1 
+          @newWeight -= vehicle.actualWeight.to_i 
+        end 
+      truck.update(currentWeight: @newWeight.to_i) 
+      truck.update(occupied_slots: @count) 
+      end 
+    end
 
     #Get distance if missing
     if @vehicles.any?
