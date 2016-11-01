@@ -14,7 +14,7 @@
           <% if truck.occupied_slots == 'nil' %>
           
           <%else %>
-          <% if truck.occupied_slots > 0 %>
+          <% if truck.occupied_slots > 0 && truck.currentState.to_s == "Available" %>
             <tr>
               <td><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
                   <span class="button"><h6 style="margin-top: 0px; margin-bottom: 0px;"><%= truck.name %></h6></span></a></td>

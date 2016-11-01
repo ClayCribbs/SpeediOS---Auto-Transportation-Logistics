@@ -11,115 +11,130 @@
       </ul>
     </div>
   <% end %>
-<div class="row">
-<div class="col-sm-10 col-sm-offset-1">
-<div class="well">
-  <div class="form-group">
-    <%= f.text_field :name, placeholder: "Name" %>
-  </div>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <div class="well">
+        <div class="form-group">
+          <%= f.text_field :name, placeholder: "Name" %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :minimumPossibleWeight, class: "form-control"  %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :minimumPossibleWeight, class: "form-control"  %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :maximumPossibleWeight, class: "form-control"  %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :maximumPossibleWeight, class: "form-control"  %>
+        </div>
 
-  <div class="form-group">
-    <%= f.text_field :vinNumber, placeholder: "Vin Number" %>
-  </div>
+        <div class="form-group">
+          <%= f.text_field :vinNumber, placeholder: "Vin Number" %>
+        </div>
 
-  <div class="form-group">
-    <%= f.text_field :origin, placeholder: "Origin Location", class: "form-control", id: "searchTextField"   %>
-  </div>
+        <div class="form-group">
+          <%= f.text_field :origin, placeholder: "Origin Location", class: "form-control", id: "searchTextField"   %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :destination, class: "form-control"  %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :destination, class: "form-control"  %>
+        </div>
 
-  <div class="form-group">
-    <%= f.number_field :yearManufactured, placeholder: "Year Manufactured" %>
-  </div>
+        <div class="form-group">
+          <%= f.number_field :yearManufactured, placeholder: "Year Manufactured" %>
+        </div>
 
-  <div class="form-group">
-    <%= f.text_field :make, placeholder: "Make" %>
-  </div>
+        <div class="form-group">
+          <%= f.text_field :make, placeholder: "Make" %>
+        </div>
 
-  <div class="form-group">
-    <%= f.text_field :model, placeholder: "Model" %>
-  </div>
+        <div class="form-group">
+          <%= f.text_field :model, placeholder: "Model" %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :payloadEmptyWeight, class: "form-control"  %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :payloadEmptyWeight, class: "form-control"  %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :originLocation, class: "form-control"  %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :originLocation, class: "form-control"  %>
+        </div>
 
-  <div class="form-group">
-    <%= f.text_field :currentLocation, placeholder: "Current Location" %>
-  </div>
+        <div class="form-group">
+          <%= f.text_field :currentLocation, placeholder: "Current Location" %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :destinationLocation, class: "form-control"  %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :destinationLocation, class: "form-control"  %>
+        </div>
 
-  <div class="form-group">
-    <%= f.text_field :weightCapacity, placeholder: "Weight Capacity" %>
-  </div>
+        <div class="form-group">
+          <%= f.text_field :weightCapacity, placeholder: "Weight Capacity" %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :yearAquired, class: "form-control"  %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :yearAquired, class: "form-control"  %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :carFax, class: "form-control"  %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :carFax, class: "form-control"  %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :maintenanceHistory, class: "form-control"  %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :maintenanceHistory, class: "form-control"  %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :nextMaintenance, class: "form-control"  %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :nextMaintenance, class: "form-control"  %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :highwayMPG, class: "form-control"  %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :highwayMPG, class: "form-control"  %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :cityMPG, class: "form-control"  %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :cityMPG, class: "form-control"  %>
+        </div>
 
-  <div class="form-group">
-    <%= f.text_field :avgMPG, placeholder: "Avg MPG" %>
-  </div>
+        <div class="form-group">
+          <%= f.text_field :avgMPG, placeholder: "Avg MPG" %>
+        </div>
 
-  <div class="form-group">
-    <%= f.text_field :scheduledDepartureTime, placeholder: "Scheduled Departure Time" %>
-  </div>
+        <div class="form-group">
+          <%= f.text_field :scheduledDepartureTime, placeholder: "Scheduled Departure Time" %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :estimatedArrivalTime, class: "form-control"  %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :estimatedArrivalTime, class: "form-control"  %>
+        </div>
 
-  <div class="field">
-    <%= f.hidden_field :requestedArrivalTime, class: "form-control" %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :requestedArrivalTime, class: "form-control" %>
+        </div>
 
-  <div class="form-group">
-    <strong>Upload Vehicle Image: </strong>
-    <%= f.file_field :image %>
-  </div>
+        <div class="field">
+          <%= f.hidden_field :currentState, class: "form-control" %>
+        </div>
 
-  <div class="actions">
-    <%= f.button :Submit, class: "btn btn-success" %>
+        <div class="field">
+          <%= f.hidden_field :driverId, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= f.hidden_field :occupied_slots, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= f.hidden_field :currentWeight, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <strong>Upload Vehicle Image: </strong>
+          <%= f.file_field :image %>
+        </div>
+
+        <div class="actions">
+          <%= f.button :Submit, class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  </div>
-  </div>
-  </div>
-  <% end %>
+<% end %>

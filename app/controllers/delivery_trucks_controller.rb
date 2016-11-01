@@ -51,7 +51,7 @@ class DeliveryTrucksController < ApplicationController
   # POST /delivery_trucks.json
   def create
     @delivery_truck = DeliveryTruck.new(delivery_truck_params)
-
+    @delivery_truck.update(currentState: "Available")
     respond_to do |format|
       if @delivery_truck.save
         format.html { redirect_to @delivery_truck, notice: 'Delivery truck was successfully created.' }
