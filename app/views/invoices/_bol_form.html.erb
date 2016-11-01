@@ -3,52 +3,60 @@
 <style>
 
 
-    div {border: 1px dotted black;}
+
 
   </style>
-
 
 
     <div class="container">
       <div class="row">
         <div class="col-xs-6">
+          <h1>Bill of Lading</h1>
+          <p> Diamond Dispatch <br>
+            123 Big Walkway <br>
+            Atlanta, Georgia 30800 <br>
+            Phone: (678) 555-5555 <br>
+            Email: Dispatch@tts.com <br>
+            Fax: 678-444-4444 </p>
+          <h1><small>Load ID: #001</small></h1>
+        </div>
+        <div class="col-xs-6 text-right">
           <h1>
-            <a href="https://twitter.com/tahirtaous">
-            <img src="logo.png">
-            Logo here
+            <a href="http://auto-dispatch-logistics.herokuapp.com/">
+            <%= image_tag("DD-logo.jpg", :alt => "Diamond Dispatch Logo") %>
             </a>
           </h1>
         </div>
-        <div class="col-xs-6 text-right">
-          <h1>Bill of Lading</h1>
-          <h1><small>Invoice #001</small></h1>
-        </div>
       </div>
       <div class="row">
-        <div class="col-xs-5">
+        <div class="col-xs-6">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h4>From: <a href="#"><%= current_user.username %></a></h4>
+              <h4>Origin: <a href="#"><%= current_user.username %></a></h4>
             </div>
             <div class="panel-body">
               <p>
                 Address- <%# address %><br>
-                details- <%# details %> <br>
-                more- <%# more info %> <br>
+                Address-<%# more info %> <br>
+                <br>
+                Contact: sales manager <br>
+                Phone:  <%# current_user_account.phone_number %>
               </p>
             </div>
           </div>
         </div>
-        <div class="col-xs-5 col-xs-offset-2 text-right">
+        <div class="col-xs-6">
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h4>To : <a href="#">Client Name</a></h4>
+              <h4>Destination: <a href="#">Client Name</a></h4>
             </div>
             <div class="panel-body">
               <p>
                 Address- <%# address %><br>
-                details- <%# details %> <br>
-                more- <%# more info %> <br>
+                Address-<%# more info %> <br>
+                <br>
+                Contact: sales manager <br>
+                Phone:  <%# current_user_account.phone_number %>
               </p>
             </div>
           </div>
@@ -56,79 +64,37 @@
       </div>
       <!-- / end client details section -->
       <table class="table table-bordered">
-        <thead>
+        <thead text= "black">
           <tr>
             <th>
-              <h4>Service</h4>
+              <h4>Year</h4>
             </th>
             <th>
-              <h4>Description</h4>
+              <h4>Make / Model</h4>
             </th>
             <th>
-              <h4>Hrs/Qty</h4>
+              <h4>Type</h4>
             </th>
             <th>
-              <h4>Rate/Price</h4>
+              <h4>Color</h4>
             </th>
             <th>
-              <h4>Sub Total</h4>
+              <h4>VIN</h4>
             </th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Article</td>
-            <td><a href="#">Title of your article here</a></td>
-            <td class="text-right">-</td>
-            <td class="text-right">$200.00 <%# desired invoice %></td>
-            <td class="text-right">$200.00</td>
-          </tr>
-          <tr>
-            <td>Template Design</td>
-            <td><a href="#">Details of project here</a></td>
-            <td class="text-right">10</td>
-            <td class="text-right">75.00</td>
-            <td class="text-right">$750.00</td>
-          </tr>
-          <tr>
-            <td>Development</td>
-            <td><a href="#">Rails Basic template</a></td>
-            <td class="text-right">5</td>
-            <td class="text-right">50.00</td>
-            <td class="text-right">$250.00</td>
-          </tr>
-        </tbody>
       </table>
-      <div class="row text-right">
-        <div class="col-xs-2 col-xs-offset-8">
-          <p>
-            <strong>
-            Sub Total : <%# invoices.invoice_items %> <br>
-            TAX : <%# invoicing_ledeger_items.tax_amount %> <br>
-            Total : <%# invoices.total %> <br>
-            </strong>
-          </p>
-        </div>
-        <div class="col-xs-2">
-          <strong>
-          $1200.00 <br>
-          N/A <br>
-          $1200.00 <br>
-          </strong>
-        </div>
-      </div>
       <div class="row">
         <div class="col-xs-5">
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h4>Bank details</h4>
+              <h4>Origin Signature / Oct 31, 2016 / Sales Manager</h4>
             </div>
             <div class="panel-body">
-              <p>Your Name</p>
-              <p>Bank Name</p>
-              <p>SWIFT : --------</p>
-              <p>Account Number : --------</p>
-              <p>IBAN : --------</p>
+              <p>Signature Here</p>
+            </div>
+            <div class="panel-body">
+              <p>Driver Signature Here</p>
             </div>
           </div>
         </div>
@@ -136,15 +102,17 @@
           <div class="span7">
             <div class="panel panel-info">
               <div class="panel-heading">
-                <h4>Contact Details</h4>
+                <h4>Destination Signature / Oct 31, 2016 / Kyle B</h4>
               </div>
               <div class="panel-body">
                 <p>
-                  Email : you@example.com <br><br>
-                  Mobile : -------- <br> <br>
-                  Company : <a href="https://"><%= current_user.username %> <%= current_user.email %></a>
+                 <a href="https://"><%= current_user.username %> </a>
                 </p>
-                <h4>Payment should be made by Bank Transfer</h4>
+              </div>
+               <div class="panel-body">
+                <p>
+                 Driver Signature Here
+                </p>
               </div>
             </div>
           </div>
@@ -154,37 +122,115 @@
 
 
 
-
-
-
-
-
-
-<!-- <h1> Bill of lading/ Vehicle inspection Report </h1>
-<div class="container">Load ID: example1 
-  <div class=".col-xs-5 col-sm-offset-1"> Our Dispatch inc <br>
-address <br>
-address <br>
-phone <br>
-email <br>
-fax <br>
-</div>
-<div class="col-xs-2 col-sm-offset-1"></div>
-<div class= ".col-xs-5">Logo right side corner</div>
-    </div>
-
-  <div class="row">empty
-    <div class="col-xs-3 col-sm-offset-1">Origin <br> 
-    Mercedes Benz of Waco <br>
-    123 valley mills <br>
-    Waco, tx 757575 <br>
-    Contact: sales example <br>
-    phone: 123456789 <br></div>
-    <div class="col-xs-7 col-sm-offset-1">Destination <br>
-      blah blah blah <br>
-      1800 montgomery hwy <br>
-      birmingham, Al 38484 <br>
-      Contact: Example <br>
-      phone: example <br>
-    </div>
- -->
+    AUTO TRANSPORT TERMS AND CONDITIONS
+Auto-Dispatch-Logistics hereinafter referred to as “Carrier” will not be responsible for any damage not resulting from
+Carrier negligence. During Transport,
+vehicles and vehicle equipment may cease to operate properly through no fault of the Carrier.
+1. By shippers signature or his/her agents signature, Carrier and agents, jointly and separately are authorized to operate
+and transport vehicles(s) from the Point
+of Origin specified to the point of departure and to the specified destination via any mode.
+2. Personal belongings are not to be transported inside vehicle. Carrier shall not be responsible for loss or damage to
+personal belongings, including any “personal
+property” left in the vehicle, including loss or damage to stereo equipment, and to any non-stock items of the vehicle, nor
+will carrier be responsible for damages
+caused to vehicle(s) by personal property left inside vehicle.
+3. Shipper must furnish carrier with necessary keys to vehicle and all compartments. Shipper is responsible for completely
+disarming alarm/security system by
+any means effective.
+4. No delivery time is guaranteed. All delivery dates are only estimates of normal deliveries (delays may occur).
+Transporter does not agree to transport shipment
+in time for any particular market or event and will not be responsible for damages occasioned by unavoidable delay.
+There are absolutely no guarantees made,
+expressed, or implied, regarding delivery time or dates.
+5. No auto rental will be honored (for delays, damage, or accidents). No exceptions.
+PAYMENT TERMS
+1. Shipper shall pay all cost, including storage, and additional delivery costs, incurred as a result of shippers breach of
+any obligation under this agreement including
+inability to provide sufficient funds due, and inability to be present for accepting vehicle. Consignee agrees to meet the
+transporters driver at any specified time
+and place. In the event of a payment dispute between Shipper and Consignee, the party responsible for placing this order
+bears 100% responsibility for payment of
+this invoice.
+2. Upon acceptance, shipper and receiver of vehicle(s) are jointly liable for all charges due for shipment. They will be
+responsible to pay all cost of collections, to
+include, but not limited to, court costs and attorneys fees with interest at a periodic rate of 1.5% per month or 18% per
+year.
+3. Consignee is responsible to be at scheduled delivery point at specified time and place. If Consignee is unable to be at
+the scheduled pickup point, he/she will
+be charged $100.00 a day storage fee. Carrier will not be held liable for any non-use of the vehicle charges, including, but
+not limited to auto rentals, interest, or
+any other charges due to delay or damage to vehicle.
+4. Shipper shall pay an additional fee to be determined by the carrier for each inoperable vehicle. If vehicle is rendered for
+shipment and after becomes non-operational,
+the fee will be assessed as well as any other charges incurred to accomplish delivery, including, but not limited to
+Wreckers, Forklifts, Roll-backs, etc.
+5. Nothing in the agreement binds carrier to pick up and/or deliver to locations from which it is impractical to operate
+Carriers equipment because of inadequacies
+of highway, street, or passageways for loading or unloading facilities, or due to local, state or federal law.
+6. If vehicle is vandalized either during shipment or while awaiting shipment, Carrier will not be held responsible; owner
+will have to submit a claim to his/her own
+insurance or absorb the loss. Shipper agrees that his/her vehicle is insured and his/her insurance has primary
+responsibility.
+7. In the event of vehicle damage, payment must be collected at the time of delivery prior to making any claims.
+CARRIER OR ITS AGENTS SHALL NOT BE LIABLE FOR THE FOLLOWING:
+A. Damage cause by leaking fluids, battery acids, cooling system and anti-freeze solution, industrial fallout or damage
+caused by acts of God or force majored.
+B. Hidden damage or damage that is undetectable at time of pickup due to vehicles dirty condition, or weather-related
+condition.
+C. Any glass damage.
+D. Mechanical or electrical functions and damage caused by falling mechanics, electrical demise, alignment or
+suspension, exhaust assembly, any exhaust system,
+muffler, or tail pipes. No exceptions.
+E. Under carriage damage, and damage resulting from overloaded or lowered vehicles.
+F. Shipper is responsible for preparing vehicle for shipment. Securing loose parts, mufflers or tail pipes, spoilers, nonstock
+kit additions, antennas, and switches.
+Any part that falls off during transport is the customers responsibility, as are leaking fluids, including damages cause by
+said parts or fluids to any and all other
+vehicles involved. It is the customers responsibility to notify the Carrier of any and all fluid leaks.
+G. DAMAGE TO VEHICLE CAUSED BY: a) Vehicle that cannot be driven on or off transport truck under its own power
+and/or B) Vehicle having defective or insufficient
+brake, parking brake, or parking gear.
+H. Damage caused by freezing of engine, or cooling system or batteries.
+I. Damage caused to vehicle from tie downs breaking or tearing.
+J. Any convertible tops that are loose, torn, or show extensive wear, bras, and/or any type of canvas or material
+coverings.
+K. The Carrier WILL NOT be responsible for damage NOT caused by the driver.
+L. The customer agrees that their vehicle is insured and their insurance has primary responsibility.
+1. Claims must be made in writing within 24 hours from time of delivery. Any damage must be noted on the Bill of lading at
+the time of delivery without exception.
+All claims for hidden damage must be made in writing and sent certified mail within 48 hours after delivery of the vehicle.
+Hidden damage shall mean only those
+losses or damages to parts contained completely, within the underside of a vehicle that should require the vehicle be
+hoisted on a lift in order to be viewed and
+identified. The party claiming hidden damage has the burden of proving that the hidden damage did not exist prior to
+Carriers receipt of the vehicle(s) and that the
+claim relates to one for hidden damage and is otherwise proper. Pictures and two (2) estimates for repair should be sent
+as soon as possible. All claims are subject
+to a Deductible, and will be settled at actual cost.
+2. Repairable Losses-Bids. Shipper agrees that the amount of a claim for a repairable loss shall be established by a
+competitive bid process. The amount of the
+repairable loss shall be considered the lowest bid amount from two (2) competing qualified automobile body repair shops.
+Alternatively, if a Carrier elects, it may
+obtain an appraisal of the amount of the repairable loss from an independent automobile insurance adjustment company.
+A qualified body shop shall include any
+auto body repair shop owned by a franchised dealer of the manufacturer of the vehicle for which loss is being claimed.
+Carrier may, at its option, elect to accept
+a single bid presented by the claimant as the most cost effective settlement available and so elect to accept that bid as
+the amount of the claim. The payment by
+the Carrier of any claim presented by shipper shall be deemed the full and final resolution of the claim. The shipper shall
+release Carrier from any further liability
+involving that same vehicle upon payment of the claim.
+3. Total Losses. The Carriers limit of liability for any total loss vehicle(s) shall be actual cost of any verifiable expense
+thereon, including Carriers freight charges
+thereon. With respect to any total loss vehicle(s), the Carrier shall not be responsible for any lost profit.
+4. Venue. It is the intention of the parties hereto that this agreement and performance hereunder and all suits and special
+proceedings hereunder shall be
+constructed in accordance with under pursuant to the laws of the State of Georgia (unless prompted by applicable federal
+law), and that any action, special proceedings,
+or other proceedings that may be brought arising out of, in connection with, or by reason of this agreement. The laws of
+the State of Georgia shall be
+applicable (unless preempted by applicable federal law) and shall govern the exclusion if the laws of any other forum
+without regard to the jurisdiction in which any
+action or special proceedings many be instituted. Further, the parties hereby agree that the venue for any action brought
+by either party against the other shall be
+in the district court for the county of Forsyth, State of Georgia, and any other venue is hereby waived.
