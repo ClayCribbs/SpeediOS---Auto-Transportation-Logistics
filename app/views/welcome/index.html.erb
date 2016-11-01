@@ -105,6 +105,7 @@
                                     <%= hidden_field_tag :dispatch_date, (time.month.to_s+"/"+time.day.to_s + "/" +time.year.to_s) %>
                                     <%= hidden_field_tag :order_id, (vehicle.truck_id.to_s+(time.year.to_s+time.month.to_s+time.day.to_s)).to_i %>
                                     <%= hidden_field_tag :truck_id, vehicle.truck_id.to_s %>
+                                    <%= select_tag "drivers", options_from_collection_for_select(@drivers, "id", "driver_name"),:prompt => "Select Driver"%>
                                     <td><%= submit_tag "Add to Cart", class: "btn btn-primary" %></td>
                                   <% end %>
                                 </tr>

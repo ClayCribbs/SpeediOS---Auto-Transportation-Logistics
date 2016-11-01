@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
 
   def index
     @invoices = Invoice.order(:id)
+    @drivers = Driver.order(:id)
     @orders = Order.order(:id)
   	@delivery_trucks = DeliveryTruck.order(:id)
   	@vehicles = Vehicle.order(:id)
