@@ -189,11 +189,10 @@
             <h3>Delivery Trucks</h3>
               <table class="table-striped sortable autobox" width="100%">
                 <thead>
-                    <th>Delivery Truck</h5></th>
-                    <th>Status</h5></th>
-                    <th>Cargo</h5></th>
-                    <th>Weight</h5></th>
-                    <th>Load Vehicles</h5></th>
+                    <th>Delivery Truck</th>
+                    <th>Cargo</th>
+                    <th>Weight</th>
+                    <th>Status</th>
                 </thead>
                 <tbody>
                   <% @delivery_trucks.each do |truck| %>
@@ -208,30 +207,20 @@
                     <% end %>
                     <tr>
                       <td><%= link_to truck.name, truck %></td>
-                      <td><%= render 'truckform', delivery_truck: truck, :locals => { :f => truck } %></td>
-                      <% if truck.currentState == "Dispatched" %>
-                        <td><%= "Dispatched" %></td>
-                        <td><i><%= @newWeight %></i></td>
-                        <td><%= link_to "Dispatch Form", truck %></td>
-                      <% else %>
-                      <td><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
-                      <span class="button">
-                        <% if @count > 0 %>
-                          <%= @count %><%= " Vehicles Pending" %>
-                        <% else %>Ready
-                        </span></a></td><% end %>
-                      <td><%= @newWeight %></td>
-                      <% if truck.currentState != "Dispatched" %>
-                        <td> 
-                          <select onChange='if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value'>
-                            <option selected disabled>Load Vehicle</option>
-                              <% @vehicles.each do |vehicle| %>
-                            <option value=<%= "/?truck_id=#{(truck.id.to_s)}&carId=#{(vehicle.id.to_s)}"%>><%= vehicle.name %></option>
-                              <%end%>
-                          </select>
-                        </td>
-                      <% end %>
-                    <% end %>
+                    <% if truck.currentState == "Dispatched" %>
+                      <td><%= "Dispatched" %></td>
+                      <td><i><%= @newWeight %></i></td>
+                      <td><%= link_to "Dispatch Form", truck %></td>
+                    <% else %>
+                    <td><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
+                    <span class="button">
+                      <% if @count > 0 %>
+                        <%= @count %><%= " Vehicles Pending" %>
+                      <% else %>Ready
+                      </span></a></td><% end %>
+                    <td><%= @newWeight %></td>
+                    <td><%= render 'truckform', delivery_truck: truck, :locals => { :f => truck } %></td>
+                  <% end %>
                     </tr>
                 <% end %>
               </tbody>
@@ -301,10 +290,9 @@
               <thead>
                 <tr>
                   <th>Delivery Truck</th>
-                  <th>Status</th>
                   <th>Cargo</th>
                   <th>Weight</th>
-                  <th>Load Vehicles</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -320,7 +308,6 @@
                   <% end %>
                   <tr>
                     <td><%= link_to truck.name, truck %></td>
-                    <td><%= render 'truckform', delivery_truck: truck, :locals => { :f => truck } %></td>
                     <% if truck.currentState == "Dispatched" %>
                       <td><%= "Dispatched" %></td>
                       <td><i><%= @newWeight %></i></td>
@@ -333,19 +320,9 @@
                       <% else %>Ready
                       </span></a></td><% end %>
                     <td><%= @newWeight %></td>
-                    <% if truck.currentState != "Dispatched" %>
-                      <td> 
-                        <select onChange='if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value'>
-                          <option selected disabled>Load Vehicle</option>
-                            <% @vehicles.each do |vehicle| %>
-                          <option value=<%= "/?truck_id=#{(truck.id.to_s)}&carId=#{(vehicle.id.to_s)}"%>><%= vehicle.name %></option>
-                            <%end%>
-                        </select>
-                      </td>
+                    <td><%= render 'truckform', delivery_truck: truck, :locals => { :f => truck } %></td>
                     <% end %>
-                  <% end %>
-                      
-                      </tr>
+                  </tr>
                 <% end %>
               </tbody>
             </table>
