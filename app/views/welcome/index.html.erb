@@ -10,12 +10,14 @@
       <table class="table-striped sortable">
         <tbody>
         <% @delivery_trucks.each do |truck| %>
+          
           <% if truck.occupied_slots == 'nil' %>
+          
           <%else %>
           <% if truck.occupied_slots > 0 %>
-          <tr>
-            <td><%= truck.name %></td>
-          </tr>
+            <tr>
+              <td><h6><%= truck.name %></h6></td>
+            </tr>
           <% end %>
           <%end%>
         <% end %>

@@ -11,10 +11,8 @@ class WelcomeController < ApplicationController
   	@vehicles = Vehicle.all
     @destinations = Vehicle.select(:destination).order(:destination).distinct
     @deliveryTruckCount = @delivery_trucks.length
-    newWeight = 0
-    @count = 0
-
     @delivery_trucks.each do |truck|
+      @count = 0
       @newWeight = truck.weightCapacity.to_i
       @vehicles.each do |vehicle| 
         if vehicle.truck_id.to_i == truck.id.to_i 
