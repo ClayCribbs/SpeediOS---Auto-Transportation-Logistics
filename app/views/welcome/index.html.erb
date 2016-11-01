@@ -7,7 +7,7 @@
       <br />
       <strong>Pending Dispatches</strong>
       <div class="sidebox" style="margin-top: 0px;">
-      <table class="table-striped sortable">
+      <table class="table-striped sortable" id="widget">
         <tbody>
         <% @delivery_trucks.each do |truck| %>
           
@@ -16,7 +16,7 @@
           <%else %>
           <% if truck.occupied_slots > 0 %>
             <tr>
-              <td><h6><%= truck.name %></h6></td>
+              <td><h6 style="margin-top: 0px; margin-bottom: 0px;"><%= truck.name %></h6></td>
             </tr>
           <% end %>
           <%end%>

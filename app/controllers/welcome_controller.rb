@@ -5,10 +5,10 @@ class WelcomeController < ApplicationController
 
 
   def index
-    @invoices = Invoice.all
-    @orders = Order.all
-  	@delivery_trucks = DeliveryTruck.all
-  	@vehicles = Vehicle.all
+    @invoices = Invoice.order(:id)
+    @orders = Order.order(:id)
+  	@delivery_trucks = DeliveryTruck.order(:id)
+  	@vehicles = Vehicle.order(:id)
     @destinations = Vehicle.select(:destination).order(:destination).distinct
     @deliveryTruckCount = @delivery_trucks.length
     @delivery_trucks.each do |truck|
