@@ -109,12 +109,18 @@
               <% end %>
             <div class="col-sm-6"> 
                 <h3><%=link_to truck.name, truck %></h3> Remaining Capacity: <%= truck.currentWeight %> Lbs
-                <div class="pull-right"><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
+
+                <div class="pull-right">
+                  <% if truck.currentState == "Dispatched" %>
+                    <td><a data-target="#fleettab" data-toggle="tab">Dispatched</a></td>
+                  <% else %>
+                <a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
                   <span class="button">
                     <% if @count > 0 %>
                       <%= @count %><%= " Vehicles Pending" %>
                     <% else %>Ready
                     <% end %>
+                  <% end %>
                   </span></a>
                 </div>
              
@@ -228,7 +234,6 @@
                         <% if truck.currentState == "Dispatched" %>
                           <td><%= "Dispatched" %></td>
                           <td><i><%= @newWeight %></i></td>
-
                           <td><%= link_to "Dispatch Form", truck %></td>
                         <% else %>
                         <td><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
