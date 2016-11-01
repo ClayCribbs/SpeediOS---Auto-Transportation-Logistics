@@ -1,3 +1,4 @@
+<!-- Side NavBar -->
 <div class="row">
   <div class="col-sm-2">
     <ul class="nav navbar-side">
@@ -25,51 +26,12 @@
       </div>
     </ul>
   </div>
+
   <div class="col-sm-10 tab-bg" id="vehicleTable">
     <div class="tab-content">
-      <div class="tab-pane active" id="contracts"> 
-        <div class="row">
-          <div class="col-sm-12">
-            <p>
-              <h3 style="display: inline;">Available Contracts </h3><h2 style="display: inline;"><span style="display: inline;"class="badge"><%= @tableVehicleCount %></span></h2>
-              <select id="changer" style="float: right;" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
-                <option selected disabled>Filter By Destination</option>
-                <option value="/">All Destinations</option>
-                <% @vehicles.each do |vehicle| %>
-                <% next unless vehicle.currentState == "Available" %>
-                  <option value=<%= "/?destination=#{(vehicle.destination).to_s}"%>><%= vehicle.destination %></option>
-                <%end%>
-              </select></nobr>
-            </p>
-            <table class="table-striped sortable autobox" width="100%">
-              <thead>
-                <tr>
-                  <th class="padleft"  width="20%">Vehicle</h5></th>
-                  <th width="25%">Origin</h5></th>
-                  <th width="25%">Destination</h5></th>
-                  <th width="10%">Distance</h5></th>
-                  <th width="20%">Pick Up With</h5></th>
-                </tr>
-              </thead>
-              <tbody>
-                <%@tableVehicles.each do |vehicle|%>
-                <% next unless vehicle.currentState == "Available" %>
-                  <tr>
-                    <td class="padleft" width="20%"><%= link_to vehicle.name, vehicle %></h5></td>
-                    <td width="25%"><%= vehicle.origin %></h5></td>
-                    <td width="25%"><%= vehicle.destination  %></h5></td>
-                    <td width="10%"><%= vehicle.distance %></h5></td>
-                    <% @i = 0 %>
-                    <td width="20%"><%= render 'form', vehicle: vehicle %></td>
-                  </tr>
-                <%end%>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <% @delivery_trucks.each do |truck| %>
+
+    <!-- Truck Modal -->
+    <% @delivery_trucks.each do |truck| %>
               <div class="modal fade" id="myModal<%=truck.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -128,60 +90,46 @@
                 <% truck.update(occupied_slots: @count) %>
               <% end %>
             <%end%>
-          </div>
-        </div>
+
+      <!-- Open Contracts Tab -->
+      <div class="tab-pane active" id="contracts"> 
         <div class="row">
           <div class="col-sm-12">
-            <% @delivery_trucks.each do |truck|%>
-              <!-- Modal -->
-              <div class="modal fade" id="myModal<%=truck.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Pending Load Configuration</h4>
-                    </div>
-                    <div class="modal-body">
-                      <table class="table-striped sortable autobox" width="100%">
-                        <thead>
-                          <tr>
-                            <th width="30%">Vehicle</h5></th>
-                            <th width="25%">Weight</h5></th>
-                            <th width="30%">Action</h5></th>
-                            <th width="15%">Confirm Vehicle</h5></th>
-                          </tr>
-                        </thead>
-                        <tbody>  
-                          <% refreshVehicles %>
-                          <% @vehicles.each do |vehicle|%>
-                            <% if vehicle.truck_id.to_s == truck.id.to_s %>
-                              <tr>
-                                <td><%= link_to vehicle.name, vehicle %></h5></td>
-                                <td><%= vehicle.actualWeight %></h5></td>
-                                <td><%= render 'form', vehicle: vehicle %></td>
-                                <% time = Time.new %>
-                                 <%= form_tag add_to_cart_path, :remote => true do %>
-                                  <%= hidden_field_tag :vehicle_id, vehicle.id %>
-                                  <%= hidden_field_tag :bid_total, vehicle.distance.to_i %>
-                                  <%= hidden_field_tag :dispatch_date, (time.month.to_s+"/"+time.day.to_s + "/" +time.year.to_s) %>
-                                  <%= hidden_field_tag :order_id, (vehicle.truck_id.to_s+(time.year.to_s+time.month.to_s+time.day.to_s)).to_i %>
-                                  <%= hidden_field_tag :truck_id, vehicle.truck_id.to_s %>
-                                  <td><%= submit_tag "Add to Cart", class: "btn btn-primary" %></td>
-                                <% end %>
-                              </tr>
-                            <% end %>
-                          <% end %>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel Order</button>
-                       <%= link_to "Finalize Load", view_order_path, class: "btn btn-primary" %>
-                    </div>
-                  </div>                  
-                </div>
-              </div>
-            <% end %>
+            <p>
+              <h3 style="display: inline;">Available Contracts </h3><h2 style="display: inline;"><span style="display: inline;"class="badge"><%= @tableVehicleCount %></span></h2>
+              <select id="changer" style="float: right;" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+                <option selected disabled>Filter By Destination</option>
+                <option value="/">All Destinations</option>
+                <% @vehicles.each do |vehicle| %>
+                <% next unless vehicle.currentState == "Available" %>
+                  <option value=<%= "/?destination=#{(vehicle.destination).to_s}"%>><%= vehicle.destination %></option>
+                <%end%>
+              </select></nobr>
+            </p>
+            <table class="table-striped sortable autobox" width="100%">
+              <thead>
+                <tr>
+                  <th class="padleft"  width="20%">Vehicle</h5></th>
+                  <th width="25%">Origin</h5></th>
+                  <th width="25%">Destination</h5></th>
+                  <th width="10%">Distance</h5></th>
+                  <th width="20%">Pick Up With</h5></th>
+                </tr>
+              </thead>
+              <tbody>
+                <%@tableVehicles.each do |vehicle|%>
+                <% next unless vehicle.currentState == "Available" %>
+                  <tr>
+                    <td class="padleft" width="20%"><%= link_to vehicle.name, vehicle %></h5></td>
+                    <td width="25%"><%= vehicle.origin %></h5></td>
+                    <td width="25%"><%= vehicle.destination  %></h5></td>
+                    <td width="10%"><%= vehicle.distance %></h5></td>
+                    <% @i = 0 %>
+                    <td width="20%"><%= render 'form', vehicle: vehicle %></td>
+                  </tr>
+                <%end%>
+              </tbody>
+            </table>
           </div>
         </div>
         <div class="row" id="dashtrucks">
@@ -229,6 +177,7 @@
         </div>
       </div>
 
+      <!-- Fleet Tab -->
       <div class="tab-pane" id="fleettab"> 
         <div class="row">
           <div class="col-sm-12">
