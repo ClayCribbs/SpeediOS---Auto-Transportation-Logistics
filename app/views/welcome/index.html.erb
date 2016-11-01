@@ -7,7 +7,7 @@
       <br />
       <strong>Pending Dispatches</strong>
       <div class="sidebox" style="margin-top: 0px;">
-      <table class="table-striped sortable" id="widget">
+      <table class="table-striped" id="widget">
         <tbody>
         <% @delivery_trucks.each do |truck| %>
           
@@ -16,7 +16,8 @@
           <%else %>
           <% if truck.occupied_slots > 0 %>
             <tr>
-              <td><h6 style="margin-top: 0px; margin-bottom: 0px;"><%= truck.name %></h6></td>
+              <td><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
+                  <span class="button"><h6 style="margin-top: 0px; margin-bottom: 0px;"><%= truck.name %></h6></span></a></td>
             </tr>
           <% end %>
           <%end%>
