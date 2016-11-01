@@ -13,7 +13,9 @@
           <% if truck.occupied_slots == 'nil' %>
           <%else %>
           <% if truck.occupied_slots > 0 %>
+          <tr>
             <td><%= truck.name %></td>
+          </tr>
           <% end %>
           <%end%>
         <% end %>
