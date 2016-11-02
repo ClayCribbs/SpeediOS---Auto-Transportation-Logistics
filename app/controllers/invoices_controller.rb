@@ -11,6 +11,7 @@ class InvoicesController < ApplicationController
   # GET /invoices/1
   # GET /invoices/1.json
   def show
+    @vehicle = @invoice.invoice_items[0]
   end
 
   # GET /invoices/new
