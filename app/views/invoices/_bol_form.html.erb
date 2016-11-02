@@ -4,22 +4,7 @@
 
   </style>
 
-<%= form_for(company) do |f| %>
-  <% if company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
 
-      <ul>
-      <% company.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  
-
-  
     <div class="container">
       <div class="row">
         <div class="col-xs-6">
@@ -48,11 +33,18 @@
             </div>
             <div class="panel-body">
               <p>
-                Address- <%= address %><br>
+              <div>
+                Address- <%# address %><br>
                 Address-<%# more info %> <br>
+              </div>
                 <br>
+              <div>
                 Contact: sales manager <br>
-                Phone:  <%# current_user_account.phone_number %>
+              </div>
+              <br>
+              <div>
+                Phone:  <%= @current_user_account.phone_number %>
+              </div>
               </p>
             </div>
           </div>
@@ -63,13 +55,18 @@
               <h4>Destination: <a href="#">Client Name</a></h4>
             </div>
             <div class="panel-body">
-              <p>
+              <div id= "address">
                 Address- <%# address %><br>
                 Address-<%# more info %> <br>
+              </div>
                 <br>
-                Contact: sales manager <br>
-                Phone:  <%# current_user_account.phone_number %>
-              </p>
+                <div id= "contact">
+                Contact: <%= @current_user.name %><br>
+                </div>
+                <div id= "phone">
+                Phone:  <%= @current_user.phone_number %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -78,21 +75,31 @@
       <table class="table table-bordered">
         <thead text= "black">
           <tr>
+          <div id= "year">
             <th>
-              <h4>Year</h4>
+              <h4>Year <%= @vehicle.yearManufacurted %></h4>
             </th>
+          </div>
+          <div>
             <th>
-              <h4>Make / Model</h4>
+              <h4>Make / Model <%= @vehicle.make %> <%= vehicle.model %></h4>
             </th>
+          </div>
+          <div>
             <th>
-              <h4>Type</h4>
+              <h4>Type <%= @vehicle.type %></h4>
             </th>
+          </div>
+          <div>
             <th>
-              <h4>Color</h4>
+              <h4>Color <%= @vehicle.color %></h4>
             </th>
-            <th>
-              <h4>VIN</h4>
+          </div>
+          <div>
+              <th>
+              <h4>VIN <%= @vehicle.vin %></h4>
             </th>
+          </div>
           </tr>
         </thead>
       </table>
