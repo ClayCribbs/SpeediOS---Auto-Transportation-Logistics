@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'bill_of_lading/address'
+
+  get 'bill_of_lading/contract'
+
+  get 'bill_of_lading/phone_number'
+
   resources :companies
   resources :invoices
   resources :drivers
