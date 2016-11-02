@@ -6,13 +6,20 @@ class InvoicesController < ApplicationController
   def index
     @invoices = Invoice.all
     @orders = Order.all
+    @order = Order.find(1)
+    @user = current_user
   end
 
   # GET /invoices/1
   # GET /invoices/1.json
   def show
+  end
+
+  def bol
+    @user = User.where(params[:userId])
     @vehicle = @invoice.invoice_items[0]
   end
+
 
   # GET /invoices/new
   def new
