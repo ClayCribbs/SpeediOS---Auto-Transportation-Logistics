@@ -15,7 +15,7 @@ class InvoicesController < ApplicationController
   end
 
   def _bol
-    @order = Order.find(1)
+    @order = Order.find(params[:order_id])
     @user = User.where(params[:userId])
     @vehicle = Vehicle.where(params[:vehicle_id])
   end
