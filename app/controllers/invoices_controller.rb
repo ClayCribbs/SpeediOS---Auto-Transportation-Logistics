@@ -6,7 +6,6 @@ class InvoicesController < ApplicationController
   def index
     @invoices = Invoice.all
     @orders = Order.all
-    @order = Order.find(1)
     @user = current_user
   end
 
@@ -15,9 +14,10 @@ class InvoicesController < ApplicationController
   def show
   end
 
-  def bol
+  def _bol
+    @order = Order.find(params[:order_id])
     @user = User.where(params[:userId])
-    @vehicle = @invoice.invoice_items[0]
+    @vehicle = Vehicle.where(params[:vehicle_id])
   end
 
 

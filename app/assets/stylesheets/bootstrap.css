@@ -1354,7 +1354,7 @@ a.text-success:focus {
   color: #356635;
 }
 .text-info {
-  color: #3a87ad;
+  color: #337ab7;
 }
 a.text-info:hover,
 a.text-info:focus {
@@ -3232,8 +3232,8 @@ fieldset[disabled] .btn-success.focus {
 }
 .btn-info {
   color: #ffffff;
-  background-color: #033c73;
-  border-color: #033c73;
+  background-color: #337ab7;
+  border-color: #337ab7;
 }
 .btn-info:focus,
 .btn-info.focus {
@@ -3280,11 +3280,11 @@ fieldset[disabled] .btn-info:focus,
 .btn-info.disabled.focus,
 .btn-info[disabled].focus,
 fieldset[disabled] .btn-info.focus {
-  background-color: #033c73;
-  border-color: #033c73;
+  background-color: #337ab7;
+  border-color: #337ab7;
 }
 .btn-info .badge {
-  color: #033c73;
+  color: #337ab7;
   background-color: #ffffff;
 }
 .btn-warning {
@@ -4592,7 +4592,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #dddddd;
 }
 .navbar-inverse {
-  background-color: #033c73;
+  background-color: #337ab7;
   border-color: #022f5a;
 }
 .navbar-inverse .navbar-brand {
@@ -4892,7 +4892,7 @@ a.label:focus {
   background-color: #59822c;
 }
 .label-info {
-  background-color: #033c73;
+  background-color: #337ab7;
 }
 .label-info[href]:hover,
 .label-info[href]:focus {
@@ -5072,7 +5072,7 @@ a.thumbnail.active {
 .alert-info {
   background-color: #d9edf7;
   border-color: #bce8f1;
-  color: #3a87ad;
+  color: #337ab7;
 }
 .alert-info hr {
   border-top-color: #a6e1ec;
@@ -5173,7 +5173,7 @@ a.thumbnail.active {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 .progress-bar-info {
-  background-color: #033c73;
+  background-color: #337ab7;
 }
 .progress-striped .progress-bar-info {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -5356,12 +5356,12 @@ button.list-group-item-success.active:focus {
   border-color: #468847;
 }
 .list-group-item-info {
-  color: #3a87ad;
+  color: #337ab7;
   background-color: #d9edf7;
 }
 a.list-group-item-info,
 button.list-group-item-info {
-  color: #3a87ad;
+  color: #337ab7;
 }
 a.list-group-item-info .list-group-item-heading,
 button.list-group-item-info .list-group-item-heading {
@@ -5371,7 +5371,7 @@ a.list-group-item-info:hover,
 button.list-group-item-info:hover,
 a.list-group-item-info:focus,
 button.list-group-item-info:focus {
-  color: #3a87ad;
+  color: #337ab7;
   background-color: #c4e3f3;
 }
 a.list-group-item-info.active,
@@ -5381,8 +5381,8 @@ button.list-group-item-info.active:hover,
 a.list-group-item-info.active:focus,
 button.list-group-item-info.active:focus {
   color: #fff;
-  background-color: #3a87ad;
-  border-color: #3a87ad;
+  background-color: #337ab7;
+  border-color: #337ab7;
 }
 .list-group-item-warning {
   color: #c09853;
@@ -5744,16 +5744,16 @@ button.list-group-item-danger.active:focus {
   border-color: #dddddd;
 }
 .panel-info > .panel-heading {
-  color: #3a87ad;
-  background-color: #033c73;
+  color: #337ab7;
+  background-color: #337ab7;
   border-color: #dddddd;
 }
 .panel-info > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #dddddd;
 }
 .panel-info > .panel-heading .badge {
-  color: #033c73;
-  background-color: #3a87ad;
+  color: #337ab7;
+  background-color: #337ab7;
 }
 .panel-info > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #dddddd;
@@ -6785,7 +6785,7 @@ button.close {
 }
 .navbar-inverse .badge {
   background-color: #fff;
-  color: #033c73;
+  color: #337ab7;
 }
 .navbar .navbar-nav > li > a,
 .navbar-brand {
@@ -6856,10 +6856,10 @@ button.close {
   border-bottom: 1px solid #59822c;
 }
 .btn-info {
-  background-image: -webkit-linear-gradient(#04519b, #033c73 60%, #02325f);
-  background-image: -o-linear-gradient(#04519b, #033c73 60%, #02325f);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#04519b), color-stop(60%, #033c73), to(#02325f));
-  background-image: linear-gradient(#04519b, #033c73 60%, #02325f);
+  background-image: -webkit-linear-gradient(#04519b, #337ab7 60%, #02325f);
+  background-image: -o-linear-gradient(#04519b, #337ab7 60%, #02325f);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#04519b), color-stop(60%, #337ab7), to(#02325f));
+  background-image: linear-gradient(#04519b, #337ab7 60%, #02325f);
   background-repeat: no-repeat;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff04519b', endColorstr='#ff02325f', GradientType=0);
   -webkit-filter: none;

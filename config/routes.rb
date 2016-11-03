@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :companies
   resources :invoices
   resources :drivers
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :vehicles
   resources :delivery_trucks
 
@@ -41,6 +41,6 @@ Rails.application.routes.draw do
 
   get 'drivers' => 'drivers#index'
   
-  get 'bol' => 'invoices#_bol_form'
+  get 'bol' => 'invoices#_bol'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
