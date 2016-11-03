@@ -11,37 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :client %>
-    <%= f.text_field :client %>
+  <div class="form-group">
+    <%= f.text_field :client, placeholder: "Client", autofocus: true, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :truck_id %>
-    <%= f.number_field :truck_id %>
+  <div class="form-group">
+    <%= f.number_field :truck_id, placeholder: "Truck ID", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :userId %>
-    <%= f.number_field :userId %>
+  <div class="form-group">
+    <%= f.number_field :userId, placeholder: "User ID", class: "form-control"%>
   </div>
 
-  <div class="field">
-    <%= f.label :total %>
-    <%= f.text_field :total %>
+  <div class="form-group">
+    <%= f.text_field :total, placeholder: "Total", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :invoice_items %>
-    <%= f.text_area :invoice_items %>
+  <div class="form-group">
+    <%= f.text_area :invoice_items, placeholder: "Invoice Items", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :dispatchdate %>
-    <%= f.text_field :dispatchdate %>
+  <div class="form-group">
+    <%= f.text_field :dispatchdate, placeholder: "Dispatch Date", class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.buttom "Submit" %>
   </div>
 <% end %>

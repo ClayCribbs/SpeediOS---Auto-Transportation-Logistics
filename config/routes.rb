@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   get 'invoices' => 'invoice#index'
 
+  get 'invoice' => 'invoice#invoice_form'
+
   get 'companies' => 'company#index'
   
   root 'welcome#index'
