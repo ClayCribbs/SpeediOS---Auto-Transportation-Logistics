@@ -156,9 +156,9 @@
                     <tr>
                       <td><%= link_to truck.name, truck %></td>
                     <% if truck.currentState == "Dispatched" %>
-                      <td><%= "Dispatched" %></td>
+                      <td><%= link_to "Invoice/BOL", bol_path(:order_id => Order.where(["truck_id = ?", truck.id]).last) %></td>
                       <td><i><%= @newWeight %></i></td>
-                      <td><%= link_to "Dispatch Form", truck %></td>
+                      <td><%= render 'truckform', delivery_truck: truck, :locals => { :f => truck } %></td>
                     <% else %>
                     <td><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
                     <span class="button">
