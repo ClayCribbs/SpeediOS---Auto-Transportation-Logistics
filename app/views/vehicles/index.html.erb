@@ -1,89 +1,80 @@
 
-<body  class= "bioRhyme">
 <p id="notice"><%= notice %></p>
 <div class="row">
-<div class="col-sm-10 col-sm-offset-1 padleft">
-<h1>Vehicles Ready For Dispatch</h1>
-</div>
-</div>
-
-
-<div class="container">
-  <div class="row-fluid">
-    <div class="well">
-
-      <ul class="nav nav-tabs">
-        <li class="active"> <a href="#home" data-target="#home" data-toggle="tab">Suggested Contracts</a></li>
-        <li><a href="#maptab" data-target="#routetab" data-toggle="tab">List All Contracts</a></li>
-        <li><a href="#cargo" data-target="#cargo" data-toggle="tab">Contracts By Location</a></li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="home"> 
-          <table class="table-striped sortable">
-            <thead>
-              <tr><th>Car Name</th>
-              <th>Origin</th>
-              <th>Destination</th>
-              <th>Miles</th>
-              <th>Bid</th></tr>
-            </thead>
-            <tbody>
-              <% @vehicles.each do |vehicle| %>
-              <% if vehicle.truck_id == 'nil' or vehicle.truck_id.empty? %>
-                <tr>
-                  <td><%= link_to "#{vehicle.yearManufactured} #{vehicle.make} #{vehicle.model}".split.map(&:capitalize).join(' '), vehicle %></td>
-                  <td><%=vehicle.origin%></td>
-                  <td><%=vehicle.destination%></td>
-                  <td><%=vehicle.distance%></td>
-                  <td>$<%=vehicle.distance%></td>
-                <% end %>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="tab-pane" id="routetab"> 
- 
-          <table class="table-striped sortable">
-            <thead>
-              <tr><th>Car Name</th>
-              <th>Origin</th>
-              <th>Destination</th>
-              <th>Miles</th>
-              <th>Bid</th></tr>
-            </thead>
-            <tbody>
-              <% @vehicles.each do |vehicle| %>
-                <tr>
-                  <td><%= link_to "#{vehicle.yearManufactured} #{vehicle.make} #{vehicle.model}".split.map(&:capitalize).join(' '), vehicle %></td>
-                  <td><%=vehicle.origin%></td>
-                  <td><%=vehicle.destination%></td>
-                  <td><%=vehicle.distance%></td>
-                  <td>$<%=vehicle.distance%></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-
-      <div class="tab-pane" id="cargo">  
-      </div>
-    </div>
-</div>
-<div class="row" margin-top="0px">
-  <div class="col-sm-12">
-    <div class="well">
-      <i> 
+  <div class="col-sm-2">
+    <ul class="nav navbar-side">
+      <li class="active"> <a href="#home" data-target="#home" data-toggle="tab">Suggested Contracts</a></li>
+      <li><a href="#maptab" data-target="#routetab" data-toggle="tab">List All Contracts</a></li>
+      <li><a href="#cargo" data-target="#cargo" data-toggle="tab">Contracts By Location</a></li>
+      <br><br>
+      <li><i> 
         <%= link_to(image_tag("carHauler-btn.png", class: 'image-responsive'), new_vehicle_path,  :method => :get) %>
-        <br>
-        <%= link_to 'New Vehicles', new_vehicle_path %>
-      </i>
+        <%= link_to 'New Vehicle', new_vehicle_path %>
+      </i></li>
+    </ul>
+  </div>
+  <div class="col-sm-10">
+    <div class="tab-content">
+      <div class="tab-pane active" id="home"> 
+      <h3>Vehicle Orders</h3>
+        <table class="table-striped sortable autobox">
+          <thead>
+            <tr><th>Car Name</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Miles</th>
+            <th>Bid</th></tr>
+          </thead>
+          <tbody>
+            <% @vehicles.each do |vehicle| %>
+            <% if vehicle.truck_id == 'nil' or vehicle.truck_id.empty? %>
+              <tr>
+                <td><%= link_to "#{vehicle.yearManufactured} #{vehicle.make} #{vehicle.model}".split.map(&:capitalize).join(' '), vehicle %></td>
+                <td><%=vehicle.origin%></td>
+                <td><%=vehicle.destination%></td>
+                <td><%=vehicle.distance%></td>
+                <td>$<%=vehicle.distance%></td>
+              <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane" id="routetab"> 
+        <table class="table-striped sortable autobox">
+          <thead>
+            <tr><th>Car Name</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Miles</th>
+            <th>Bid</th></tr>
+          </thead>
+          <tbody>
+            <% @vehicles.each do |vehicle| %>
+              <tr>
+                <td><%= link_to "#{vehicle.yearManufactured} #{vehicle.make} #{vehicle.model}".split.map(&:capitalize).join(' '), vehicle %></td>
+                <td><%=vehicle.origin%></td>
+                <td><%=vehicle.destination%></td>
+                <td><%=vehicle.distance%></td>
+                <td>$<%=vehicle.distance%></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <div class="tab-pane" id="cargo">  
     </div>
   </div>
+    </div></div>
+  <br />
+  <br />
+  <div class="row" margin-top="0px">
+    <div class="col-sm-12">
+      
+    </div>
+  </div>
+
+
 </div>
-
-
-
 </body>
 

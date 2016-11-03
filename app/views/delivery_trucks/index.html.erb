@@ -1,14 +1,22 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
-  <div class="col-sm-10 col-sm-offset-1">
-    <div class="well">
-      <table class="table-striped sortable" width="100%">
+  <div class="col-sm-2">
+    <ul class="nav navbar-side">
+    <li>
+      <%= link_to(image_tag("carHauler-btn.png", class: 'image-responsive'), new_delivery_truck_path,  :method => :get) %> 
+      <%= link_to 'New Delivery Truck', new_delivery_truck_path %>
+    </li>
+    </ul>
+  </div>
+  <div class="col-sm-10">
+    <h3>Fleet Vehicles</h3>
+      <table class="table-striped sortable autobox" width="100%">
         <thead>
           <tr>
-            <th><h4>Delivery Truck</h4></th>
-            <th><h4>Status</h4></th>
-            <th><h4>Remaining Capacity</h4></th>
-            <th><h4>Action</h4></th>
+            <th>Delivery Truck</th>
+            <th>Status</th>
+            <th>Remaining Capacity</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -38,15 +46,6 @@
       </table>
     </div>
   </div>
-</div>
-<div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
-        <div class="well">
-            <%= link_to(image_tag("carHauler-btn.png", class: 'image-responsive'), new_delivery_truck_path,  :method => :get) %> <br>
-            <%= link_to 'New Delivery Truck', new_delivery_truck_path %>
-        </div>
-    </div>
-</div>
 <% @delivery_trucks.each do |truck|%>
   
   <!-- Modal -->
@@ -55,15 +54,15 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Pending Load Configuration</h4>
+          <h4 class="modal-title" id="myModalLabel">Pending Load Configuration
         </div>
         <div class="modal-body">
           <table class="table-striped sortable" width="100%">
             <thead>
-                <th width="30%"><h4>Vehicle</h4></th>
-                <th width="25%"><h4>Weight</h4></th>
-                <th width="30%"><h4>Action</h4></th>
-                <th width="15%"><h4>Confirm Vehicle</h4></th>
+                <th width="30%">Vehicle</th>
+                <th width="25%">Weight</th>
+                <th width="30%">Action</th>
+                <th width="15%">Confirm Vehicle</th>
             </thead>
             <tbody>  
               </tr>
@@ -94,6 +93,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>      
+
+    
 <% end %>
+</div>
