@@ -39,6 +39,7 @@
             <div class="panel-body">
               <p>
               <div>
+<<<<<<< HEAD:app/views/invoices/_bol.html.erb
                 <strong>Address: </strong> <%= Company.find(@vehicle.company_id).companyAddress %><br>
               </div>
                 <br>
@@ -49,6 +50,19 @@
               <div>
                 <strong>Phone: </strong>  <%= current_user.phone_number %>
               </div> 
+=======
+                Address- <%# address %><br>
+                Address-<%# more info %> <br>
+              </div>
+                <br>
+              <div>
+                Contact: sales manager <br>
+              </div>
+              <br>
+              <div>
+                Phone:  <%= @current_user_account.phone_number %>
+              </div>
+>>>>>>> kyle:app/views/invoices/_bol_form.html.erb
               </p>
             </div>
           </div>
@@ -59,6 +73,7 @@
               <h5>Destination: <a href="#">Client Name</a></h5>
             </div>
             <div class="panel-body">
+<<<<<<< HEAD:app/views/invoices/_bol.html.erb
             <p>
               <div>
                 <strong>Address: </strong> <%= Company.find(@vehicle.company_id).companyAddress %><br>
@@ -72,6 +87,20 @@
                 <strong>Phone: </strong>  <%= current_user.phone_number %>
               </div> 
               </p>
+=======
+              <div id= "address">
+                Address- <%# address %><br>
+                Address-<%# more info %> <br>
+              </div>
+                <br>
+                <div id= "contact">
+                Contact: <%= @current_user.name %><br>
+                </div>
+                <div id= "phone">
+                Phone:  <%= @current_user.phone_number %>
+                </div>
+              </div>
+>>>>>>> kyle:app/views/invoices/_bol_form.html.erb
             </div>
           </div>
         </div>
@@ -79,31 +108,57 @@
       <!-- / end client details section -->
       <table class="table table-bordered">
         <thead text= "black">
+<<<<<<< HEAD:app/views/invoices/_bol.html.erb
           <div id= "year">
             <th>
               <h5>Year </h5>
+=======
+          <tr>
+          <div id= "year">
+            <th>
+              <h4>Year <%= @vehicle.yearManufacurted %></h4>
+>>>>>>> kyle:app/views/invoices/_bol_form.html.erb
             </th>
           </div>
           <div>
             <th>
+<<<<<<< HEAD:app/views/invoices/_bol.html.erb
               <h5>Make / Model </h5>
+=======
+              <h4>Make / Model <%= @vehicle.make %> <%= vehicle.model %></h4>
+>>>>>>> kyle:app/views/invoices/_bol_form.html.erb
             </th>
           </div>
           <div>
             <th>
+<<<<<<< HEAD:app/views/invoices/_bol.html.erb
               <h5>Type </h5>
+=======
+              <h4>Type <%= @vehicle.type %></h4>
+>>>>>>> kyle:app/views/invoices/_bol_form.html.erb
             </th>
           </div>
           <div>
             <th>
+<<<<<<< HEAD:app/views/invoices/_bol.html.erb
               <h5>Color </h5>
+=======
+              <h4>Color <%= @vehicle.color %></h4>
+>>>>>>> kyle:app/views/invoices/_bol_form.html.erb
             </th>
           </div>
           <div>
               <th>
+<<<<<<< HEAD:app/views/invoices/_bol.html.erb
               <h5>VIN</h5>
             </th>
           </div>
+=======
+              <h4>VIN <%= @vehicle.vin %></h4>
+            </th>
+          </div>
+          </tr>
+>>>>>>> kyle:app/views/invoices/_bol_form.html.erb
         </thead>
         <tbody>
         <tr>

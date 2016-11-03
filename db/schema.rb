@@ -11,12 +11,15 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20161102193153) do
+<<<<<<< HEAD
 
   create_table "bill_of_ladings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "invoice_id"
   end
+=======
+>>>>>>> kyle
 
   create_table "companies", force: :cascade do |t|
     t.string   "companyName"
