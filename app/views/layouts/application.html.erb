@@ -84,14 +84,6 @@
           <%= link_to "Invoices", invoices_path, class: "nav navbar navbar-nav"%>
             </li>
 
-            <% if current_page?(bol_path)%>
-            <li class="active">
-          <%else%>
-            <li>
-          <%end%>
-          <%= link_to "Bill of Lading", bol_path, class: "nav navbar navbar-nav"%>
-            </li>
-
             <% if current_page?(contacts_path)%>
             <li class="active">
           <%else%>
