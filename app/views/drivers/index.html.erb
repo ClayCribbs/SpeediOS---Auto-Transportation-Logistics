@@ -1,65 +1,27 @@
-<script src="sorttable.js"></script>
-
-  <p id="notice"><%= notice %></p>
-    
-
-<head>
-<meta charset=utf-8>
-<title>A sortable table with scrollable body</title>
-  <script src="http://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
-  <style>
-    /* Appearance */
-    body, table { font-family: sans-serif; }
-    table { border-collapse: collapse; }
-    td, th { padding: 6px; }
-    th { background: #333; color: white; }
-    tbody tr:nth-child(odd) { background: #dfdfdf; }
-    table { border: 1px; }
-    
-    /* Scrollability of table */
-    table { width: 800px; } /* fixed width table */
-    thead tr { display: block; } /* makes it sizeable */
-    tbody { 
-      display: block; /* makes it sizeable */
-      height: 170px; /* height of scrollable area */
-      overflow: auto; /* scroll rather than overflow */
-      width: 100%; /* fill the box */
-    }
-    thead th { width: 245px; } /* fixed width for THs */
-    tbody td { width: 185px; } /* fixed width for TDs */
-    /* the tbody needs to be 16px less than the thead, for the scrollbar */
-    
-  </style>
-</head>
-<body>
-
-
-<div class="container">
-  <div class="row-fluid">
-    <div class="well">
-     <h1 content-align center>Drivers</h1>
-    <%= link_to new_driver_path, remote: true do %>
-    <button class="btn-default">
-      <i class="fa fa-tasks"></i> Add Driver
-    </button>
-    <% end %>
-    <div id="driver-form" style="display:none;"></div>
-    </div>
+<div class="row">
+  <div class="col-sm-2">
+    <ul class="nav navbar-side">
+      <li class="active"> <a href="#home" data-target="#home" data-toggle="tab">All Drivers</a></li>
+      <br><br>
+      <li><i> 
+        <%= link_to new_driver_path, remote: true do %>
+          <button class="btn-default">
+            <i class="fa fa-tasks"></i> Add Driver
+          </button>
+        <% end %>
+      </i></li>
+    </ul>
   </div>
-</div>
+    
 
 
-    <div class="col-sm-10 col-sm-offset-1">
-
-  <h1>A sortable table with scrollable body</h1>
+    <div class="col-sm-10">
+    <br />
+  <h3>A sortable table with scrollable body</h3>
   <table class="sortable">
     <thead><tr><th>Driver Name </th><th>Driver Email</th><th colspan="2"></th></tr></thead>
     <tbody id= "drivers">
-
       <%= render @drivers %>
-
-
-
     </tbody>
   </table>
 
