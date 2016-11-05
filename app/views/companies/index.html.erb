@@ -4,6 +4,7 @@
     <ul class="nav navbar-side">
         <li class="active nav navbar navbar-nav"> <a href="#home" data-target="#home" data-toggle="tab">Home</a></li>
         <li class="nav navbar navbar-nav"><a href="#cargo" data-target="#cargo" data-toggle="tab">Contracts</a></li>
+        <li class="nav navbar navbar-nav"><br /> <br /><%= link_to "New Company", new_company_path %></li>
     </ul>
   </div>
   <div class="col-sm-10">
@@ -26,6 +27,7 @@
                   <td><%= link_to 'Edit', edit_company_path(company) %><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
               <% end %>
+              <%= link_to "New Company", new_company_path %>
             </tbody>
           </table>
           <br />
