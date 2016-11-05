@@ -12,18 +12,7 @@ class WelcomeController < ApplicationController
   	@vehicles = Vehicle.order(:id)
     @destinations = Vehicle.select(:destination).order(:destination).distinct
     @deliveryTruckCount = @delivery_trucks.length
-    @delivery_trucks.each do |truck|
-      @count = 0
-      @newWeight = truck.weightCapacity.to_i
-      @vehicles.each do |vehicle| 
-        if vehicle.truck_id.to_i == truck.id.to_i 
-          @count += 1 
-          @newWeight -= vehicle.actualWeight.to_i 
-        end 
-      truck.update(currentWeight: @newWeight.to_i) 
-      truck.update(occupied_slots: @count) 
-      end 
-    end
+
 
     #Get distance if missing
     if @vehicles.any?
@@ -56,11 +45,18 @@ class WelcomeController < ApplicationController
     if @tableVehicles.any?
     @tableVehicleCount = @tableVehicles.length
   end
-
-    if params[:q]
-      page = params[:page] || 1
-      @results = GoogleCustomSearchApi.search(params[:q], page: page)
+ #Check for origin filter
+    if params[:origin]== nil
+      @tableVehicles = Vehicle.where(currentState: "Available")
+    else
+      @tableVehicles = Vehicle.where("origin LIKE ?", params[:origin])
     end
+    if @tableVehicles.any?
+    @tableVehicleCount = @tableVehicles.length
+  end
+
+
+
 
   end
 

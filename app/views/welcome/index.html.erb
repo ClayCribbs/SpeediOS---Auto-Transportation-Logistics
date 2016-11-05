@@ -100,13 +100,21 @@
         <div class="row">
           <div class="col-sm-12">
             <p><br />
-              <h3 style="display: inline;">Available Orders </h3><h2 style="display: inline;"><span style="display: inline;"class="badge"><%= @tableVehicleCount %></span></h2>
+              <h3 style="display: inline;">Available Orders </h3><h2 style="display: inline;"><span style="display: inline;"class="badge"><%= @tableVehicleCount %></span></h2> 
               <select id="changer" style="float: right;" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
                 <option selected disabled>Filter By Destination</option>
                 <option value="/">All Destinations</option>
                 <% @vehicles.each do |vehicle| %>
                 <% next unless vehicle.currentState == "Available" %>
                   <option value=<%= "/?destination=#{(vehicle.destination).to_s}"%>><%= vehicle.destination %></option>
+                <%end%>
+              </select></nobr>
+              <select id="changer" style="float: right;" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+                <option selected disabled>Filter By Origin</option>
+                <option value="/">All Origins</option>
+                <% @vehicles.each do |vehicle| %>
+                <% next unless vehicle.currentState == "Available" %>
+                  <option value=<%= "/?origin=#{(vehicle.origin).to_s}"%>><%= vehicle.origin %></option>
                 <%end%>
               </select></nobr>
             </p>
