@@ -1,19 +1,19 @@
 
 <p id="notice"><%= notice %></p>
 <div class="row">
-  <div class="col-sm-2">
+  <div class="col-sm-2 no-float">
     <ul class="nav navbar-side">
-      <li class="active"> <a href="#home" data-target="#home" data-toggle="tab">Suggested Contracts</a></li>
-      <li><a href="#maptab" data-target="#routetab" data-toggle="tab">List All Contracts</a></li>
-      <li><a href="#cargo" data-target="#cargo" data-toggle="tab">Contracts By Location</a></li>
+      <li class="active nav navbar navbar-nav"> <a href="#home" data-target="#home" data-toggle="tab">Suggested Contracts</a></li>
+      <li class="nav navbar navbar-nav"><a href="#maptab" data-target="#routetab" data-toggle="tab">List All Contracts</a></li>
+      <li class="nav navbar navbar-nav"><a href="#cargo" data-target="#cargo" data-toggle="tab">Contracts By Location</a></li>
       <br><br>
-      <li><i>
+      <li class="nav navbar navbar-nav" style="width: 85%; padding-left:10px"><i>
         <%= link_to(image_tag("carHauler-btn.png", class: 'img-responsive'), new_vehicle_path,  :method => :get) %>
         <%= link_to 'New Vehicle', new_vehicle_path %></i>
       </li>
     </ul>
   </div>
-  <div class="col-sm-10">
+  <div class="col-sm-10 no-float">
     <div class="tab-content">
       <div class="tab-pane active" id="home"> 
       <h3>Vehicle Orders</h3>

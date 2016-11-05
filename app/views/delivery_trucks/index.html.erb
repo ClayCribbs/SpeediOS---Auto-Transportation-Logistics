@@ -2,9 +2,9 @@
 <div class="row">
   <div class="col-sm-2">
     <ul class="nav navbar-side">
-    <li><i>
-      <%= link_to(image_tag("carHauler-btn.png", class: 'img-responsive'), new_delivery_truck_path,  :method => :get) %> 
-      <%= link_to 'New Delivery Truck', new_delivery_truck_path %></i>
+    <li class="active nav navbar navbar-nav" style="width: 85%; padding-left:10px">
+      <i style="padding-left: 15px;"><%= link_to(image_tag("carHauler-btn.png", class: 'img-responsive'), new_delivery_truck_path,  :method => :get) %> 
+      <%= link_to 'Add to Fleet', new_delivery_truck_path %></i>
     </li>
     </ul>
   </div>
@@ -32,9 +32,9 @@
               <% truck.update(currentWeight: @newWeight.to_i) %>
             <% end %>
             <tr>
-              <td><h5><%= link_to truck.name, truck %></h5></td>
-              <td><h5><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#"><span class="button"><% if @count > 0 %><%= @count %><%= " Vehicles Pending" %><% else %>Ready<%end%></span></a></h5></td>
-              <td><h5><%= @newWeight %></h5></td>
+              <td><%= link_to truck.name, truck %></td>
+              <td><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#"><span class="button"><% if @count > 0 %><%= @count %><%= " Vehicles Pending" %><% else %>Ready<%end%></span></a></td>
+              <td><%= @newWeight %></td>
               <td><select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
                 <option selected disabled>Load Vehicle</option>
                   <% @vehicles.each do |vehicle| %>
@@ -55,7 +55,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Pending Load Configuration
+          <h4 class="modal-title" id="myModalLabel">Pending Load Configuration</h4>
         </div>
         <div class="modal-body">
           <table class="table-striped sortable" width="100%">

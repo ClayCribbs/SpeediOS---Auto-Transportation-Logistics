@@ -24,9 +24,11 @@
   display: table;
   display: fixed;
   height: 100%;
-  width: 120px;
   padding-top: 50px;
   font-size: 1.0em;
+  border-right: solid 1px;
+  border-left: solid 1px;
+  border-color: #dddddd;
 }
 
 .modal-lg {
@@ -38,7 +40,7 @@
      body, table { font-family: sans-serif; }
      table { border-collapse: collapse;}
      td, th { padding: 3px;}
-     th { background: #337ab7; color: white; border-bottom: solid black 2px;}
+     th { background: #337ab7; color: white; border-bottom: solid black 1px;}
     
  
      
@@ -97,10 +99,7 @@ a {
 
 
 
-a:hover {
-  background: none;
-  color: #336699;
-}
+
 
 html {
   height: 100%;
@@ -127,7 +126,8 @@ body {
  }
 
 .navbartextpad {
-	padding-top: 16px;
+	padding-top: 9px;
+  padding-right: 6px;
 }
 
 a {
@@ -142,7 +142,7 @@ a {
   color: #337ab7 !important;
 }
 .wellnavtextpad {
-	padding-top: 5px;
+	padding-top: 5 px;
 }
 
 
@@ -185,7 +185,7 @@ a {
 
 
 .autobox {
-  border: solid 2px;
+  border: solid 1px;
   border-radius: 0px;
   padding: 15px;
   margin-top: 15px;
@@ -218,7 +218,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 .box-car {
   height: 250px;
-  border: solid 2px;
+  border: solid 1px;
   border-radius: 5px;
   padding: 15px;
   margin-top: 15px;
@@ -236,7 +236,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .box {
   height: 100%;
   width: auto;
-  border: solid 2px;
+  border: solid 1px;
   border-radius: 5px;
   padding: 15px;
   margin-top: 15px;
@@ -265,5 +265,13 @@ html {
 
 navbar {
   background: #337ab7
+}
+
+.navbar-side{
+    height : 100vh;
+}
+
+.navbar-side {
+  width: 100%;
 }
 
