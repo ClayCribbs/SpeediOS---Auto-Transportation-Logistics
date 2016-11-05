@@ -101,7 +101,7 @@
           <div class="col-sm-12">
             <p><br />
               <h3 style="display: inline;">Available Orders </h3><h2 style="display: inline;"><span style="display: inline;"class="badge"><%= @tableVehicleCount %></span></h2> 
-              <select id="changer" style="float: right;" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+              <select id="changer" style="float: right;width:20%;max-width:90%;margin-top: 20px;" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
                 <option selected disabled>Filter By Destination</option>
                 <option value="/">All Destinations</option>
                 <% @vehicles.each do |vehicle| %>
@@ -109,7 +109,7 @@
                   <option value=<%= "/?destination=#{URI.escape(vehicle.destination).to_s}"%>><%= vehicle.destination %></option>
                 <%end%>
               </select></nobr>
-              <select id="changer" style="float: right;" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+              <select id="changer" style="float: right;width:20%;max-width:90%;margin-top: 20px;" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
                 <option selected disabled>Filter By Origin</option>
                 <option value="/">All Origins</option>
                 <% @vehicles.each do |vehicle| %>

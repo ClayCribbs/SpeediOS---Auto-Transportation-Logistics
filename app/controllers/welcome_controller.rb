@@ -14,16 +14,7 @@ class WelcomeController < ApplicationController
     @deliveryTruckCount = @delivery_trucks.length
 
 
-    #Get distance if missing
-    if @vehicles.any?
-  	@vehicles.each do |vehicle|
-      if vehicle.distance == nil && vehicle.origin && vehicle.destination
-    	   directions = GoogleDirections.new(vehicle.origin, vehicle.destination) 
-         vehicle.update(distance: directions.distance_in_miles)
-      end
-  	end
-  end
-        #Check for carload truck / change truck
+    #Check for carload truck / change truck
     if params[:truck_id]== nil && params[:carId]== nil
     else
       if @vehicles.any?
