@@ -106,7 +106,7 @@
                 <option value="/">All Destinations</option>
                 <% @vehicles.each do |vehicle| %>
                 <% next unless vehicle.currentState == "Available" %>
-                  <option value=<%= "/?destination=#{(vehicle.destination).to_s}"%>><%= vehicle.destination %></option>
+                  <option value=<%= "/?destination=#{URI.escape(vehicle.destination).to_s}"%>><%= vehicle.destination %></option>
                 <%end%>
               </select></nobr>
               <select id="changer" style="float: right;" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
@@ -114,7 +114,7 @@
                 <option value="/">All Origins</option>
                 <% @vehicles.each do |vehicle| %>
                 <% next unless vehicle.currentState == "Available" %>
-                  <option value=<%= "/?origin=#{(vehicle.origin).to_s}"%>><%= vehicle.origin %></option>
+                  <option value=<%= "/?origin=#{URI.escape(vehicle.origin).to_s}"%>><%= vehicle.origin %></option>
                 <%end%>
               </select></nobr>
             </p>

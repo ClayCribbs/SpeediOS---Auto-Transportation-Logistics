@@ -37,23 +37,21 @@ class WelcomeController < ApplicationController
     end
 
     #Check for destination filter
-    if params[:destination]== nil
+    if params[:destination]== nil && params[:origin]== nil
       @tableVehicles = Vehicle.where(currentState: "Available")
-    else
+    elsif params[:origin] == nil 
       @tableVehicles = Vehicle.where("destination LIKE ?", params[:destination])
     end
-    if @tableVehicles.any?
-    @tableVehicleCount = @tableVehicles.length
-  end
+
  #Check for origin filter
-    if params[:origin]== nil
+    if params[:origin]== nil && params[:destination]== nil
       @tableVehicles = Vehicle.where(currentState: "Available")
-    else
+    elsif params[:destination] == nil
       @tableVehicles = Vehicle.where("origin LIKE ?", params[:origin])
     end
     if @tableVehicles.any?
     @tableVehicleCount = @tableVehicles.length
-  end
+    end
 
 
 
