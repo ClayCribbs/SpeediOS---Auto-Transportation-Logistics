@@ -12,24 +12,19 @@
       </i></li>
     </ul>
   </div>
-    
-
-
-    <div class="col-sm-10">
+  <div class="col-sm-10">
     <br />
-  <h3>Drivers</h3>
-  <table class="table-striped sortable autobox">
-    <thead>
-      <th>Driver Name </th>
-      <th>Driver Email</th>
-      <th>Edit / Delete </th>
-    </thead>
-    <tbody id= "drivers">
-      <%= render @drivers %>
-    </tbody>
-  </table>
-
-
-
-    </div>
-</body>
+    <h3>Drivers</h3>
+    <table class="table-striped sortable autobox" width="100%">
+      <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Edit / Delete</th>
+      </thead>
+      <tbody id= "drivers">
+        <%= render @drivers %>
+      </tbody>
+    </table>
+  </div>
+</div>
