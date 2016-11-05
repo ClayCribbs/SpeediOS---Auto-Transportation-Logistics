@@ -1,23 +1,10 @@
 
 <%= form_for(vehicle) do |f| %>
-  <% if vehicle.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
-
-      <ul>
-      <% vehicle.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   
-
-  <%= f.select :yearManufactured, (1990..(Date.today.year+1)).to_a, {}, :id => "years" %>
-  <%= f.select :make, "makes", {}, :id => "makes"%>
-  <%= f.select :model, "Model", {}, :id => "models"%>
-  <%= f.select :details, "Style", {}, :id => "styles" %>
+  <%= f.select :yearManufactured, (1990..(Date.today.year+1)).to_a, {}, :id => "years", :style => "float: left;" %>
+  <%= f.select :make, "makes", {}, :id => "makes", :style => "float: left;"%>
+  <%= f.select :model, "Model", {}, :id => "models", :style => "float: left;"%>
+  <%= f.select :details, "Style", {}, :id => "styles", :style => "float: left;" %>
 
   <div class="field-group">
     <%= f.collection_select(:company_id, Company.all, :id, :companyName, { :include_blank => "Company"}) %>
