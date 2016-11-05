@@ -24,8 +24,9 @@
                 <td><%= link_to company.companyName, company%></td>
                 <td><%= company.companyAddress %></td>
                 <td><%= company.companyCustomId %></td>
-                <td><%= link_to 'Edit', edit_company_path(company) %>
-                <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td> <i class= "fa fa-pencil"></i>
+                  <%= link_to 'Edit', edit_company_path(company) %>
+                <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }, class= "btn btn-danger" %><i class="fa fa-trash"></i></td>
               </tr>
             <% end %>
             </tbody>
