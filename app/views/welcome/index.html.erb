@@ -35,7 +35,7 @@
     <!-- Truck Modal -->
     <% @delivery_trucks.each do |truck| %>
               <div class="modal fade" id="myModal<%=truck.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -51,7 +51,7 @@
                         </thead>
                         <tbody>  
                           <% refreshVehicles %>
-                          <%= select_tag "drivers", options_from_collection_for_select(@drivers, "id", "driver_name"),:prompt => "Select Driver"%>
+                          
                           <% @vehicles.each do |vehicle|%>
                             <% if vehicle.truck_id.to_s == truck.id.to_s %>
                               <tr>
@@ -66,13 +66,15 @@
                                   <%= hidden_field_tag :dispatch_date, (time.month.to_s+"/"+time.day.to_s + "/" +time.year.to_s) %>
                                   <%= hidden_field_tag :order_id, (vehicle.truck_id.to_s+(time.year.to_s+time.month.to_s+time.day.to_s)).to_i %>
                                   <%= hidden_field_tag :truck_id, vehicle.truck_id.to_s %>
-                                  <td><%= submit_tag "Add to Cart", class: "btn btn-primary" %></td>
+                                  <td><%= submit_tag "Confirm Vehicle", class: "btn btn-primary" %></td>
                                 <% end %>
                               </tr>
                             <% end %>
                           <% end %>
                         </tbody>
                       </table>
+                      <br /> <div class="pull-right">Assign Driver : <%= select_tag "drivers", options_from_collection_for_select(@drivers, "id", "driver_name"),:prompt => "Select Driver"%></div>
+                      <br />
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel Order</button>
@@ -184,7 +186,7 @@
             <% @delivery_trucks.each do |truck|%>
               <!-- Modal -->
               <div class="modal fade" id="myModal<%=truck.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -215,7 +217,7 @@
                                   <%= hidden_field_tag :dispatch_date, (time.month.to_s+"/"+time.day.to_s + "/" +time.year.to_s) %>
                                   <%= hidden_field_tag :order_id, (vehicle.truck_id.to_s+(time.year.to_s+time.month.to_s+time.day.to_s)).to_i %>
                                   <%= hidden_field_tag :truck_id, vehicle.truck_id.to_s %>
-                                  <td><%= submit_tag "Add to Cart", class: "btn btn-primary" %></td>
+                                  <td><%= submit_tag "Confirm Vehicle", class: "btn btn-primary" %></td>
                                 <% end %>
                               </tr>
                             <% end %>
@@ -311,7 +313,7 @@
         </div>
         <% @orders.each do |order| %>
           <div class="modal fade" id="myModal<%=order.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog modal-lg modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

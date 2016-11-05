@@ -9,31 +9,27 @@
     <div class="tab-content">
       <div class="tab-pane active" id="home">
         <div class="col-md-10">
-        <h3>Order History</h3>
+          <h3>Companies</h3>
           <table class="table-striped sortable autobox" width="100%">
             <thead>
-              <tr>
                 <th>Company Name</th>
                 <th>Address</th>
                 <th>Custom ID</th>
-                <th>Edit/Destory</th>
-              </tr>
+                <th>Edit/Destroy</th>
             </thead>
             <tbody>
-            <% @companies.each do |company| %>
-              <tr>
-                <td><%= link_to company.companyName, company%></td>
-                <td><%= company.companyAddress %></td>
-                <td><%= company.companyCustomId %></td>
-                <td><%= link_to 'Edit', edit_company_path(company) %>
-                <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </tr>
-            <% end %>
+              <% @companies.each do |company| %>
+                <tr>
+                  <td><%= link_to company.companyName, company%></td>
+                  <td><%= company.companyAddress %></td>
+                  <td><%= company.companyCustomId %></td>
+                  <td><%= link_to 'Edit', edit_company_path(company) %><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
             </tbody>
           </table>
           <br />
         </div>
-    
         </div>
         <div class="tab-pane" id="routetab"> 
           <div class="col-md-6">
