@@ -31,7 +31,7 @@ class WelcomeController < ApplicationController
     if params[:destination]== nil && params[:origin]== nil
       @tableVehicles = Vehicle.where(currentState: "Available")
     elsif params[:origin] == nil 
-      @tableVehicles = Vehicle.where("destination LIKE ?", params[:destination])
+      @tableVehicles = Vehicle.where("destination LIKE ?", params[:destination], currentState: "Available")
     end
 
  #Check for origin filter

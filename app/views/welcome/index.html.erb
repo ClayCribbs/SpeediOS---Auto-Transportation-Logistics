@@ -46,7 +46,7 @@
                         </thead>
                         <tbody>     
                           <% @vehicles.each do |vehicle|%>
-                            <% if vehicle.truck_id.to_s == truck.id.to_s %>
+                            <% if vehicle.truck_id.to_s == truck.id.to_s && vehicle.currentState != "Dispatched"%>
                                 <td><%= link_to vehicle.name, vehicle %></h5></td>
                                 <td><%= vehicle.actualWeight %></h5></td>
                                 <td><%= render 'form', vehicle: vehicle %></td>
@@ -78,7 +78,7 @@
               <% @newWeight = truck.weightCapacity.to_i %>
               <% @count = 0 %>
               <% @vehicles.each do |vehicle| %>
-                <% if vehicle.truck_id.to_i == truck.id.to_i %>
+                <% if vehicle.truck_id.to_i == truck.id.to_i && vehicle.currentState != "Dispatched" %>
                   <% @count += 1 %>
                   <% @newWeight -= vehicle.actualWeight.to_i %>
                 <% end %>
@@ -146,10 +146,10 @@
                 </thead>
                 <tbody>
                   <% @delivery_trucks.each do |truck| %>
-                    <% @newWeight = truck.weightCapacity.to_i %>
+                    <% @newWeight = truck.weightCapacity.to_i%>
                     <% @count = 0 %>
                     <% @vehicles.each do |vehicle| %>
-                      <% if vehicle.truck_id.to_i == truck.id.to_i %>
+                      <% if vehicle.truck_id.to_i == truck.id.to_i && vehicle.currentState != "Dispatched"%>
                         <% @count += 1 %>
                         <% @newWeight -= vehicle.actualWeight.to_i %>
                       <% end %>
@@ -162,12 +162,11 @@
                       <td><i><%= @newWeight %></i></td>
                       <td><%= render 'truckform', delivery_truck: truck, :locals => { :f => truck } %></td>
                     <% else %>
-                    <td><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
-                    <span class="button">
-                      <% if @count > 0 %>
+                    <td><% if @count > 0 %>
+                    <a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
+                      <span class="button">
                         <%= @count %><%= " Vehicles Pending" %>
-                      <% else %>Ready
-                      </span></a></td><% end %>
+                      </span></a><% else %>Ready</td><% end %>
                     <td><%= @newWeight %></td>
                     <td><%= render 'truckform', delivery_truck: truck, :locals => { :f => truck } %></td>
                   <% end %>
@@ -202,7 +201,7 @@
                         </thead>
                         <tbody>  
                           <% @vehicles.each do |vehicle|%>
-                            <% if vehicle.truck_id.to_s == truck.id.to_s %>
+                            <% if vehicle.truck_id.to_s == truck.id.to_s && vehicle.currentState != "Dispatched"%>
                               <tr>
                                 <td><%= link_to vehicle.name, vehicle %></h5></td>
                                 <td><%= vehicle.actualWeight %></h5></td>
@@ -246,7 +245,7 @@
                   <% @newWeight = truck.weightCapacity.to_i %>
                   <% @count = 0 %>
                   <% @vehicles.each do |vehicle| %>
-                    <% if vehicle.truck_id.to_i == truck.id.to_i %>
+                    <% if vehicle.truck_id.to_i == truck.id.to_i && vehicle.currentState != "Dispatched" %>
                       <% @count += 1 %>
                       <% @newWeight -= vehicle.actualWeight.to_i %>
                     <% end %>
@@ -259,12 +258,11 @@
                       <td><i><%= @newWeight %></i></td>
                       <td><%= link_to "Dispatch Form", truck %></td>
                     <% else %>
-                    <td><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
-                    <span class="button">
-                      <% if @count > 0 %>
+                    <td><% if @count > 0 %>
+                    <a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
+                      <span class="button">
                         <%= @count %><%= " Vehicles Pending" %>
-                      <% else %>Ready
-                      </span></a></td><% end %>
+                      </span></a><% else %>Ready</td><% end %>
                     <td><%= @newWeight %></td>
                     <td><%= render 'truckform', delivery_truck: truck, :locals => { :f => truck } %></td>
                     <% end %>
