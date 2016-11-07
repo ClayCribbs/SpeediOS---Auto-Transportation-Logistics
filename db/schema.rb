@@ -12,12 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20161102193153) do
 
-  create_table "bill_of_ladings", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "invoice_id"
-  end
-
   create_table "companies", force: :cascade do |t|
     t.string   "companyName"
     t.string   "companyAddress"

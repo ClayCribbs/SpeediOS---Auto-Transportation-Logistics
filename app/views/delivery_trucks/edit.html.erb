@@ -3,4 +3,6 @@
 <%= render 'form', delivery_truck: @delivery_truck %>
 
 <%= link_to 'Show', @delivery_truck %> |
-<%= link_to 'Back', delivery_trucks_path %>
+<i class= "btn btn-primary"><%= link_to 'Show', @delivery_truck %></i>
+<%= link_to 'Back', delivery_trucks_path %> |
+<i class= "btn btn-primary"><%= link_to 'Back', 'javascript:history.go(-1);' %></i>
