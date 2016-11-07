@@ -6,7 +6,7 @@
       <li class="nav navbar navbar-nav"><a data-target="#fleettab" data-toggle="tab">My Fleet</a></li>
       <li class="nav navbar navbar-nav"><a data-target="#invoicing" data-toggle="tab">Invoicing</a></li>
       
-      <li class="nav navbar navbar-nav"><br /><br /><br /><br /><div style="padding-left:15px;">Pending Orders</div>
+      <li class="nav navbar navbar-nav"><br /><br /><br /><br /><div style="padding-left: 15px; padding-right: 15px;"><strong>Pending Orders</strong></div>
         <ul style="list-style-type: none;list-style-position:inside;margin:0;padding:0;">
           <% if @delivery_trucks.any? %>
             <% @delivery_trucks.each do |truck| %>
@@ -14,8 +14,8 @@
               <%else%>
                 <% if truck.occupied_slots > 0 && truck.currentState.to_s == "Available" %>
                   <br />
-                    <li class="nav navbar navbar-nav"><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
-                        <span class="button"><h6 style="margin-top: 0px; margin-bottom: 0px;"><%= truck.name %></h6></span></a></li>
+                    <li><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
+                        <span class="button nav navbar navbar-nav"><p style=" padding-left: 15px; padding-right: 15px; margin-top: 5px; font-size: 80%; margin-bottom: 5px;"><%= truck.name %></p></span></a></li>
                 <%end%>
               <%end%>
             <%end%>
@@ -31,23 +31,29 @@
     <% @delivery_trucks.each do |truck| %>
               <div class="modal fade" id="myModal<%=truck.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content" >
+                  <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                       <h4 class="modal-title" id="myModalLabel">Pending Load Configuration</h4>
                     </div>
                     <div class="modal-body">
-                      <table class="table-striped sortable autobox" width="100%" id="order_table">
+                      <table class="table-striped sortable autobox" width="100%">
                         <thead>
-                          <th width="30%">Vehicle</h5></th>
-                          <th width="25%">Weight</h5></th>
-                          <th width="30%">Action</h5></th>
-                          <th width="15%">Confirm Vehicle</h5></th>
+                          <th>Vehicle</th>
+                          <th>Origin</th>
+                          <th>Destination</th>
+                          <th>Weight</th>
+                          <th>Action</th>
+                          <th>Confirm Vehicle</th>
                         </thead>
-                        <tbody>     
+                        <tbody>  
+
                           <% @vehicles.each do |vehicle|%>
                             <% if vehicle.truck_id.to_s == truck.id.to_s && vehicle.currentState != "Dispatched"%>
+                                <tr>   
                                 <td><%= link_to vehicle.name, vehicle %></h5></td>
+                                <td><%= vehicle.origin %></td>
+                                <td><%= vehicle.destination %></td>
                                 <td><%= vehicle.actualWeight %></h5></td>
                                 <td><%= render 'form', vehicle: vehicle %></td>
                                 <% time = Time.new %>
@@ -92,7 +98,7 @@
         <div class="row">
           <div class="col-sm-12">
             <p><br />
-              <h3 style="display: inline;">Available Orders </h3><h2 style="display: inline;"><span style="display: inline; padding-left: 12px;" class="badge"><%= @tableVehicleCount %></span></h2> 
+              <h3 style="display: inline;">Available Orders </h3><h2 style="display: inline;"><span style="display: inline;" class="badge"><%= @tableVehicleCount %></span></h2> 
               <select id="changer" style="float: right;width:20%;max-width:90%;margin-top: 20px;" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
                 <option selected disabled>Filter By Destination</option>
                 <option value="/">All Destinations</option>
@@ -119,7 +125,7 @@
                   <th width="20%">Pick Up With</th>
               </thead>
               <tbody>
-                <%@tableVehicles.each do |vehicle|%>
+                <% @tableVehicles.each do |vehicle| %>
                 <% next unless vehicle.currentState == "Available" %>
                   <tr>
                     <td class="padleft" width="20%"><%= link_to vehicle.name, vehicle %></h5></td>
@@ -182,32 +188,38 @@
       <div class="tab-pane" id="fleettab"> 
         <div class="row">
           <div class="col-sm-12">
-            <% @delivery_trucks.each do |truck|%>
-              <!-- Modal -->
+          <% @delivery_trucks.each do |truck| %>
+
               <div class="modal fade" id="myModal<%=truck.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content">
+                  <div class="modal-content" >
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                       <h4 class="modal-title" id="myModalLabel">Pending Load Configuration</h4>
                     </div>
                     <div class="modal-body">
-                      <table class="table-striped sortable autobox" width="100%">
+                      <table class="table-striped sortable autobox" width="100%" id="order_table">
                         <thead>
-                            <th width="30%">Vehicle</h5></th>
-                            <th width="25%">Weight</h5></th>
-                            <th width="30%">Action</h5></th>
-                            <th width="15%">Confirm Vehicle</h5></th>
+                          <th>Vehicle</th>
+                          <th>Origin</th>
+                          <th>Destination</th>
+                          <th>Weight</th>
+                          <th>Action</th>
+                          <th>Confirm Vehicle</th>
                         </thead>
                         <tbody>  
+
                           <% @vehicles.each do |vehicle|%>
                             <% if vehicle.truck_id.to_s == truck.id.to_s && vehicle.currentState != "Dispatched"%>
-                              <tr>
+                                <tr>   
                                 <td><%= link_to vehicle.name, vehicle %></h5></td>
+                                <td><%= vehicle.origin %></td>
+                                <td><%= vehicle.destination %></td>
                                 <td><%= vehicle.actualWeight %></h5></td>
                                 <td><%= render 'form', vehicle: vehicle %></td>
                                 <% time = Time.new %>
-                                 <%= form_tag add_to_cart_path, :remote => true do %>
+                                <!-- dont miss this do here -->
+                                <%= form_tag add_to_cart_path, :remote => true do %>
                                   <%= hidden_field_tag :vehicle_id, vehicle.id %>
                                   <%= hidden_field_tag :bid_total, vehicle.distance.to_i %>
                                   <%= hidden_field_tag :dispatch_date, (time.month.to_s+"/"+time.day.to_s + "/" +time.year.to_s) %>
@@ -220,6 +232,8 @@
                           <% end %>
                         </tbody>
                       </table>
+                      <br /> <div class="pull-right">Assign Driver : <%= select_tag "drivers", options_from_collection_for_select(@drivers, "id", "driver_name"),:prompt => "Select Driver"%></div>
+                      <br />
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel Order</button>
@@ -228,6 +242,8 @@
                   </div>                  
                 </div>
               </div>
+              
+
             <% end %>
           </div>
         </div>
@@ -346,3 +362,4 @@
     </div>
   </div>
 </div>
+

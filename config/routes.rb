@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :vehicles
   resources :delivery_trucks
 
+  get 'splash' => 'welcome#splash'
+
   post 'add_to_cart' => 'cart#add_to_cart'
 
   get 'consolepage' => 'welcome#consolepage'
