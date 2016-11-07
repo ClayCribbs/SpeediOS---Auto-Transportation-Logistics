@@ -5,10 +5,12 @@
 		<div class="well">	
 			<h1 class="centerfy">New Vehicle</h1>
 			<br />
-			<%= render 'form', vehicle: @vehicle %>
+			<%= render 'form', vehicle: @vehicle %> <br>
+			<i class = "btn btn-primary">
+<%= link_to 'Back', vehicles_path %></i>
 		</div>
 	</div>
 
 </div>
-<%= link_to 'Back', vehicles_path %>
+
 
