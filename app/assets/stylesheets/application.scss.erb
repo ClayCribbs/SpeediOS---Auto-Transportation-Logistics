@@ -46,10 +46,11 @@
      
      /* Scrollability of table */
    table { width: 100%; } /* fixed width table */
-     thead tr { width: 100%; } /* makes it sizeable */
+     thead tr { width: 100%; display:block} /* makes it sizeable */
      tbody { 
        max-height: 350px; /* height of scrollable area */
        overflow: scroll;
+       display:block;
        padding: 1px; /* scroll rather than overflow */
       width: 100%; /* fill the box */
      }
