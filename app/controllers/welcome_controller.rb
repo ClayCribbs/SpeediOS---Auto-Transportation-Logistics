@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:show]
+  before_filter :authenticate_user!, except: [:show, :splash]
 
 
   def index
@@ -43,10 +43,11 @@ class WelcomeController < ApplicationController
     if @tableVehicles.any?
     @tableVehicleCount = @tableVehicles.length
     end
+  end
 
-
-
-
+  def _truckmodal
+    @truck = Truck.where(params[:truck_id])
+    @vehicles = Vehicle.all
   end
 
   def consolepage

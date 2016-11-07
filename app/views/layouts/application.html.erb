@@ -25,11 +25,14 @@
     </script>
 	</head>
 
-  <body onScroll="document.cookie='ypos=' + window.pageYOffset" onLoad="window.scrollTo(0,readCookie('ypos'))" class="bioRhyme" style="min-height: 1200px;">
+  <% if current_page?('/splash') %>
+  <% else %>
+
+  <body class="bioRhyme" style="min-height: 1200px;">
   
 
-  <div class="container">
-			<div class="jumbotron jumbotron-fluid" height:"200"></div>
+<div class="container">
+		 	<div class="jumbotron jumbotron-fluid" height:"200"></div>
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
@@ -118,13 +121,39 @@
 	  </div><!-- /.container-fluid -->
 	</nav>
 
-
-
+<% end %>
     <%= yield %>
     </div>
 
 
 
   </body>
+  <footer>
+  <br /> <br />
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#about">About</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#services">Services</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </html>
 

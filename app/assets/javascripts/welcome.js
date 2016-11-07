@@ -4,7 +4,8 @@ function loadTables() {
 	setTimeout(function() {
 		$('#contracts').load("dashboard #contracts")
 		$('#widget').load("dashboard #widget")
-
-	},  400);  
+		$('#order-table').load()
+	},  500);  
 }
+
 
