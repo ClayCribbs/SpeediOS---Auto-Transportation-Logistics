@@ -10,7 +10,6 @@ class WelcomeController < ApplicationController
     @orders = Order.order(:id)
   	@delivery_trucks = DeliveryTruck.order(:id)
   	@vehicles = Vehicle.order(:id)
-    @destinations = Vehicle.select(:destination).order(:destination).distinct
     @deliveryTruckCount = @delivery_trucks.length
     @pendingcount = 0
 
@@ -29,16 +28,16 @@ class WelcomeController < ApplicationController
 
     #Check for destination filter
     if params[:destination]== nil && params[:origin]== nil
-      @tableVehicles = Vehicle.where(currentState: "Available")
+      @tableVehicles = @vehicles.where(currentState: "Available")
     elsif params[:origin] == nil 
-      @tableVehicles = Vehicle.where("destination LIKE ?", params[:destination], currentState: "Available")
+      @tableVehicles = @vehicles.where("destination LIKE ?", params[:destination], currentState: "Available")
     end
 
  #Check for origin filter
     if params[:origin]== nil && params[:destination]== nil
-      @tableVehicles = Vehicle.where(currentState: "Available")
+      @tableVehicles = @vehicles.where(currentState: "Available")
     elsif params[:destination] == nil
-      @tableVehicles = Vehicle.where("origin LIKE ?", params[:origin])
+      @tableVehicles = @vehicles.where("origin LIKE ?", params[:origin])
     end
     if @tableVehicles.any?
     @tableVehicleCount = @tableVehicles.length

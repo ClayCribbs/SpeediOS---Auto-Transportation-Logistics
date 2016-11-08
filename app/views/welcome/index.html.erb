@@ -5,7 +5,7 @@
       <li class="nav navbar navbar-nav"><a data-target="#fleettab" data-toggle="tab">My Fleet</a></li>
       <li class="nav navbar navbar-nav"><a data-target="#invoicing" data-toggle="tab">Invoicing</a></li>
       
-      <li class="nav navbar navbar-nav"><br /><br /><br /><br /><div style="padding-left: 15px; padding-right: 15px;"><strong>Pending Orders</strong></div>
+      <li class="nav navbar navbar-nav" id="widget2"><br /><br /><br /><br /><div style="padding-left: 15px; padding-right: 15px;"><strong>Pending Orders</strong></div>
         <ul style="list-style-type: none;list-style-position:inside;margin:0;padding:0;">
           <% if @delivery_trucks.any? %>
             <% @delivery_trucks.each do |truck| %>
