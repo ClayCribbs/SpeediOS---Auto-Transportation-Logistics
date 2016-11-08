@@ -12,7 +12,7 @@ class WelcomeController < ApplicationController
   	@vehicles = Vehicle.order(:id)
     @destinations = Vehicle.select(:destination).order(:destination).distinct
     @deliveryTruckCount = @delivery_trucks.length
-
+    @pendingcount = 0
 
     #Check for carload truck / change truck
     if params[:truck_id]== nil && params[:carId]== nil
