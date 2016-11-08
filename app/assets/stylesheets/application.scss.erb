@@ -20,7 +20,9 @@
 @import "bootstrap";
 @import "font-awesome";
 
-
+.container {
+  opacity: 1 !important;
+}
 .partial {
   width:"200px";
 }
@@ -81,7 +83,7 @@
  }
 
 .container {
- 	background: rgba(255,255,255,0.7);
+ 	background: rgba(255,255,255,1);
 
  }
 
@@ -111,12 +113,12 @@ html {
 }
 body {
   min-height: 100%;
+  background: steelblue;
 }
 
 .jumbotron {
-  background: url(<%= asset_path 'USROAD2.jpg'%>) no-repeat center center;
-  background-size: cover;
-  height: 250px;
+  background: url(https://s3-us-west-2.amazonaws.com/truckdemotest/assets/images/testjumbo3.jpg) no-repeat center center;
+  height: 275px;
   -moz-background-size: cover;
   -webkit-background-size: cover;
   -o-background-size: cover;
