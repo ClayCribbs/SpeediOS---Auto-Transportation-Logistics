@@ -1,9 +1,7 @@
 class DriversController < ApplicationController
-  before_action :set_driver, only: [:edit, :update, :destroy]
+  before_action :set_driver, only: [:edit, :update, :destroy, :show]
   before_action :all_drivers, only: [:index, :update, :create, :destroy]
   before_filter :authenticate_user!, except: [:show]
-def ajax
-end
 
 
   # GET /drivers/new
@@ -11,14 +9,31 @@ end
     @driver = Driver.new
   end
 
+  def show
+    set_driver
+  end
+
   # GET /drivers/1/edit
   def edit
+  end
+
+  def go_back
+    redirect_to :drivers
   end
 
   # POST /drivers
   # POST /drivers.json
   def create
     @driver = Driver.create(driver_params)
+    respond_to do |format|
+      if @driver.save
+        format.html { redirect_to @driver, notice: 'Driver was successfully created.' }
+        format.json { render :show, status: :created, location: @driver }
+      else
+        format.html { render :new }
+        format.json { render json: @driver.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /drivers/1
