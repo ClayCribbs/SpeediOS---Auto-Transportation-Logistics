@@ -20,6 +20,17 @@ class InvoicesController < ApplicationController
     @vehicle = Vehicle.where(params[:vehicle_id])
   end
 
+  def _invoice_form
+    @order = Order.find(params[:order_id])
+    @user = User.where(params[:userId])
+    @vehicle = Vehicle.where(params[:vehicle_id])
+  end
+
+  def documents
+    @order = Order.find(params[:order_id])
+    @user = User.where(params[:userId])
+    @vehicle = Vehicle.where(params[:vehicle_id])
+  end
 
   # GET /invoices/new
   def new

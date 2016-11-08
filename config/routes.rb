@@ -28,8 +28,6 @@ Rails.application.routes.draw do
   get 'invoice' => 'invoice#invoice_form'
 
   get 'companies' => 'company#index'
-  
-  root 'welcome#index'
 
   get 'contacts' => 'welcome#about'
 
@@ -44,7 +42,14 @@ Rails.application.routes.draw do
   get 'vehicles' => 'vehicles#index'
 
   get 'drivers' => 'drivers#index'
+
+  get 'documents' => 'invoices#documents'
+
+  get 'invoice_form' => 'invoices#_invoice_form'
   
   get 'bol' => 'invoices#_bol'
+
+  root 'welcome#splash'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

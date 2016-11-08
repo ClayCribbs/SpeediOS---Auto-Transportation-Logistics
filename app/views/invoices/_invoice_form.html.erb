@@ -1,7 +1,27 @@
-    <div class="container">
+
+<ul class="nav nav-tabs">
+  <% @order.order_items.each do |k,v| %>
+    <li><a data-target="#<%= Vehicle.find(k).make %>" data-toggle="tab"><%= "#{Vehicle.find(k).make.capitalize} #{Vehicle.find(k).model.capitalize}" %></a></li>
+  <% end %>
+</ul>
+
+<div class="container">
+  <div class="tab-content">
+  <% first = true %>
+
+  <% @order.order_items.each do |k,v| %>
+    <% @vehicle = Vehicle.find(k) %>
+
+    <% if first == true %>
+<div class="tab-pane active" id="<%= Vehicle.find(k).make%>">
+      <% first = false %>
+    <% else %>
+<div class="tab-pane" id="<%= Vehicle.find(k).make %>">
+    <%end%>
+<div class="container">
       <div class="row">
         <div class="col-xs-6">
-                    <h1>Invoice</h1>
+          <h1>Invoice</h1>
           <h1><small>Invoice #001</small></h1>
         </div>
         <div class="col-xs-6 text-right">
@@ -140,3 +160,13 @@
         </div>
       </div>
     </div>
+
+    <ul>
+        <li><%= "#{Vehicle.find(k).make} #{Vehicle.find(k).model}" %> <%= "#{v} Miles from #{Vehicle.find(k).origin} to #{Vehicle.find(k).destination}" %></li>
+    </ul>
+
+<p>
+    <strong>Order Total:</strong> <%= number_to_currency @order.grand_total %>
+</p>
+
+</div><%end%></div></div></div>
