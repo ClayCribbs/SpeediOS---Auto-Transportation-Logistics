@@ -5,7 +5,7 @@ class DeliveryTrucksController < ApplicationController
   # GET /delivery_trucks
   # GET /delivery_trucks.json
   def index
-    @delivery_trucks = DeliveryTruck.all
+    @delivery_trucks = DeliveryTruck.where(user_id: current_user)
     @vehicles = Vehicle.all
   end 
 

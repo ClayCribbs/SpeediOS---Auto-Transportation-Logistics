@@ -10,6 +10,6 @@
       </ul>
     </div>
   <% end %>
-	<%= f.collection_select(:truck_id, DeliveryTruck.where(currentState: "Available"), :id, :name, { :include_blank => "Select Truck",:id => "selector"},{:style => "width: 125px; display:inline;", :onChange => 'javascript: this.form.button.click(); loadTables();', :class => "selectTruck"}) %>
+	<%= f.collection_select(:truck_id, DeliveryTruck.where(user_id: current_user, currentState: "Available"), :id, :name, { :include_blank => "Select Truck",:id => "selector"},{:style => "width: 125px; display:inline;", :onChange => 'javascript: this.form.button.click(); loadTables();', :class => "selectTruck"}) %>
 	<%= f.submit "Add to Cart", class: "btn btn-primary", id: "button"%>
 <% end %>

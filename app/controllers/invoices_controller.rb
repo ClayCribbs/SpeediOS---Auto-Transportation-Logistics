@@ -4,8 +4,8 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = Invoice.all
-    @orders = Order.all
+    @invoices = Invoice.where(user_id: current_user)
+    @orders = Order.where(user_id: current_user)
     @user = current_user
   end
 
