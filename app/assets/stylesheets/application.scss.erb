@@ -45,7 +45,7 @@
 
      /* Appearance */
      body, table { font-family: sans-serif; }
-     table { border-collapse: collapse; border: 1px solid #38678f; border-radius:10px;}
+     .table-striped { border-collapse: collapse; border: 1px solid #38678f; border-radius:10px;}
      td, th { padding: 3px;}
      th { background: steelblue;  font-weight: lighter;
   text-shadow: 0 1px 0 #38678f;
@@ -303,13 +303,13 @@ navbar {
  
 }
 
-tr {
+.table-striped tr {
   border-bottom: 1px solid #cccccc;
 }
-tr:last-child {
+.table-striped tr:last-child {
   border-bottom: 0px;
 }
-td {
+.table-striped td {
   border-right: 1px solid #cccccc;
   padding: 10px;
   transition: all 0.2s;
