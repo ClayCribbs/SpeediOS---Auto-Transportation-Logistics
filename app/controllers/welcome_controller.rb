@@ -8,6 +8,7 @@ class WelcomeController < ApplicationController
     @invoices = Invoice.where(user_id: current_user)
     @drivers = Driver.where(user_id: current_user)
     @orders = Order.where(user_id: current_user)
+    @unpaidOrders = Order.where(user_id: current_user, currentState: "Unpaid")
   	@delivery_trucks = DeliveryTruck.where(user_id: current_user)
   	@vehicles = Vehicle.order(:id)
     @deliveryTruckCount = @delivery_trucks.length

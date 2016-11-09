@@ -28,7 +28,7 @@ class CartController < ApplicationController
       vehicle.save
       truck.save
     end
-
+    @order.currentState = "Unpaid"
     @order.sales_tax = @order.subtotal * 0.07
     @order.grand_total = @order.subtotal + @order.sales_tax
     @order.save
