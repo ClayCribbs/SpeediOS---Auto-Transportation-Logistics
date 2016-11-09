@@ -34,7 +34,7 @@
               <td><%= link_to truck.name, truck %></td>
               <td><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#"><span class="button"><% if @count > 0 %><%= @count %><%= " Vehicles Pending" %><% else %>Ready<%end%></span></a></td>
               <td><%= @newWeight %></td>
-              <td><select onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+              <td><select style="width:125px" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
                 <option selected disabled>Load Vehicle</option>
                   <% @vehicles.each do |vehicle| %>
                 <option value=<%= "/?truck_id=#{URI.escape(truck.id.to_s)}&carId=#{URI.escape(vehicle.id.to_s)}"%>><%= vehicle.name %></option>

@@ -52,7 +52,7 @@
                           <% @vehicles.each do |vehicle|%>
                             <% if vehicle.truck_id.to_s == truck.id.to_s && vehicle.currentState != "Dispatched"%>
                                 <tr>   
-                                <td><%= link_to vehicle.name, vehicle %></h5></td>
+                                <td><div class="wrap"><%= link_to vehicle.name, vehicle %></h5></div></td>
                                 <td><%= vehicle.origin %></td>
                                 <td><%= vehicle.destination %></td>
                                 <td><%= vehicle.actualWeight %></h5></td>
@@ -121,7 +121,7 @@
           <div class="col-sm-12" style="width: 95%">
             <p><br />
               <h3 style="display: inline;">Available Orders </h3><h2 style="display: inline;"><span style="display: inline;" class="badge"><%= @tableVehicleCount %></span></h2> 
-              <select id="changer" style="float: right;width:20%;max-width:90%;margin-top: 20px;" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
+              <select id="changer" style="float: right;width:20%;max-width:80%;margin-top: 20px;" onChange="if(this.selectedIndex!=0) self.location=this.options[this.selectedIndex].value">
                 <option selected disabled>Filter By Destination</option>
                 <option value="/">All Destinations</option>
                 <% @vehicles.each do |vehicle| %>
@@ -141,23 +141,23 @@
             <table class="table-striped sortable autobox" width="100%">
               <thead>
               <tr>
-                  <th class="padleft"  width="20%">Vehicle</h5></th>
-                  <th width="25%">Origin</th>
-                  <th width="25%">Destination</th>
-                  <th width="10%">Distance</th>
-                  <th width="20%">Pick Up With</th>
+                  <th>Vehicle</h5></th>
+                  <th>Origin</th>
+                  <th>Destination</th>
+                  <th>Distance</th>
+                  <th>Pick Up With</th>
                   </tr>
               </thead>
               <tbody>
                 <% @tableVehicles.each do |vehicle| %>
                 <% next unless vehicle.currentState == "Available" %>
                   <tr>
-                    <td class="padleft" width="20%"><%= link_to vehicle.name, vehicle %></h5></td>
-                    <td width="25%"><%= vehicle.origin %></h5></td>
-                    <td width="25%"><%= vehicle.destination  %></h5></td>
-                    <td width="10%"><%= vehicle.distance %></h5></td>
+                    <td><%= link_to vehicle.name, vehicle %></h5></td>
+                    <td><%= vehicle.origin %></h5></td>
+                    <td><%= vehicle.destination  %></h5></td>
+                    <td><%= vehicle.distance %></h5></td>
                     <% @i = 0 %>
-                    <td width="20%"><%= render 'form', vehicle: vehicle %></td>
+                    <td><div style="width: 0px;"><%= render 'form', vehicle: vehicle %></div></td>
                   </tr>
                 <%end%>
               </tbody>

@@ -44,10 +44,10 @@
 
 
      /* Appearance */
-     body, table { font-family: sans-serif; }
-     .table-striped { border-collapse: collapse; border: 1px solid #38678f; border-radius:10px;}
-     td, th { padding: 3px;}
-     th { background: steelblue;  font-weight: lighter;
+     body, table { font-family: sans-serif;}
+     .table-striped { border-collapse: collapse; border: 1px solid #38678f; border-radius:10px; font-size: .9em;}
+     td { padding: 2px;}
+     th {padding: 8px; background: steelblue;  font-weight: lighter;
   text-shadow: 0 1px 0 #38678f;
   color: white;
   border: 1px solid #38678f;
@@ -57,16 +57,15 @@
      
      /* Scrollability of table */
    table { width: 100%; } /* fixed width table */
-     thead tr { width: 100%; display:inline-block} /* makes it sizeable */
+     thead tr { width: 100%; display:block;} /* makes it sizeable */
      tbody { 
        max-height: 350px; /* height of scrollable area */
        overflow: scroll;
-       display:inline-block;
-       padding: 1px; /* scroll rather than overflow */
+       display:block;
       width: 100%; /* fill the box */
      }
-     thead th { width: 250px; } /* fixed width for THs */
-     tbody td { width: 243px; } /* fixed width for TDs */
+     thead th { width: 250px;} /* fixed width for THs */
+     tbody td { width: 234px;} /* fixed width for TDs */
      /* the tbody needs to be 16px less than the thead, for the scrollbar */
  
      
@@ -74,7 +73,6 @@
        display: block; /* makes it sizeable */
        height: 200px; /* height of scrollable area */
        overflow: scroll;
-       padding: 1px; /* scroll rather than overflow */
       width: 100%; /* fill the box */
      }
 
@@ -182,10 +180,6 @@ a {
 .centerfy {
   text-align: center;
   content-align: center;
-}
-
-.padleft {
-  padding-left: 50px;
 }
 
 .black {
@@ -311,6 +305,13 @@ navbar {
 }
 .table-striped td {
   border-right: 1px solid #cccccc;
-  padding: 10px;
   transition: all 0.2s;
+}
+
+table {
+  table-layout:fixed;
+}
+
+td {
+  word-break: break-all;
 }
