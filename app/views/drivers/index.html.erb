@@ -14,17 +14,17 @@
 
   <h1>Drivers Table</h1>
   <table class="sortable table-striped autobox" style="width: 95%">
-    <thead><tr><th>Driver Name </th><th>Driver Phone Number</th><th>Driver Email</th><th colspan="2"></th></tr></thead>
-    <tbody id= "drivers">
-
-      <%= render @drivers %>
-
-
-
-    </tbody>
+    <thead>
+    <tr>
+      <th>Driver Name</th>
+      <th>Driver Phone Number</th>
+      <th>Driver Email</th>
+      <th>Edit / Delete</th>
+    </tr>
+    </thead>
+      <tbody id= "drivers">
+        <%= render @drivers %>
+      </tbody>
   </table>
+</div>
 
-
-
-    </div>
-</body>
