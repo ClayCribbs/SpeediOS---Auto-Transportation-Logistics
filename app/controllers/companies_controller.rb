@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /companies
   # GET /companies.json
   def index
@@ -25,7 +25,8 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
-
+    @user = current_user
+    @company.set_user!(current_user)
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }

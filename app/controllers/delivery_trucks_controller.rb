@@ -1,6 +1,6 @@
 class DeliveryTrucksController < ApplicationController
   before_action :set_delivery_truck, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:show]
+  before_action :authenticate_user!
 
   # GET /delivery_trucks
   # GET /delivery_trucks.json
@@ -52,6 +52,8 @@ class DeliveryTrucksController < ApplicationController
   def create
     @delivery_truck = DeliveryTruck.new(delivery_truck_params)
     @delivery_truck.update(currentState: "Available")
+    @user = current_user
+    @delivery_truck.set_user!(current_user)
     respond_to do |format|
       if @delivery_truck.save
         format.html { redirect_to @delivery_truck, notice: 'Delivery truck was successfully created.' }

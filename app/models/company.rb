@@ -1,3 +1,8 @@
 class Company < ApplicationRecord
-	has_many :vehicles
+	
+  def set_user!(user)
+    self.user_id = user.id
+
+    self.save!
+  end
 end

@@ -1,7 +1,7 @@
 class DriversController < ApplicationController
   before_action :set_driver, only: [:edit, :update, :destroy, :show]
   before_action :all_drivers, only: [:index, :update, :create, :destroy]
-  before_filter :authenticate_user!, except: [:show]
+  before_action :authenticate_user!
 
 
   # GET /drivers/new
@@ -25,6 +25,8 @@ class DriversController < ApplicationController
   # POST /drivers.json
   def create
     @driver = Driver.create(driver_params)
+    @user = current_user
+    @driver.set_user!(current_user)
     respond_to do |format|
       if @driver.save
         format.html { redirect_to @driver, notice: 'Driver was successfully created.' }

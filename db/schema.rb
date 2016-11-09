@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102193153) do
+ActiveRecord::Schema.define(version: 20161109143214) do
+
+  create_table "bill_of_ladings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "invoice_id"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string   "companyName"
@@ -19,6 +25,7 @@ ActiveRecord::Schema.define(version: 20161102193153) do
     t.string   "companyCustomId"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.integer  "user_id"
   end
 
   create_table "delivery_trucks", force: :cascade do |t|
@@ -53,6 +60,7 @@ ActiveRecord::Schema.define(version: 20161102193153) do
     t.string   "driverId"
     t.integer  "occupied_slots"
     t.integer  "currentWeight"
+    t.integer  "user_id"
   end
 
   create_table "drivers", force: :cascade do |t|
@@ -197,6 +205,7 @@ ActiveRecord::Schema.define(version: 20161102193153) do
     t.string   "currentState"
     t.string   "billingAddress"
     t.string   "company_id"
+    t.integer  "user_id"
   end
 
 end

@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   after_action :checkState, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:show]
+  before_action :authenticate_user!
   require 'json'
 
  
@@ -44,8 +44,9 @@ class VehiclesController < ApplicationController
   # POST /vehicles
   # POST /vehicles.json
   def create
-
     @vehicle = Vehicle.new(vehicle_params)
+    @user = current_user
+    @vehicle.set_user!(current_user)
     respond_to do |format|
       if @vehicle.save
         format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }

@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
  	has_many :orders
+ 	has_many :vehicles
+ 	has_many :delivery_trucks
+ 	has_many :drivers
  		
  		def admin?
     	role == "admin"

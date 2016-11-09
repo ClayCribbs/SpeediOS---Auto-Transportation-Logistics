@@ -94,6 +94,10 @@
           <%= f.hidden_field :cityMPG, class: "form-control"  %>
         </div>
 
+        <div class="field">
+          <%= f.hidden_field :user_id, value: current_user.id, class: "form-control"  %>
+        </div>
+
         <div class="form-group">
           <%= f.text_field :avgMPG, placeholder: "Avg MPG" %>
         </div>
