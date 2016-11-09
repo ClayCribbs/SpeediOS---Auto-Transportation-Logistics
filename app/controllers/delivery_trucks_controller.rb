@@ -70,6 +70,8 @@ class DeliveryTrucksController < ApplicationController
   def update
     respond_to do |format|
       if @delivery_truck.update(delivery_truck_params)
+        format.js { render :js => "loadtables();" }
+
         format.html { redirect_to @delivery_truck, notice: 'Delivery truck was successfully updated.' }
         format.json { render :show, status: :ok, location: @delivery_truck }
       else
