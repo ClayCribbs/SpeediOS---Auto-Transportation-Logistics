@@ -14,7 +14,7 @@
                 <% if truck.occupied_slots > 0 && truck.currentState.to_s == "Available" %>
                   <% @pendingcount +=1 %>
                   <br />
-                    <li><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
+                    <li><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false">
                         <span class="button nav navbar navbar-nav"><p style=" padding-left: 15px; padding-right: 15px; margin-top: 5px; font-size: 80%; margin-bottom: 5px;"><%= truck.name %></p></span></a></li>
                 <%end%>
               <%end%>
@@ -38,12 +38,14 @@
                     <div class="modal-body">
                       <table class="table-striped sortable autobox" width="100%">
                         <thead>
+                        <tr>
                           <th>Vehicle</th>
                           <th>Origin</th>
                           <th>Destination</th>
                           <th>Weight</th>
                           <th>Action</th>
                           <th>Confirm Vehicle</th>
+                          </tr>
                         </thead>
                         <tbody>  
 
@@ -102,17 +104,17 @@
       <div class="col-sm-5" style="background: steelblue; border-radius: 15px; height:90px; margin-left: 5%; margin-top: 15px;" >
           </div>
       -->
-          <div class="col-sm-1" style="background: #F9A635; margin-left: 10%; border-radius:15px; margin-top: 13px; min-width:110px;">
+          <div class="col-sm-1" style="background: #F9A635; margin-left: 10%; border-radius:15px; margin-top: 13px; min-width:110px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
             <h2 style="display:inline;"><%= @pendingcount %></h2>
             <h5>Pending Dispatches</h5>
           </div>
 
-          <div class="col-sm-1" style="background: steelblue; color: white; border-radius:15px; margin-top: 13px; margin-left: 1%;  min-width:110px;">
+          <div class="col-sm-1" style="background: steelblue; color: white; border-radius:15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px; margin-left: 1%;  min-width:110px;">
             <h2 style="display:inline;">9</h2>
             <h5>Payments Pending</h5>
           </div>
 
-          <div class="col-sm-1" style="background: #FFD658; border-radius:15px; margin-left: 1%; margin-top: 13px;  min-width:110px;">
+          <div class="col-sm-1" style="background: #FFD658; border-radius:15px; margin-left: 1%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px;  min-width:110px;">
             <h2 style="display:inline;">3</h2>
             <h5>Ready for Archive</h5>
           </div>
@@ -138,11 +140,13 @@
             </p>
             <table class="table-striped sortable autobox" width="100%">
               <thead>
+              <tr>
                   <th class="padleft"  width="20%">Vehicle</h5></th>
                   <th width="25%">Origin</th>
                   <th width="25%">Destination</th>
                   <th width="10%">Distance</th>
                   <th width="20%">Pick Up With</th>
+                  </tr>
               </thead>
               <tbody>
                 <% @tableVehicles.each do |vehicle| %>
@@ -165,10 +169,12 @@
             <h3>Delivery Trucks</h3>
               <table class="table-striped sortable autobox" width="100%">
                 <thead>
+                <tr>
                     <th>Delivery Truck</th>
                     <th>Cargo</th>
                     <th>Weight</th>
                     <th>Status</th>
+                    </tr>
                 </thead>
                 <tbody>
                   <% @delivery_trucks.each do |truck| %>
@@ -220,12 +226,14 @@
                     <div class="modal-body">
                       <table class="table-striped sortable autobox" width="100%" id="order_table">
                         <thead>
+                        <tr>
                           <th>Vehicle</th>
                           <th>Origin</th>
                           <th>Destination</th>
                           <th>Weight</th>
                           <th>Action</th>
                           <th>Confirm Vehicle</th>
+                          </tr>
                         </thead>
                         <tbody>  
 
@@ -271,10 +279,12 @@
           <div class="col-sm-12" style="width: 95%">
             <table class="table-striped sortable autobox" width="100%">
               <thead>
+              <tr>
                   <th>Delivery Truck</th>
                   <th>Cargo</th>
                   <th>Weight</th>
                   <th>Status</th>
+                  </tr>
               </thead>
               <tbody>
                 <% @delivery_trucks.each do |truck| %>
@@ -315,12 +325,14 @@
           <h1>Invoices</h1>
             <table class="table-striped sortable autobox" width="100%">
               <thead>
+              <tr>
                   <th width="10%">Invoice ID</th>
                   <th>Created On</th>
                   <th>Dispatch Date</th>
                   <th>Order Total</th>
                   <th>Truck ID</th>
                   <th>Order Items</th>
+                  </tr>
               </thead>
               <tbody>
                 <% @orders.each do |order| %>
@@ -349,12 +361,14 @@
                 <div class="modal-body">
                   <table class="table-striped sortable autobox" width="100%">
                     <thead>
+                    <tr>
                         <th width="20%"><h5>Vehicle</h5></th>
                         <th width="25%"><h5>Origin</h5></th>
                         <th width="25%"><h5>Destination</h5></th>
                         <th width="10%"><h5>Distance</h5></th>
                         <th width="10%"><h5>Weight</h5></th>
                         <th width="10%"><h5>Bid</h5></th>
+                        </tr>
                     </thead>
                     <tbody>  
                     <%  order.order_items.each do |k,v| %>

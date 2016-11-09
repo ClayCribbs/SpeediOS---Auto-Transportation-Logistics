@@ -1,17 +1,16 @@
-<p id="notice"><%= notice %></p>
 <% getWaypoints() %>
-
-<div class="container">
-  <div class="row-fluid">
-    <div class="span8 well">
-      <ul class="nav nav-tabs">
-        <li class="active"> <a href="#home" data-target="#home" data-toggle="tab">Home</a></li>
-        <li><a href="#maptab" data-target="#routetab" data-toggle="tab">Route Details</a></li>
-        <li><a href="#cargo" data-target="#cargo" data-toggle="tab">Cargo Details</a></li>
-      </ul>
+<div class="row">
+  <div class="col-sm-2">
+    <ul class="nav navbar-side">
+      <li class="active"> <a data-target="#home" data-toggle="tab">Home</a></li>
+      <li><a data-target="#routetab" data-toggle="tab">Route Details</a></li>
+      <li><a data-target="#cargo" data-toggle="tab">Cargo Details</a></li>
+    </ul>
+  </div>
+  <div class="col-sm-10" >
       <div class="tab-content">
-        <div class="tab-pane active" id="home">
-          <div class="box-car">
+        <div class="tab-pane active map" id="home" style="width: 97%;">
+          <div class="autobox map" style="min-height: 350px; border-top-right-radius:10px; border-top-left-radius: 10px;">
             <div class="col-md-6">
               <table>
                 <tr>
@@ -39,10 +38,11 @@
               <%= image_tag @delivery_truck.image, class: "tableimage" %>
             </div>
           </div>
-          <div id="mapbox"><div id="routemap"></div></div>
+  
+          <div class="map" id="mapbox" style="border-bottom-left-radius: 10px; border-bottom-right-radius:10px;"><div class="map" id="routemap" style="width: 80%;"></div></div>
         </div>
 
-        <div class="tab-pane" id="routetab"> 
+        <div class="tab-pane" id="routetab" > 
           <div class="col-md-6">
             <div id="directions-panel"></div>
           </div>
@@ -79,14 +79,15 @@
       </div>
     </div>
   </div>
-</div>
 
     
 <div class="row">
   <div class="col-sm-2 col-sm-offset-10">
-    <h3><%= link_to 'Edit', edit_delivery_truck_path, class: "fa fa-pencil" %></h3>
-    <h3><%= link_to 'Back', delivery_trucks_path %></h3>
+  <br />
+    <h4 style="display:inline;"><%= link_to 'Edit ', edit_delivery_truck_path, class: "fa fa-pencil" %> </h4>
+    <h5 style="display:inline;"> <%= link_to ' Back', delivery_trucks_path %></h5>
   </div>
+</div>
 </div>
 
 <select hidden id="start">
