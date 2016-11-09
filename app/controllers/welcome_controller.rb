@@ -5,10 +5,10 @@ class WelcomeController < ApplicationController
 
 
   def index
-    @invoices = Invoice.order(:id)
-    @drivers = Driver.order(:id)
-    @orders = Order.order(:id)
-  	@delivery_trucks = DeliveryTruck.order(:id)
+    @invoices = Invoice.where(user_id: current_user)
+    @drivers = Driver.where(user_id: current_user)
+    @orders = Order.where(user_id: current_user)
+  	@delivery_trucks = DeliveryTruck.where(user_id: current_user)
   	@vehicles = Vehicle.order(:id)
     @deliveryTruckCount = @delivery_trucks.length
     @pendingcount = 0
