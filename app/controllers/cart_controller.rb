@@ -13,6 +13,18 @@ class CartController < ApplicationController
   	@line_items = LineItem.all
   end
 
+  def update
+    respond_to do |format|
+      if @order.update(vehicle_params)
+        format.html { redirect_to @order, notice: 'Vehicle was successfully updated.' }
+        format.json { render :show, status: :ok, location: @vehicle }
+      else
+        format.html { render :edit }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def checkout
     @line_items = LineItem.all
     @order = Order.create(user_id: current_user.id, subtotal: 0)

@@ -14,6 +14,19 @@ class InvoicesController < ApplicationController
   def show
   end
 
+  def order_update
+    respond_to do |format|
+      if @order.update(driver_params)
+        format.html { redirect_to @driver, notice: 'Driver was successfully updated.' }
+        format.json { render :show, status: :ok, location: @order }
+      else
+        format.html { render :edit }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+    redirect_to root_path
+  end
+
   def _bol
     @order = Order.find(params[:order_id])
     @user = User.where(params[:userId])

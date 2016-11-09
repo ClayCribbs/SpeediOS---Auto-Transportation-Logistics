@@ -6,12 +6,12 @@
 </ul>
 
 <div class="container">
-  <div class="tab-content">
-  <% first = true %>
 
+  <div class="tab-content">
+
+  <% first = true %>
   <% @order.order_items.each do |k,v| %>
     <% @vehicle = Vehicle.find(k) %>
-
     <% if first == true %>
 <div class="tab-pane active" id="<%= Vehicle.find(k).make%>">
       <% first = false %>
@@ -161,6 +161,12 @@
       </div>
     </div>
 
+<select id="status" onChange="<% order_update_path %>">
+  <option value="Paid">Paid</option>
+  <option value="Unpaid">Unpaid</option>
+  <option value="Archived">Archive</option>
+</select>
+
     <ul>
         <li><%= "#{Vehicle.find(k).make} #{Vehicle.find(k).model}" %> <%= "#{v} Miles from #{Vehicle.find(k).origin} to #{Vehicle.find(k).destination}" %></li>
     </ul>
@@ -170,3 +176,4 @@
 </p>
 
 </div><%end%></div></div></div>
+

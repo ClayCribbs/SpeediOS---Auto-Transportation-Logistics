@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   get 'invoices' => 'invoice#index'
 
+  get 'order_update' => 'invoice#order_update'
+
   get 'invoice' => 'invoice#invoice_form'
 
   get 'companies' => 'company#index'
