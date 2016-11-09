@@ -1,10 +1,10 @@
+<div class="container-fluid">
 <ul class="nav nav-tabs">
   <% @order.order_items.each do |k,v| %>
     <li><a data-target="#<%= Vehicle.find(k).make %>" data-toggle="tab"><%= "#{Vehicle.find(k).make.capitalize} #{Vehicle.find(k).model.capitalize}" %></a></li>
   <% end %>
 </ul>
-
-  <div class="container">
+<div class="container">
     <div class="tab-content">
       <% first = true %>
       <% @order.order_items.each do |k,v| %>
@@ -170,7 +170,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+
             AUTO TRANSPORT TERMS AND CONDITIONS
             Auto-Dispatch-Logistics hereinafter referred to as “Carrier” will not be responsible for any damage not resulting from
             Carrier negligence. During Transport,
@@ -285,7 +285,8 @@
             in the district court for the county of Forsyth, State of Georgia, and any other venue is hereby waived.
           </div>
         </div>  
-      <% end %>
+     
     </div>
-  </div>
+  </div> 
+</div><% end %>
 </div>
