@@ -11,27 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :companyName %>
-    <%= f.text_field :companyName %>
+  <div class="form-group">
+    <%= f.text_field :companyName, placeholder: "Company Name" %>
   </div>
 
-  <div class="field">
-    <%= f.label :companyAddress %>
-    <%= f.text_field :companyAddress, id: "searchTextField" %>
+  <div class="form-group">
+    <%= f.text_field :companyAddress, placeholder: "Company Address", id: "searchTextField" %>
   </div>
 
-  <div class="field">
-    <%= f.label :companyBillingAddress %>
-    <%= f.text_field :companyBillingAddress, id: "searchTextField2" %>
+  <div class="form-group">
+    <%= f.text_field :companyBillingAddress, placeholder: "Billing Address", id: "searchTextField2" %>
   </div>
 
-  <div class="field">
-    <%= f.label :companyCustomId %>
-    <%= f.text_field :companyCustomId %>
+  <div class="form-group">
+    <%= f.text_field :companyCustomId, placeholder: "Custom ID" %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :Submit, class: "btn btn-success" %>
   </div>
 <% end %>
