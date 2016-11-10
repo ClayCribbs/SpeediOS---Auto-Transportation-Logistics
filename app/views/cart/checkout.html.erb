@@ -3,6 +3,11 @@
   <% @order.order_items.each do |k,v| %>
     <li><a href="#" data-target="#<%= Vehicle.find(k).make %>" data-toggle="tab"><%= "#{Vehicle.find(k).make.capitalize} #{Vehicle.find(k).model.capitalize}" %></a></li>
   <% end %>
+  <li> <%= form_for @order, remote: true do |f|   %>
+                        <%= f.text_field :start_time, id: "datetimepicker1", placeholder: "Schedule the Dispatch" %>
+                        <br/>
+                        <%= f.button :submit %>
+                      <% end %></li>
 </ul>
 
 <div class="container">

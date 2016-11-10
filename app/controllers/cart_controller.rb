@@ -27,7 +27,7 @@ class CartController < ApplicationController
 
   def checkout
     @line_items = LineItem.all
-    @order = Order.create(user_id: current_user.id, subtotal: 0)
+    @order = Order.create(user_id: current_user.id, subtotal: 0, driver_id: params[:driver_id], start_time: params[:start_time])
 
     @line_items.each do |line_item|
       @order.order_items[line_item.vehicle_id] = line_item.bid_total

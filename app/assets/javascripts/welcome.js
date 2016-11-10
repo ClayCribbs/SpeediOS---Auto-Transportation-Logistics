@@ -24,6 +24,8 @@ function loadTables() {
 		$('#widget4').load("dashboard #widget")
 	},  5000);  
 
-}
+};
 
-
+$(document).ready(function() {
+  $('#datetimepicker1').datetimepicker();
+});

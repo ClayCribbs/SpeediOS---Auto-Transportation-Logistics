@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :pickups
+  resources :orders
   get 'bill_of_lading/address'
 
   get 'bill_of_lading/contract'
@@ -34,6 +36,8 @@ Rails.application.routes.draw do
   get 'contacts' => 'welcome#about'
 
   get 'dashboard' => 'welcome#index'
+
+  get 'pickups' => 'pickup#index'
 
   get 'main' => 'welcome#about'
 

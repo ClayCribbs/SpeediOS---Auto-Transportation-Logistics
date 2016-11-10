@@ -62,7 +62,6 @@
                                 <%= form_tag add_to_cart_path, :remote => true do %>
                                   <%= hidden_field_tag :vehicle_id, vehicle.id %>
                                   <%= hidden_field_tag :bid_total, vehicle.distance.to_i %>
-                                  <%= hidden_field_tag :dispatch_date, (time.month.to_s+"/"+time.day.to_s + "/" +time.year.to_s) %>
                                   <%= hidden_field_tag :order_id, (vehicle.truck_id.to_s+(time.year.to_s+time.month.to_s+time.day.to_s)).to_i %>
                                   <%= hidden_field_tag :truck_id, vehicle.truck_id.to_s %>
                                   <td><%= submit_tag "Confirm Vehicle", class: "btn btn-primary" %></td>
@@ -72,7 +71,8 @@
                           <% end %>
                         </tbody>
                       </table>
-                      <br /> <div class="pull-right">Assign Driver : <%= select_tag "drivers", options_from_collection_for_select(@drivers, "id", "driver_name"),:prompt => "Select Driver"%></div>
+                      <br /> <div class="pull-right">Assign Driver : <%= select_tag :driver_id, options_from_collection_for_select(@drivers, "id", "driver_name"),:prompt => "Select Driver"%></div>
+
                       <br />
                     </div>
                     <div class="modal-footer">
@@ -261,7 +261,7 @@
                         </tbody>
                       </table>
                       <br /> <div class="pull-right">Assign Driver : <%= select_tag "drivers", options_from_collection_for_select(@drivers, "id", "driver_name"),:prompt => "Select Driver"%></div>
-                      <br />
+  <br /><%= text_field :start_time, id: "datetimepicker1", placeholder: "Schedule Pickup Time" %>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel Order</button>
@@ -352,7 +352,18 @@
             </table>
             </div>
           </div>
-        </div>
+        
+          <br /> <h3> Calander</h3>
+        <%= month_calendar attribute: "created_at", events: @orders.where(user_id: current_user) do |date, orders| %>
+          <%= date %>
+          <br /><br />
+        <% orders.each do |order| %>
+          <div style="display:inline;">
+            <%= link_to order.id, documents_path(:order_id => order.id) %>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
         <% @orders.each do |order| %>
           <div class="modal fade" id="myModal<%=order.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog modal-lg modal-lg" role="document">
@@ -399,3 +410,4 @@
     </div>
   </div>
 </div>
+
