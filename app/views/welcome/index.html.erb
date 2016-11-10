@@ -350,11 +350,11 @@
                 <% end %>
               </tbody>
             </table>
-            </div>
-          </div>
-        
+           
+
           <br /> <h3> Calander</h3>
-        <%= month_calendar attribute: "created_at", events: @orders.where(user_id: current_user) do |date, orders| %>
+          <div style="height:1000px">
+        <%= month_calendar attribute: "created_at", id: "calendartable", events: @orders.where(user_id: current_user) do |date, orders| %>
           <%= date %>
           <br /><br />
         <% orders.each do |order| %>
@@ -362,7 +362,9 @@
             <%= link_to order.id, documents_path(:order_id => order.id) %>
           </div>
         <% end %>
-      <% end %>
+      <% end %> </div></div>
+          </div>
+
       </div>
         <% @orders.each do |order| %>
           <div class="modal fade" id="myModal<%=order.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -410,4 +412,3 @@
     </div>
   </div>
 </div>
-
