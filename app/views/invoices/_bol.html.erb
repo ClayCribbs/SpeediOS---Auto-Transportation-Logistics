@@ -1,74 +1,74 @@
-<div class="container-fluid">
-<ul class="nav nav-tabs">
-  <% @order.order_items.each do |k,v| %>
-    <li><a data-target="#<%= Vehicle.find(k).make %>" data-toggle="tab"><%= "#{Vehicle.find(k).make.capitalize} #{Vehicle.find(k).model.capitalize}" %></a></li>
-  <% end %>
-</ul>
-<div class="container">
+
+<div class="container" style="margin-left: 15px; margin-right: 15px;">
+  <ul class="nav nav-tabs">
+    <% @order.order_items.each do |k,v| %>
+      <li><a data-target="#<%= Vehicle.find(k).make %>" data-toggle="tab"><%= "#{Vehicle.find(k).make.capitalize} #{Vehicle.find(k).model.capitalize}" %></a></li>
+    <% end %>
+  </ul>
+  <div class="container">
     <div class="tab-content">
       <% first = true %>
       <% @order.order_items.each do |k,v| %>
         <% @vehicle = Vehicle.find(k) %>
         <% if first == true %>
           <div class="tab-pane active" id="<%= Vehicle.find(k).make%>">
-          <% first = false %>
+            <% first = false %>
         <% else %>
           <div class="tab-pane" id="<%= Vehicle.find(k).make %>">
-        <%end%>
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-6">
-              <h1>Bill of Lading</h1>
+          <%end%>
+            <div class="row">
+              <div class="col-xs-6">
+                <h1>Bill of Lading</h1>
                   Diamond Dispatch <br>
                   123 Big Walkway <br>
                   Atlanta, Georgia 30800 <br>
                   Phone: (678) 555-5555 <br>
                   Email: Dispatch@tts.com <br>
                   Fax: 678-444-4444 
-              <h1><small>Load ID: #001</small></h1>
-            </div>
-            <div class="col-xs-6 text-right">
-              <h1>
-                <a href="http://auto-dispatch-logistics.herokuapp.com/">
-                <%= image_tag("DD-logo.jpg", :alt => "Diamond Dispatch Logo") %>
-                </a>
-              </h1>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h5>Origin: <a href="#"><%= current_user.username %></a></h5>
-                </div>
-                <div class="panel-body">
-                  <p>
-                    <strong>Address: </strong> <%= Company.find(@vehicle.company_id).companyAddress %><br>
-                    <br>
-                    <strong>Contact: </strong> Sales Manager <br>
-                    <br>
-                    <strong>Phone: </strong>  <%= current_user.phone_number %>
-                  </p>
-                </div>
+                <h1><small>Load ID: #001</small></h1>
+              </div>
+              <div class="col-xs-6 text-right">
+                <h1>
+                  <a href="http://auto-dispatch-logistics.herokuapp.com/">
+                  <%= image_tag("DD-logo.jpg", :alt => "Diamond Dispatch Logo") %>
+                  </a>
+                </h1>
               </div>
             </div>
-            <div class="col-xs-6">
+            <div class="row">
+              <div class="col-xs-6">
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h5>Destination: <a href="#">Client Name</a></h5>
+                    <h5>Origin: <a href="#"><%= current_user.username %></a></h5>
                   </div>
                   <div class="panel-body">
-                  <p>
+                    <p>
                       <strong>Address: </strong> <%= Company.find(@vehicle.company_id).companyAddress %><br>
                       <br>
                       <strong>Contact: </strong> Sales Manager <br>
                       <br>
                       <strong>Phone: </strong>  <%= current_user.phone_number %>
-                  </p>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h5>Destination: <a href="#">Client Name</a></h5>
+                    </div>
+                    <div class="panel-body">
+                    <p>
+                        <strong>Address: </strong> <%= Company.find(@vehicle.company_id).companyAddress %><br>
+                        <br>
+                        <strong>Contact: </strong> Sales Manager <br>
+                        <br>
+                        <strong>Phone: </strong>  <%= current_user.phone_number %>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           <!-- / end client details section -->
           <table class="table table-bordered">
             <thead text= "black">
@@ -285,8 +285,7 @@
             in the district court for the county of Forsyth, State of Georgia, and any other venue is hereby waived.
           </div>
         </div>  
-     
+      <% end %>
+      </div>
     </div>
-  </div> 
-</div><% end %>
 </div>
