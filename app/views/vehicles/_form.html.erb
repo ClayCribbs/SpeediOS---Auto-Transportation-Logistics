@@ -60,10 +60,12 @@
    <div class="field form-group">
    <%= f.hidden_field :remote_image_url, id: "details" %>
   </div>
-  
-
-
-  <div class="actions">
-    <%= f.submit %>
+ 
+  <div class="actions" style="float:right;">
+    <%= f.submit class: "btn btn-success" %>
   </div>
+
+   <i class = "btn btn-primary" style="float:right;margin-right:5px;">
+<%= link_to 'Back', vehicles_path %></i>
+  <br />
 <% end %>
