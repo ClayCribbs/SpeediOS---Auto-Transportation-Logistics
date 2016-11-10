@@ -5,7 +5,7 @@
       <li class="nav navbar navbar-nav"><a data-target="#fleettab" data-toggle="tab">My Fleet</a></li>
       <li class="nav navbar navbar-nav"><a data-target="#invoicing" data-toggle="tab">Invoicing</a></li>
       
-      <li class="nav navbar navbar-nav" id="widget2"><br /><br /><br /><br /><div style="padding-left: 15px; padding-right: 15px;"><strong>Pending Orders</strong></div>
+      <li class="nav navbar navbar-nav" id="widget"><br /><br /><br /><br /><div style="padding-left: 15px; padding-right: 15px;"><strong>Pending Orders</strong></div>
         <ul style="list-style-type: none;list-style-position:inside;margin:0;padding:0;">
           <% if @delivery_trucks.any? %>
             <% @delivery_trucks.each do |truck| %>
@@ -14,7 +14,7 @@
                 <% if truck.occupied_slots > 0 && truck.currentState.to_s == "Available" %>
                   <% @pendingcount +=1 %>
                   <br />
-                    <li><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false">
+                    <li><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-keyboard="false">
                         <span class="button nav navbar navbar-nav"><p style=" padding-left: 15px; padding-right: 15px; margin-top: 5px; font-size: 80%; margin-bottom: 5px;"><%= truck.name %></p></span></a></li>
                 <%end%>
               <%end%>
@@ -91,7 +91,7 @@
                 <% end %>
                 <% truck.update(currentWeight: @newWeight.to_i) %>
                 <% truck.update(occupied_slots: @count) %>
-              <% end %>
+              <% end %>              
             <%end%>
 
       <!-- Open Contracts Tab -->
@@ -104,17 +104,17 @@
       <div class="col-sm-5" style="background: steelblue; border-radius: 15px; height:90px; margin-left: 5%; margin-top: 15px;" >
           </div>
       -->
-          <div class="col-sm-1" style="background: #F9A635; margin-left: 10%; border-radius:15px; margin-top: 13px; min-width:110px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
+          <div class="col-sm-1 widget2" style="background: #F9A635; margin-left: 10%; border-radius:15px; margin-top: 13px; min-width:110px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
             <h2 style="display:inline;"><%= @pendingcount %></h2>
             <h5>Pending Dispatches</h5>
           </div>
 
-          <div class="col-sm-1" style="background: steelblue; color: white; border-radius:15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px; margin-left: 1%;  min-width:110px;">
+          <div class="col-sm-1 widget3" style="background: steelblue; color: white; border-radius:15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px; margin-left: 1%;  min-width:110px;">
             <h2 style="display:inline;"><%=@unpaidOrders.size%></h2>
             <h5>Payments Pending</h5>
           </div>
 
-          <div class="col-sm-1" style="background: #FFD658; border-radius:15px; margin-left: 1%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px;  min-width:110px;">
+          <div class="col-sm-1 widget4" style="background: #FFD658; border-radius:15px; margin-left: 1%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px;  min-width:110px;">
             <h2 style="display:inline;">3</h2>
             <h5>Ready for Archive</h5>
           </div>
@@ -195,7 +195,7 @@
                       <td><%= render 'truckform', delivery_truck: truck, :locals => { :f => truck } %></td>
                     <% else %>
                     <td><% if @count > 0 %>
-                    <a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
+                    <a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-keyboard="false" href="#">
                       <span class="button">
                         <%= @count %><%= " Vehicles Pending" %>
                       </span></a><% else %>Ready</td><% end %>
@@ -305,7 +305,7 @@
                       <td><%= link_to "Dispatch Form", truck %></td>
                     <% else %>
                     <td><% if @count > 0 %>
-                    <a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-backdrop="static" data-keyboard="false" href="#">
+                    <a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-keyboard="false" href="#">
                       <span class="button">
                         <%= @count %><%= " Vehicles Pending" %>
                       </span></a><% else %>Ready</td><% end %>
@@ -342,7 +342,7 @@
                     <td><%= order.dispatch_date %></td>
                     <td><%= number_to_currency order.grand_total%></td>
                     <td><%= order.truck_id %></td>
-                    <td><a data-toggle="modal" data-target="#myModal<%=order.id%>" data-controls-modal="#myModal_<%=order.id%>" data-backdrop="static" data-keyboard="false" href="#"><span class="button"><%= "#{order.order_items.length} Vehicles" %></span></a></h5></td>
+                    <td><a data-toggle="modal" data-target="#myModal<%=order.id%>" data-controls-modal="#myModal_<%=order.id%>" data-keyboard="false" href="#"><span class="button"><%= "#{order.order_items.length} Vehicles" %></span></a></h5></td>
                   </tr>
                 <% end %>
               </tbody>
@@ -396,4 +396,3 @@
     </div>
   </div>
 </div>
-
