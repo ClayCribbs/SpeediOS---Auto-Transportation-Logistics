@@ -271,6 +271,7 @@ GEM
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
+    moment (0.1.0)
     momentjs-rails (2.15.1)
       railties (>= 3.1)
     multi_json (1.12.1)
@@ -413,6 +414,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   local_time
   mini_magick
+  moment
   nokogiri
   pg
   pry-rails
