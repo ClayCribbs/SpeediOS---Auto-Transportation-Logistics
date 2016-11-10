@@ -55,4 +55,8 @@ class WelcomeController < ApplicationController
     @vehicles = Vehicle.all
   end
 
+  def calendar
+    @orders = Order.where(user_id: current_user)
+  end
+
 end

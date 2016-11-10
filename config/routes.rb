@@ -39,6 +39,8 @@ Rails.application.routes.draw do
 
   get 'pickups' => 'pickup#index'
 
+  get 'calendar' => 'welcome#calendar'
+
   get 'main' => 'welcome#about'
 
   get 'delivery_trucks_index' => 'delivery_trucks#index'

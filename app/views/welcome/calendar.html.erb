@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-sm-2 no-float">
+    <ul class="nav navbar-side">
+      <li class="active nav navbar navbar-nav"> <a href="#" data-target="#calendartab" data-toggle="tab">Invoice Calendar</a></li>
+      <li class="nav navbar navbar-nav"><a href="#" data-target="#dispatchtab" data-toggle="tab">Dispatch Calendar</a></li> 
+    </ul>
+  </div>
+<div class="col-sm-10">
+ <div class="tab-content"  >
+  <div class="tab-pane active" id="calendartab"> 
+<br />
+ <h3>Calendar</h3><%= month_calendar attribute: "created_at", id: "calendartable", events: @orders.where(user_id: current_user) do |date, orders| %>
+          <%= date %>
+          <br /><br />
+        <% orders.each do |order| %>
+          <div style="display:inline;">
+            <%= link_to order.id, documents_path(:order_id => order.id) %>
+          </div>
+        <% end %>
+      <% end %> 
+      <br /><br />
+
+</div>
+ <div class="tab-pane active" id="dispatchtab"> 
+ </div>
+</div>
+  </div>
+  </div>

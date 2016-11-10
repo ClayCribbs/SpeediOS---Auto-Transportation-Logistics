@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-sm-2 no-float">
     <ul class="nav navbar-side">
-      <li class="active nav navbar navbar-nav"> <a data-target="#contracts" data-toggle="tab">Available Orders</a></li>
-      <li class="nav navbar navbar-nav"><a data-target="#fleettab" data-toggle="tab">My Fleet</a></li>
-      <li class="nav navbar navbar-nav"><a data-target="#invoicing" data-toggle="tab">Invoicing</a></li>
+      <li class="active nav navbar navbar-nav"> <a href="#" data-target="#contracts" data-toggle="tab">Available Orders</a></li>
+      <li class="nav navbar navbar-nav"><a href="#" data-target="#fleettab" data-toggle="tab">My Fleet</a></li>
+      <li class="nav navbar navbar-nav"><a href="#" data-target="#invoicing" data-toggle="tab">Invoicing</a></li>
       
       <li class="nav navbar navbar-nav" id="widget"><br /><br /><br /><br /><div style="padding-left: 15px; padding-right: 15px;"><strong>Pending Orders</strong></div>
         <ul style="list-style-type: none;list-style-position:inside;margin:0;padding:0;">
@@ -353,7 +353,6 @@
            
 
           <br /> <h3> Calander</h3>
-          <div style="height:1000px">
         <%= month_calendar attribute: "created_at", id: "calendartable", events: @orders.where(user_id: current_user) do |date, orders| %>
           <%= date %>
           <br /><br />
@@ -362,7 +361,7 @@
             <%= link_to order.id, documents_path(:order_id => order.id) %>
           </div>
         <% end %>
-      <% end %> </div></div>
+      <% end %> </div>
           </div>
 
       </div>
