@@ -1,11 +1,9 @@
 
-<div class="container" style="margin-left: 15px; margin-right: 15px;">
   <ul class="nav nav-tabs">
     <% @order.order_items.each do |k,v| %>
       <li><a data-target="#<%= Vehicle.find(k).make %>" data-toggle="tab"><%= "#{Vehicle.find(k).make.capitalize} #{Vehicle.find(k).model.capitalize}" %></a></li>
     <% end %>
   </ul>
-  <div class="container">
     <div class="tab-content">
       <% first = true %>
       <% @order.order_items.each do |k,v| %>
@@ -16,6 +14,9 @@
         <% else %>
           <div class="tab-pane" id="<%= Vehicle.find(k).make %>">
           <%end%>
+          <div style="margin-left:50px;margin-right:50px;">
+          <div class="row">
+            <div class="col-md-12">
             <div class="row">
               <div class="col-xs-6">
                 <h1>Bill of Lading</h1>
@@ -27,12 +28,9 @@
                   Fax: 678-444-4444 
                 <h1><small>Load ID: #001</small></h1>
               </div>
-              <div class="col-xs-6 text-right">
-                <h1>
-                  <a href="http://auto-dispatch-logistics.herokuapp.com/">
-                  <%= image_tag("DD-logo.jpg", :alt => "Diamond Dispatch Logo") %>
-                  </a>
-                </h1>
+              <div class="col-xs-6 text-right" style="text-align: center;vertical-align: middle;">
+              <br/>
+                  <%= image_tag("DD-logo.jpg", :alt => "Diamond Dispatch Logo", :style => "max-height: 200px;max-width:600px") %>
               </div>
             </div>
             <div class="row">
@@ -70,33 +68,31 @@
               </div>
             </div>
           <!-- / end client details section -->
+          <div class="row">
+          <div class="col-xs-12">
           <table class="table table-bordered">
             <thead text= "black">
-              <div id= "year">
+             
                 <th>
                   <h5>Year </h5>
                 </th>
-              </div>
-              <div>
+            
                 <th>
                   <h5>Make / Model </h5>
                 </th>
-              </div>
-              <div>
+            
                 <th>
                   <h5>Type </h5>
                 </th>
-              </div>
-              <div>
+             
                 <th>
                   <h5>Color </h5>
                 </th>
-              </div>
-              <div>
+          
                   <th>
                   <h5>VIN</h5>
                 </th>
-              </div>
+           
             </thead>
             <tbody>
               <tr>
@@ -108,7 +104,8 @@
               </tr>
             </tbody>
           </table>
-        <div class="container">         
+          </div>
+          </div>        
           <div class="row">
             <div class="col-xs-6">
               <div class="panel panel-default">
@@ -134,10 +131,11 @@
                 </div>
               </div>
             </div>
-          </div>
-              <%= image_tag("@vehicle-dmg-example.png", :alt => "Damaged @vehicle mark up") %>
-              <div class="row">
-                <div class="col-xs-5">
+
+              <div class="col-xs-12">
+               <%= image_tag("vehicle-dmg-example.png",{:alt => "Damaged @vehicle mark up", style: "width:100%; margin-bottom: 15px;"}) %>
+               </div>
+                <div class="col-xs-6">
                   <div class="panel panel-info">
                     <div class="panel-heading">
                       <h5>Origin Signature / Oct 31, 2016 / Sales Manager</h5>
@@ -150,7 +148,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-xs-7">
+                <div class="col-xs-6">
                   <div class="span7">
                     <div class="panel panel-info">
                       <div class="panel-heading">
@@ -170,7 +168,7 @@
                   </div>
                 </div>
               </div>
-
+              <div style="font-size: .8em;">
             AUTO TRANSPORT TERMS AND CONDITIONS
             Auto-Dispatch-Logistics hereinafter referred to as “Carrier” will not be responsible for any damage not resulting from
             Carrier negligence. During Transport,
@@ -282,10 +280,8 @@
             without regard to the jurisdiction in which any
             action or special proceedings many be instituted. Further, the parties hereby agree that the venue for any action brought
             by either party against the other shall be
-            in the district court for the county of Forsyth, State of Georgia, and any other venue is hereby waived.
-          </div>
+            in the district court for the county of Forsyth, State of Georgia, and any other venue is hereby waived.<br/><br /><br/></div>
+          </div></div></div></div>
+          <% end %>
         </div>  
-      <% end %>
-      </div>
     </div>
-</div>
