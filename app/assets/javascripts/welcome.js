@@ -2,12 +2,12 @@
 function loadTables() {
 
 	setTimeout(function() {
-		$('#contracts').load("dashboard #contracts")
+		$('#dashtable').load("dashboard #dashtable")
 		$('#widget').load("dashboard #widget")
 	},  200);  
 
 	setTimeout(function() {
-		$('#contracts').load("dashboard #contracts")
+		$('#dashtable').load("dashboard #dashtable")
 	},  5000);  
 
 		setTimeout(function() {
@@ -15,13 +15,13 @@ function loadTables() {
 	},  5000); 
 
 	setTimeout(function() {
-		$('#widget2').load("dashboard #widget")
+		$('#widget2').load("dashboard #widget2")
 	},  5000);   
 	setTimeout(function() {
-		$('#widget3').load("dashboard #widget")
+		$('#widget3').load("dashboard #widget3")
 	},  5000);  
 	setTimeout(function() {
-		$('#widget4').load("dashboard #widget")
+		$('#widget4').load("dashboard #widget4")
 	},  5000);  
 
 };

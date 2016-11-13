@@ -1,3 +1,52 @@
+<style>
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+
+  $( function() {
+    $( ".draggable" ).draggable();
+  } );
+  </script>
+
+  <script>
+$(function(){
+var sPositions = localStorage.positions || "{}",
+    positions = JSON.parse(sPositions);
+$.each(positions, function (id, pos) {
+    $("#" + id).css(pos)
+})
+$("#widget4").draggable({
+    containment: "#row",
+    revert : "valid",
+
+    scroll: false,
+    stop: function (event, ui) {
+        positions[this.id] = ui.position
+        localStorage.positions = JSON.stringify(positions)
+    }
+});
+$("#widget2").draggable({
+    containment: "#row",
+    revert : "valid",
+    scroll: false,
+    stop: function (event, ui) {
+        positions[this.id] = ui.position
+        localStorage.positions = JSON.stringify(positions)
+    }
+});
+$("#widget3").draggable({
+    containment: "#row",
+    revert : "valid",
+    scroll: false,
+    stop: function (event, ui) {
+        positions[this.id] = ui.position
+        localStorage.positions = JSON.stringify(positions)
+    }
+});
+});
+
+</script>
 <div class="row">
   <div class="col-sm-2 no-float">
     <ul class="nav navbar-side">
@@ -96,7 +145,7 @@
 
       <!-- Open Contracts Tab -->
       <div class="tab-pane active" id="contracts"> 
-        <div class="row">
+        <div class="row" id="row">
           
           <div class="col-sm-5" style="margin-left: 5%;">
           </div>
@@ -104,20 +153,22 @@
       <div class="col-sm-5" style="background: steelblue; border-radius: 15px; height:90px; margin-left: 5%; margin-top: 15px;" >
           </div>
       -->
-          <div class="col-sm-1 widget2" style="background: #F9A635; margin-left: 10%; border-radius:15px; margin-top: 13px; min-width:110px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
+          <div class="col-sm-1 ui-widget-content draggable" id="widget2" style="background: #F9A635; margin-left: 10%; border-radius:15px; margin-top: 13px; min-width:110px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
             <h2 style="display:inline;"><%= @pendingcount %></h2>
             <h5>Pending Dispatches</h5>
           </div>
 
-          <div class="col-sm-1 widget3" style="background: steelblue; color: white; border-radius:15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px; margin-left: 1%;  min-width:110px;">
+          <div class="col-sm-1 widget3 draggable" id="widget3" style="background: steelblue; color: white; border-radius:15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px; margin-left: 1%;  min-width:110px;">
             <h2 style="display:inline;"><%=@unpaidOrders.size%></h2>
             <h5>Payments Pending</h5>
           </div>
 
-          <div class="col-sm-1 widget4" style="background: #FFD658; border-radius:15px; margin-left: 1%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px;  min-width:110px;">
+          <div class="col-sm-1 widget4 draggable" id="widget4" style="background: #FFD658; border-radius:15px; margin-left: 1%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px;  min-width:110px;">
             <h2 style="display:inline;">3</h2>
             <h5>Ready for Archive</h5>
           </div>
+          </div>
+          <div class="row">
           <div class="col-sm-12" style="width: 95%">
             <p><br />
               <h3 style="display: inline;">Available Orders </h3><h2 style="display: inline;"><span style="display: inline;" class="badge"><%= @tableVehicleCount %></span></h2> 
@@ -138,7 +189,7 @@
                 <%end%>
               </select></nobr>
             </p>
-            <table class="table-striped sortable autobox" width="100%">
+            <table class="table-striped sortable autobox"  width="100%">
               <thead>
               <tr>
                   <th>Vehicle</h5></th>
@@ -148,7 +199,7 @@
                   <th>Pick Up With</th>
                   </tr>
               </thead>
-              <tbody>
+              <tbody id="dashtable">
                 <% @tableVehicles.each do |vehicle| %>
                 <% next unless vehicle.currentState == "Available" %>
                   <tr>
