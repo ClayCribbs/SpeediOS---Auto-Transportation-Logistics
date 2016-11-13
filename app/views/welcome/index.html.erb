@@ -353,14 +353,14 @@
             </table>
            
 
-          <br /> <h3> Calander</h3>
+          <br /> <h3> Calendar</h3>
         <%= month_calendar attribute: "created_at", id: "calendartable", events: @orders.where(user_id: current_user) do |date, orders| %>
-          <%= date %>
+          <%= date.day %>
           <br /><br />
-        <% orders.each do |order| %>
-          <div style="display:inline;">
-            <%= link_to order.id, documents_path(:order_id => order.id) %>
-          </div>
+          <% if orders.length > 0 %>
+          <div style="font-size: .8em;">
+        <%= "#{orders.length} dispatched" %>
+        </div>
         <% end %>
       <% end %> </div>
           </div>
