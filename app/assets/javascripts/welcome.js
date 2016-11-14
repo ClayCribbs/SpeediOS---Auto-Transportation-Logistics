@@ -25,7 +25,3 @@ function loadTables() {
 	},  5000);  
 
 };
-
-$(document).ready(function() {
-  $('#datetimepicker1').datetimepicker();
-});

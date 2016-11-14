@@ -1,174 +1,177 @@
-<style>
-  </style>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-
+ 
+<!--Code for draggable widgets, need to migrate to JS -->
+<script>
   $( function() {
     $( ".draggable" ).draggable();
   } );
-  </script>
 
-  <script>
-$(function(){
-var sPositions = localStorage.positions || "{}",
+  $(function(){
+    var sPositions = localStorage.positions || "{}",
     positions = JSON.parse(sPositions);
-$.each(positions, function (id, pos) {
+  $.each(positions, function (id, pos) {
     $("#" + id).css(pos)
-})
-$("#widget4").draggable({
-    containment: "#row",
-    revert : "valid",
+  })
 
-    scroll: false,
-    stop: function (event, ui) {
-        positions[this.id] = ui.position
-        localStorage.positions = JSON.stringify(positions)
-    }
-});
-$("#widget2").draggable({
-    containment: "#row",
-    revert : "valid",
-    scroll: false,
-    stop: function (event, ui) {
-        positions[this.id] = ui.position
-        localStorage.positions = JSON.stringify(positions)
-    }
-});
-$("#widget3").draggable({
-    containment: "#row",
-    revert : "valid",
-    scroll: false,
-    stop: function (event, ui) {
-        positions[this.id] = ui.position
-        localStorage.positions = JSON.stringify(positions)
-    }
-});
-});
+  $("#draggable2").draggable({
+      containment: "#row",
+      revert : "valid",
 
+      scroll: false,
+      stop: function (event, ui) {
+          positions[this.id] = ui.position
+          localStorage.positions = JSON.stringify(positions)
+      }
+  });
+
+  $("#draggable3").draggable({
+      containment: "#row",
+      revert : "valid",
+      scroll: false,
+      stop: function (event, ui) {
+          positions[this.id] = ui.position
+          localStorage.positions = JSON.stringify(positions)
+      }
+  });
+
+  $("#draggable4").draggable({
+      containment: "#row",
+      revert : "valid",
+      scroll: false,
+      stop: function (event, ui) {
+          positions[this.id] = ui.position
+          localStorage.positions = JSON.stringify(positions)
+      }
+  });
+});
 </script>
+
+<!--Side Navbar -->
 <div class="row">
   <div class="col-sm-2 no-float">
     <ul class="nav navbar-side">
       <li class="active nav navbar navbar-nav"> <a data-target="#contracts" data-toggle="tab">Available Orders</a></li>
       <li class="nav navbar navbar-nav"><a data-target="#fleettab" data-toggle="tab">My Fleet</a></li>
       <li class="nav navbar navbar-nav"><a data-target="#invoicing" data-toggle="tab">Invoicing</a></li>
-      
-      <li class="nav navbar navbar-nav" id="widget"><br /><br /><br /><br /><div style="padding-left: 15px; padding-right: 15px;"><strong>Pending Orders</strong></div>
-        <ul style="list-style-type: none;list-style-position:inside;margin:0;padding:0;">
-          <% if @delivery_trucks.any? %>
-            <% @delivery_trucks.each do |truck| %>
-              <% if truck.occupied_slots.nil? %>
-              <%else%>
-                <% if truck.occupied_slots > 0 && truck.currentState.to_s == "Available" %>
-                  <% @pendingcount +=1 %>
-                  <br />
-                    <li><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-keyboard="false">
-                        <span class="button nav navbar navbar-nav"><p style=" padding-left: 15px; padding-right: 15px; margin-top: 5px; font-size: 80%; margin-bottom: 5px;"><%= truck.name %></p></span></a></li>
-                <%end%>
+      <li class="nav navbar navbar-nav" id="widget"><br /><br /><br /><br />
+        <div style="padding-left: 15px; padding-right: 15px;"><strong>Pending Orders</strong></div></li>
+      <ul style="list-style-type: none;list-style-position:inside;margin:0;padding:0;">
+        <% if @delivery_trucks.any? %>
+          <% @delivery_trucks.each do |truck| %>
+            <% if truck.occupied_slots.nil? %>
+            <%else%>
+              <% if truck.occupied_slots > 0 && truck.currentState.to_s == "Available" %>
+                <% @pendingcount +=1 %><br />
+                <li><a data-toggle="modal" data-target="#myModal<%=truck.id%>" data-controls-modal="#myModal_<%=truck.id%>" data-keyboard="false"><span class="button nav navbar navbar-nav"><p style=" padding-left: 15px; padding-right: 15px; margin-top: 5px; font-size: 80%; margin-bottom: 5px;"><%= truck.name %></p></span></a></li>
               <%end%>
             <%end%>
-          <% end %>
+          <%end%>
+        <%end%>
       </ul>
-  </ul>
-</div>
+    </ul>
+  </div>
+
+  <!--Main Content -->
   <div class="col-sm-10 tab-bg no-float" id="vehicleTable">
     <div class="tab-content"  >
 
-    <!-- Truck Modal -->
-    <% @delivery_trucks.each do |truck| %>
-              <div class="modal fade" id="myModal<%=truck.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-lg" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Pending Load Configuration</h5>
-                    </div>
-                    <div class="modal-body">
-                      <table class="table-striped sortable autobox" width="100%">
-                        <thead>
-                        <tr>
-                          <th>Vehicle</th>
-                          <th>Origin</th>
-                          <th>Destination</th>
-                          <th>Weight</th>
-                          <th>Action</th>
-                          <th>Confirm Vehicle</th>
-                          </tr>
-                        </thead>
-                        <tbody>  
-
-                          <% @vehicles.each do |vehicle|%>
-                            <% if vehicle.truck_id.to_s == truck.id.to_s && vehicle.currentState != "Dispatched"%>
-                                <tr>   
-                                <td><div class="wrap"><%= link_to vehicle.name, vehicle %></h5></div></td>
-                                <td><%= vehicle.origin %></td>
-                                <td><%= vehicle.destination %></td>
-                                <td><%= vehicle.actualWeight %></h5></td>
-                                <td><%= render 'form', vehicle: vehicle %></td>
-                                <% time = Time.new %>
-                                <!-- dont miss this do here -->
-                                <%= form_tag add_to_cart_path, :remote => true do %>
-                                  <%= hidden_field_tag :vehicle_id, vehicle.id %>
-                                  <%= hidden_field_tag :bid_total, vehicle.distance.to_i %>
-                                  <%= hidden_field_tag :order_id, (vehicle.truck_id.to_s+(time.year.to_s+time.month.to_s+time.day.to_s)).to_i %>
-                                  <%= hidden_field_tag :truck_id, vehicle.truck_id.to_s %>
-                                  <td><%= submit_tag "Confirm Vehicle", class: "btn btn-primary" %></td>
-                                <% end %>
-                              </tr>
-                            <% end %>
-                          <% end %>
-                        </tbody>
-                      </table>
-                      <br /> <div class="pull-right">Assign Driver : <%= select_tag :driver_id, options_from_collection_for_select(@drivers, "id", "driver_name"),:prompt => "Select Driver"%></div>
-
-                      <br />
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel Order</button>
-                       <%= link_to "Finalize Load", view_order_path, class: "btn btn-primary" %>
-                    </div>
-                  </div>                  
-                </div>
+      <!-- Truck Modal -->
+      <% @delivery_trucks.each do |truck| %>
+        <div class="modal fade" id="myModal<%=truck.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Pending Load Configuration</h5>
               </div>
-              <% @newWeight = truck.weightCapacity.to_i %>
-              <% @count = 0 %>
-              <% @vehicles.each do |vehicle| %>
-                <% if vehicle.truck_id.to_i == truck.id.to_i && vehicle.currentState != "Dispatched" %>
-                  <% @count += 1 %>
-                  <% @newWeight -= vehicle.actualWeight.to_i %>
-                <% end %>
-                <% truck.update(currentWeight: @newWeight.to_i) %>
-                <% truck.update(occupied_slots: @count) %>
-              <% end %>              
-            <%end%>
+              <div class="modal-body">
+                <table class="table-striped sortable autobox" width="100%">
+                  <thead>
+                  <tr>
+                    <th>Vehicle</th>
+                    <th>Origin</th>
+                    <th>Destination</th>
+                    <th>Weight</th>
+                    <th>Action</th>
+                    <th>Confirm Vehicle</th>
+                    </tr>
+                  </thead>
+                  <tbody>  
+                    <% @vehicles.each do |vehicle|%>
+                      <% if vehicle.truck_id.to_s == truck.id.to_s && vehicle.currentState != "Dispatched"%>
+                          <tr>   
+                          <td><div class="wrap"><%= link_to vehicle.name, vehicle %></h5></div></td>
+                          <td><%= vehicle.origin %></td>
+                          <td><%= vehicle.destination %></td>
+                          <td><%= vehicle.actualWeight %></h5></td>
+                          <td><%= render 'form', vehicle: vehicle %></td>
+                          <% time = Time.new %>
+                          <!-- dont miss this do here -->
+                          <%= form_tag add_to_cart_path, :remote => true do %>
+                            <%= hidden_field_tag :vehicle_id, vehicle.id %>
+                            <%= hidden_field_tag :bid_total, vehicle.distance.to_i %>
+                            <%= hidden_field_tag :order_id, (vehicle.truck_id.to_s+(time.year.to_s+time.month.to_s+time.day.to_s)).to_i %>
+                            <%= hidden_field_tag :truck_id, vehicle.truck_id.to_s %>
+                            <td><%= submit_tag "Confirm Vehicle", class: "btn btn-primary" %></td>
+                          <% end %>
+                        </tr>
+                      <% end %>
+                    <% end %>
+                  </tbody>
+                </table><br /> 
+                <div class="pull-right">Assign Driver : <%= select_tag :driver_id, options_from_collection_for_select(@drivers, "id", "driver_name"),:prompt => "Select Driver"%>
+                </div><br />
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel Order</button>
+                 <%= link_to "Finalize Load", view_order_path, class: "btn btn-primary" %>
+              </div>
+            </div>                  
+          </div>
+        </div>
+
+        <!--Update Weight for truck, needs to be refactored -->
+        <% @newWeight = truck.weightCapacity.to_i %>
+        <% @count = 0 %>
+        <% @vehicles.each do |vehicle| %>
+          <% if vehicle.truck_id.to_i == truck.id.to_i && vehicle.currentState != "Dispatched" %>
+            <% @count += 1 %>
+            <% @newWeight -= vehicle.actualWeight.to_i %>
+          <% end %>
+          <% truck.update(currentWeight: @newWeight.to_i) %>
+          <% truck.update(occupied_slots: @count) %>
+        <% end %>              
+      <%end%><!-- end truck modal -->
+
 
       <!-- Open Contracts Tab -->
       <div class="tab-pane active" id="contracts"> 
+        <!--Widget Row -->
         <div class="row" id="row">
-          
+          <!-- empty space reserved for status widget -->
           <div class="col-sm-5" style="margin-left: 5%;">
           </div>
-      <!--   
-      <div class="col-sm-5" style="background: steelblue; border-radius: 15px; height:90px; margin-left: 5%; margin-top: 15px;" >
-          </div>
-      -->
-          <div class="col-sm-1 ui-widget-content draggable" id="widget2" style="background: #F9A635; margin-left: 10%; border-radius:15px; margin-top: 13px; min-width:110px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
-            <h2 style="display:inline;"><%= @pendingcount %></h2>
+          <!-- this code is for the disabled status widget   
+          <div class="col-sm-5" style="background: steelblue; border-radius: 15px; height:90px; margin-left: 5%; margin-top: 15px;" ></div>
+          -->
+
+          <div class="col-sm-1 ui-widget-content draggable" id="draggable2" style="background: #F9A635; margin-left: 10%; border-radius:15px; margin-top: 13px; min-width:110px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);">
+            <h2 style="display:inline;" id="widget2"><%= @pendingcount %></h2>
             <h5>Pending Dispatches</h5>
           </div>
 
-          <div class="col-sm-1 widget3 draggable" id="widget3" style="background: steelblue; color: white; border-radius:15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px; margin-left: 1%;  min-width:110px;">
-            <h2 style="display:inline;"><%=@unpaidOrders.size%></h2>
+          <div class="col-sm-1 widget3 draggable" id="draggable3" style="background: steelblue; color: white; border-radius:15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px; margin-left: 1%;  min-width:110px;">
+            <h2 style="display:inline;" id="widget3"><%=@unpaidOrders.size%></h2>
             <h5>Payments Pending</h5>
           </div>
 
-          <div class="col-sm-1 widget4 draggable" id="widget4" style="background: #FFD658; border-radius:15px; margin-left: 1%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px;  min-width:110px;">
-            <h2 style="display:inline;">3</h2>
+          <div class="col-sm-1 widget4 draggable" id="draggable4" style="background: #FFD658; border-radius:15px; margin-left: 1%; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); margin-top: 13px;  min-width:110px;">
+            <h2 style="display:inline;" id="widget4">3</h2>
             <h5>Ready for Archive</h5>
           </div>
-          </div>
-          <div class="row">
+        </div>
+
+        <!--Dashboard Vehicle Orders Display -->
+        <div class="row">
           <div class="col-sm-12" style="width: 95%">
             <p><br />
               <h3 style="display: inline;">Available Orders </h3><h2 style="display: inline;"><span style="display: inline;" class="badge"><%= @tableVehicleCount %></span></h2> 
@@ -215,6 +218,8 @@ $("#widget3").draggable({
             </table>
           </div>
         </div>
+
+        <!-- Dashboard Fleet Vehicles -->
         <div class="row" id="dashtrucks">
           <div class="col-sm-12" style="width: 95%">
             <h3>Delivery Trucks</h3>
@@ -312,7 +317,7 @@ $("#widget3").draggable({
                         </tbody>
                       </table>
                       <br /> <div class="pull-right">Assign Driver : <%= select_tag "drivers", options_from_collection_for_select(@drivers, "id", "driver_name"),:prompt => "Select Driver"%></div>
-  <br /><%= text_field :start_time, id: "datetimepicker1", placeholder: "Schedule Pickup Time" %>
+                      <br /><%= text_field :start_time, id: "datetimepicker1", placeholder: "Schedule Pickup Time" %>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal" >Cancel Order</button>

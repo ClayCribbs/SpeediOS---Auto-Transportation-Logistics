@@ -2,16 +2,18 @@
 <html>
   <head class="bioRhyme">
   
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['THIS_GOOGLE_API_KEY']%>&amp;libraries=places" defer>
-    </script>
+    
 
     <title>SpeediOS Logistics</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag 'application' %>
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['THIS_GOOGLE_API_KEY']%>&amp;libraries=places" defer>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
 
   <% if current_page?(root_path) or current_page?('splash') %>
