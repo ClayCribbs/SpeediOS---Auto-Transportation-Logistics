@@ -74,7 +74,7 @@
   <div class="col-sm-10 tab-bg no-float" id="vehicleTable">
     <div class="tab-content"  >
 
-      <!-- Truck Modal -->
+      <!-- Truck Modal needs to be made dry, included again below -->
       <% @delivery_trucks.each do |truck| %>
         <div class="modal fade" id="myModal<%=truck.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-lg" role="document">
@@ -270,8 +270,8 @@
       <div class="tab-pane" id="fleettab"> 
         <div class="row">
           <div class="col-sm-12" style="width: 95%">
+          <!-- Second Trucks modal, needs to be DRY -->
           <% @delivery_trucks.each do |truck| %>
-
               <div class="modal fade" id="myModal<%=truck.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
                   <div class="modal-content" >
@@ -292,7 +292,6 @@
                           </tr>
                         </thead>
                         <tbody>  
-
                           <% @vehicles.each do |vehicle|%>
                             <% if vehicle.truck_id.to_s == truck.id.to_s && vehicle.currentState != "Dispatched"%>
                                 <tr>   
@@ -326,11 +325,11 @@
                   </div>                  
                 </div>
               </div>
-              
-
             <% end %>
           </div>
         </div>
+
+        <!-- Trucks Table on Fleet Tab -->
         <div class="row" id="dashtrucks">
           <div class="col-sm-12" style="width: 95%">
           <br /><br />
@@ -377,9 +376,10 @@
           </div>
         </div>
       </div>
-
+      <!-- Invoice/Order Tab (includes calendar) -->
       <div class="tab-pane" id="invoicing"> 
       <div class="row">
+      <!--Invoice/Order Table -->
         <div class="col-md-12" style="width: 95%">
         <br /><br />
           <h3>Invoices</h3>
@@ -406,22 +406,24 @@
                   </tr>
                 <% end %>
               </tbody>
-            </table>
-           
+            </table><br /> 
 
-          <br /> <h3> Calendar</h3>
-        <%= month_calendar attribute: "created_at", id: "calendartable", events: @orders.where(user_id: current_user) do |date, orders| %>
-          <%= date.day %>
-          <br /><br />
-          <% if orders.length > 0 %>
-          <div style="font-size: .8em;">
-        <%= "#{orders.length} dispatched" %>
-        </div>
-        <% end %>
-      <% end %> </div>
+            <!-- Calendar (See simple_calendar view for formatting)-->
+            <h3> Calendar</h3>
+            <%= month_calendar attribute: "created_at", id: "calendartable", events: @orders.where(user_id: current_user) do |date, orders| %>
+              <%= date.day %>
+              <br /><br />
+              <% if orders.length > 0 %>
+                <div style="font-size: .8em;">
+                <%= "#{orders.length} dispatched" %>
+                </div>
+              <% end %>
+            <% end %> 
           </div>
-
+        </div>
       </div>
+
+        <!--Order Modal -->
         <% @orders.each do |order| %>
           <div class="modal fade" id="myModal<%=order.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog modal-lg modal-lg" role="document">

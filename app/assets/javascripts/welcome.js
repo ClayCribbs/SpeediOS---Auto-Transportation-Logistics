@@ -1,6 +1,7 @@
-
+//Refreshes Dashboard Tables and Widgets
 function loadTables() {
 
+	//Used multiple delayed time out functions because database updates are slow and dashboard sometimes does not update.
 	setTimeout(function() {
 		$('#dashtable').load("dashboard #dashtable")
 		$('#widget').load("dashboard #widget")
