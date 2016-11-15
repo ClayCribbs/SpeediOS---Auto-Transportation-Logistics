@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount Dashing::Engine, at: Dashing.config.engine_path
   resources :pickups
   resources :orders
   get 'bill_of_lading/address'
