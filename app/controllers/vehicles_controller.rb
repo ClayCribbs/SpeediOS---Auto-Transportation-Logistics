@@ -6,14 +6,14 @@ class VehiclesController < ApplicationController
 
  
 
-  # GET /vehicles
-  # GET /vehicles.json
+  #Loads All Vehicles
   def index
    @vehicles = Vehicle.all
   end
-  # GET /vehicles/1
-  # GET /vehicles/1.json
+
+
   def show
+      #Drives Google Map & Updates Vehicle Distance
       @waypoints = Array.new
       if @vehicle.origin.nil? || @vehicle.destination.nil?
       else
@@ -22,6 +22,8 @@ class VehiclesController < ApplicationController
       end
       @waypoints.push @vehicle.destination
   end
+
+  #Method to check current state of vehicle (needs to be moved to helper or model)
   def checkState
       if @vehicle.truck_id == "" || @vehicle.truck_id == nil
         @vehicle.currentState = "Available"
@@ -30,6 +32,7 @@ class VehiclesController < ApplicationController
       end
       @vehicle.save
   end
+
   # GET /vehicles/new
   def new
     @vehicle = Vehicle.new
@@ -41,8 +44,7 @@ class VehiclesController < ApplicationController
   def edit 
   end
 
-  # POST /vehicles
-  # POST /vehicles.json
+  
   def create
     @vehicle = Vehicle.new(vehicle_params)
     @user = current_user
@@ -58,10 +60,7 @@ class VehiclesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /vehicles/1
-  # PATCH/PUT /vehicles/1.json
   def update
-
     respond_to do |format|
       if @vehicle.update(vehicle_params)
         format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }

@@ -1,5 +1,6 @@
 class CartController < ApplicationController
   
+  #Creates a line item from a vehicle
 	def add_to_cart
 	  line_item = LineItem.create(vehicle_id: params[:vehicle_id],bid_total: params[:bid_total], dispatch_date: params[:dispatch_date], order_id: params[:order_id], truck_id: params[:truck_id])
 	  line_item.save
@@ -13,7 +14,8 @@ class CartController < ApplicationController
   	@line_items = LineItem.all
   end
 
-  def update
+  #I dont think this works - was trying to update orders, need to refactor invoice/order system possibly rescaffold.
+  def update 
     respond_to do |format|
       if @order.update(vehicle_params)
         format.html { redirect_to @order, notice: 'Vehicle was successfully updated.' }
@@ -25,6 +27,7 @@ class CartController < ApplicationController
     end
   end
 
+  #Finalizes order, destroys line items
   def checkout
     @line_items = LineItem.all
     @order = Order.create(user_id: current_user.id, subtotal: 0, driver_id: params[:driver_id], start_time: params[:start_time])
